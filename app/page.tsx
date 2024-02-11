@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, FC} from "react";
 import { Variants, motion } from "framer-motion"
 import { Property } from "csstype"
-import NavBar from "./components/Navbar";
+import NavBar from "../components/Navbar";
 
 type T2dCoord = {
   x: number

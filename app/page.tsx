@@ -63,7 +63,7 @@ const NavBar: FC<{mouseEnterHandler: (size: number, color: Property.BackgroundCo
   )
 })
 
-export default function Page() {
+const Page = () => {
   const isMobileDevice = () => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const defaultCursorColor: Property.BackgroundColor = "black"
@@ -138,3 +138,6 @@ export default function Page() {
     </main>
   );
 }
+Page.displayName = "Main"
+
+export default Page

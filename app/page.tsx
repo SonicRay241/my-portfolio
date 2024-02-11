@@ -11,7 +11,7 @@ type T2dCoord = {
 }
 
 const Page = () => {
-  const isMobileDevice = () => /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const [isMobileDevice, setIsMobileDevice] = useState(false)
 
   const defaultCursorColor: Property.BackgroundColor = "black"
   const defaultCursorSize: number = 40
@@ -26,6 +26,7 @@ const Page = () => {
 
 
   useEffect(() => {
+    setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
     if (!renderCursor) setMousePos({x: window.innerWidth/2, y: window.innerHeight/2} )
     const mouseMoveEvent = (e: MouseEvent) => {
       if (!renderCursor) {

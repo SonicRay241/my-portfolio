@@ -55,4 +55,5 @@ const NavBar: FC<{mouseEnterHandler: (size: number, color: Property.BackgroundCo
     </>
   )
 })
+NavBar.displayName = "NavBar"
 export default NavBar

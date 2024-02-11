@@ -85,6 +85,6 @@ const Page = () => {
     </main>
   );
 }
-Page.displayName = "Main"
+Page.displayName = "Page"
 
 export default Page

@@ -80,7 +80,7 @@ const Page = () => {
       {/* <NavBar mouseEnterHandler={(size, color) => mouseEnter(size, color)} mouseLeaveHandler={mouseLeave}/> */}
       <div className="flex h-full w-full justify-center items-center">
         <div className="w-[320px] sm:w-[540px] md:w-[640px] lg:w-[960px]">
-          <h1 className="text-4xl text-black text-center w-fit" onMouseEnter={() => mouseEnter(120, "white")} onMouseLeave={mouseLeave}>{isMobileDevice() ? "Mobile" : "Web"}</h1>
+          <h1 className="text-4xl text-black text-center w-fit" onMouseEnter={() => mouseEnter(120, "white")} onMouseLeave={mouseLeave}>{isMobileDevice ? "Mobile" : "Web"}</h1>
         </div>
       </div>
     </main>

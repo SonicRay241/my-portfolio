@@ -21,13 +21,21 @@ const Page = () => {
   const [cursorBlendMode, setCursorBlendMode] = useState<Property.MixBlendMode>("normal")
   const [cursorColor, setCursorColor] = useState<Property.BackgroundColor>("transparent")
   const [renderCursor, setRenderCursor] = useState<boolean>(false)
+  const [cursorClicking, setCursorClicking] = useState<boolean>(false)
 
   const cursor = useRef<HTMLDivElement | null>(null)
+
+  const testRef = useRef<HTMLDivElement | null>(null)
+
+  const navbarChildren: { title: string, ref: HTMLDivElement | null }[] = [
+    { title: "test", ref: testRef.current }
+  ]
 
 
   useEffect(() => {
     setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
     if (!renderCursor) setMousePos({x: window.innerWidth/2, y: window.innerHeight/2} )
+
     const mouseMoveEvent = (e: MouseEvent) => {
       if (!renderCursor) {
         setRenderCursor(true)
@@ -36,10 +44,22 @@ const Page = () => {
       setMousePos({x: e.clientX, y: e.clientY})
     }
 
+    const mousedownEvent = (e: MouseEvent) => {
+      setCursorClicking(true)
+    }
+
+    const mouseupEvent = (e: MouseEvent) => {
+      setCursorClicking(false)
+    }
+
     window.addEventListener("mousemove", mouseMoveEvent)
+    window.addEventListener("mousedown", mousedownEvent)
+    window.addEventListener("mouseup", mouseupEvent)
 
     return () => {
       window.removeEventListener("mousemove", mouseMoveEvent)
+      window.addEventListener("mousedown", mousedownEvent)
+      window.addEventListener("mouseup", mouseupEvent)
     }
   }, [renderCursor])
 
@@ -47,10 +67,10 @@ const Page = () => {
     default: {
       x: mousePos.x,
       y: mousePos.y,
-      height: cursorSize,
-      width: cursorSize,
-      top: -cursorSize/2,
-      left: -cursorSize/2,
+      height: cursorSize * (cursorClicking ? 1.5 : 1),
+      width: cursorSize * (cursorClicking ? 1.5 : 1),
+      top: -(cursorSize * (cursorClicking ? 1.5 : 1))/2,
+      left: -(cursorSize * (cursorClicking ? 1.5 : 1))/2,
       mixBlendMode: cursorBlendMode,
       backgroundColor: cursorColor,
     },
@@ -69,18 +89,21 @@ const Page = () => {
   }
 
   return (
-    <main className="h-screen w-screen bg-white">
-      <motion.div 
-        className="fixed z-50 rounded-full pointer-events-none hidden sm:block"
-        variants={variants} 
-        animate="default"
-        ref={cursor}
-      >
-      </motion.div>
-      {/* <NavBar mouseEnterHandler={(size, color) => mouseEnter(size, color)} mouseLeaveHandler={mouseLeave}/> */}
-      <div className="flex h-full w-full justify-center items-center">
+    <main className="h-screen w-full bg-white">
+      { !isMobileDevice && 
+        <motion.div 
+          className="fixed z-50 rounded-full pointer-events-none hidden sm:block"
+          variants={variants} 
+          animate="default"
+          ref={cursor}
+        /> 
+      }
+      
+      <NavBar mouseEnterHandler={(size, color) => mouseEnter(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/>
+      <div className="flex w-full h-fit justify-center items-center">
         <div className="w-[320px] sm:w-[540px] md:w-[640px] lg:w-[960px]">
-          <h1 className="text-4xl text-black text-center w-fit" onMouseEnter={() => mouseEnter(120, "white")} onMouseLeave={mouseLeave}>{isMobileDevice ? "Mobile" : "Web"}</h1>
+          <h1 className="text-4xl text-black text-center w-fit mt-52 mb-96 h-96" onMouseEnter={() => mouseEnter(120, "white")} onMouseLeave={mouseLeave}>{isMobileDevice ? "Mobile" : "Web"}</h1>
+          <div className="w-20 h-7 bg-red-600" ref={testRef}></div>
         </div>
       </div>
     </main>

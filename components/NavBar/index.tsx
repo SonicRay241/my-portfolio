@@ -103,7 +103,7 @@ const NavBar:
         </div>
         <AnimatePresence>
         { showBigMenu && 
-            <motion.div className="fixed w-screen h-screen z-10 bg-[#FF5900] origin-left" variants={menuVars} initial="init" animate="animate" exit="exit">
+            <motion.div className="fixed w-screen h-[102vh] z-10 bg-[#FF5900] origin-left top-[-2vh] pt-[2vh]" variants={menuVars} initial="init" animate="animate" exit="exit">
                 <div className="absolute top-3 right-3 cursor-pointer active:bg-white active:bg-opacity-20 p-2 rounded-full" onClick={()=>setShowBigMenu(!showBigMenu)}>
                   <Cross2Icon height={32} width={32} color="white" />
                 </div>

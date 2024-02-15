@@ -36,10 +36,10 @@ const NavLink:
       variants={props.mobile ? mobileVariants : undefined} 
       initial={props.mobile ? "initial" : undefined} 
       animate={props.mobile ? "open" : undefined} 
-      onMouseEnter={()=>props.mouseEnterHandler(60, "white")} 
+      onMouseEnter={() => props.mouseEnterHandler(60, "white")} 
       onMouseLeave={props.mouseLeaveHandler}
     >
-      <h1 onClick={()=>{if (props.divRef) {props.divRef.scrollIntoView()}; props.closeMenuCallBack()}} 
+      <h1 onClick={() => {if (props.divRef) {props.divRef.scrollIntoView()}; props.closeMenuCallBack()}} 
           className="cursor-pointer text-lg"
       >
         {props.title}

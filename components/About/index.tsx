@@ -61,7 +61,7 @@ FC<{
                 animate="paragraph"
                 onMouseEnter={() => props.mouseEnterHandler(200, "white")} 
                 onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}>
-                    I'm a passionate web developer adept at crafting purpose-driven software solutions using diverse tools. Currently, I balance studies with a role at <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, thriving on collaboration and continuous learning.
+                    I&apos;m a passionate web developer adept at crafting purpose-driven software solutions using diverse tools. Currently, I balance studies with a role at <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, thriving on collaboration and continuous learning.
                 </motion.p>
             </div>
         </div>

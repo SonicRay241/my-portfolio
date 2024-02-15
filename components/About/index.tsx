@@ -39,7 +39,7 @@ FC<{
 
     return (
         <div className="flex md:flex-row flex-col w-full bg-black rounded-t-2xl py-32 px-6" onMouseEnter={() => props.mouseEnterHandler(40, "white", "normal")}>
-            <div className="w-full md:w-2/5 h-fit overflow-hidden md:pb-0 pb-12">
+            <div className="w-full md:w-2/5 h-fit overflow-hidden md:mb-0 mb-12">
                 <motion.h1 
                     className="text-7xl text-white w-fit"
                     variants={variants}

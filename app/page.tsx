@@ -117,7 +117,7 @@ const Page = () => {
       {/* <NavBar mouseEnterHandler={(size, color) => cursorChange(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/> */}
       <div className="w-full h-screen">
         { !isMobileDevice && <Hero onLoaded={()=>setOverlayScale(0)}/> }
-        <div className="w-full h-screen" onMouseEnter={defaultCursor}>
+        <div className="w-full h-[120vh]" onMouseEnter={defaultCursor}>
           { isMobileDevice && <HeroMobile/> }
         </div>
         <About mouseEnterHandler={cursorChange} mouseLeaveHandler={defaultCursor}/>

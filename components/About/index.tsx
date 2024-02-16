@@ -5,24 +5,70 @@ import { Property } from "csstype"
 import { Variants, motion, cubicBezier } from "framer-motion"
 import { useIsInViewport } from "@/libs/hooks"
 
-const About:
-FC<{ 
+const Contacts: FC<{
+    
+}> = () => {
+    return (
+        <div className="w-28">
+
+        </div>
+    )
+}
+
+const About: FC<{ 
     mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
     mouseLeaveHandler: () => void,  
 }>
 = (props) => {
-    const titleRef = useRef<HTMLHeadingElement>(null)
-    const titleInViewport = useIsInViewport(titleRef)
+    const aboutRef = useRef<HTMLDivElement>(null)
+    const titleInViewport = useIsInViewport(aboutRef)
+    const paragraphInViewport = useIsInViewport(aboutRef)
 
-    const paragraphRef = useRef<HTMLParagraphElement>(null)
-    const paragraphInViewport = useIsInViewport(titleRef)
+    const aboutText = ["A", "b", "o", "u", "t"]
 
     const variants: Variants = {
-        title: {
+        titleContainer: {
+            transition: {
+                staggerChildren: 0.5
+            }
+        },
+        title0: {
             y: titleInViewport ? 0 : 72,
             transition: {
                 duration: titleInViewport ? 0.75 : 0,
-                ease: cubicBezier(0.76, 0, 0.24, 1)
+                ease: cubicBezier(0.76, 0, 0.24, 1),
+            }
+        },
+        title1: {
+            y: titleInViewport ? 0 : 72,
+            transition: {
+                duration: titleInViewport ? 0.75 : 0,
+                ease: cubicBezier(0.76, 0, 0.24, 1),
+                delay: titleInViewport ? 0.1 : 0
+            }
+        },
+        title2: {
+            y: titleInViewport ? 0 : 72,
+            transition: {
+                duration: titleInViewport ? 0.75 : 0,
+                ease: cubicBezier(0.76, 0, 0.24, 1),
+                delay: titleInViewport ? 0.2 : 0
+            }
+        },
+        title3: {
+            y: titleInViewport ? 0 : 72,
+            transition: {
+                duration: titleInViewport ? 0.75 : 0,
+                ease: cubicBezier(0.76, 0, 0.24, 1),
+                delay: titleInViewport ? 0.3 : 0
+            }
+        },
+        title4: {
+            y: titleInViewport ? 0 : 72,
+            transition: {
+                duration: titleInViewport ? 0.75 : 0,
+                ease: cubicBezier(0.76, 0, 0.24, 1),
+                delay: titleInViewport ? 0.4 : 0
             }
         },
         paragraph: {
@@ -38,31 +84,69 @@ FC<{
 
 
     return (
-        <div className="flex md:flex-row flex-col w-full bg-black rounded-t-2xl py-32 px-6" onMouseEnter={() => props.mouseEnterHandler(40, "white", "normal")}>
-            <div className="w-full md:w-2/5 h-fit overflow-hidden md:mb-0 mb-12">
-                <motion.h1 
-                    className="text-7xl text-white w-fit"
+        <div className="flex justify-center w-full bg-[#050505] pt-20 pb-28 px-6 drop-shadow-lg" ref={aboutRef} onMouseEnter={() => props.mouseEnterHandler(40, "white", "normal")}>
+            <div className="flex max-w-screen-xl lg:flex-row flex-col lg:gap-0 gap-11">
+            <div className="w-full lg:w-2/5 h-fit overflow-hidden">
+                <div 
+                    className="flex flex-row text-7xl text-white w-fit lg:ml-8"
+                    onMouseEnter={() => props.mouseEnterHandler(120, "white")} 
+                    onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}
+                    >
+                    { aboutText.map((s, n)=>{
+                        return (
+                            <motion.h1 
+                            variants={variants}
+                            animate={`title${n}`} key={n}>
+                                {s}
+                        </motion.h1>)
+                    }) }
+                </div>
+                {/* <motion.h1 
+                    className="text-7xl text-white w-fit lg:ml-8"
                     variants={variants}
-                    ref={titleRef}
                     animate="title"
                     onMouseEnter={() => props.mouseEnterHandler(120, "white")} 
                     onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}
-                >
+                    >
                     About
-                </motion.h1>
+                </motion.h1> */}
                 
             
-            </div>
-            <div className="w-full md:w-3/5">
-                <motion.p 
-                className="text-white text-3xl overflow-hidden"
-                variants={variants}
-                ref={paragraphRef}
-                animate="paragraph"
-                onMouseEnter={() => props.mouseEnterHandler(200, "white")} 
-                onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}>
-                    I&apos;m a passionate web developer adept at crafting purpose-driven software solutions using diverse tools. Currently, I balance studies with a role at <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, thriving on collaboration and continuous learning.
-                </motion.p>
+                </div>
+                <div className="w-full lg:w-3/5">
+                    <motion.p 
+                    className="text-white md:text-xl text-lg overflow-hidden"
+                    variants={variants}
+                    animate="paragraph"
+                    onMouseEnter={() => props.mouseEnterHandler(240, "white")} 
+                    onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}>
+                        {/* I&apos;m a passionate web developer adept at crafting purpose-driven software solutions using diverse tools. 
+                        Currently, I balance studies with a role at <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, 
+                        thriving on collaboration and continuous learning. */}
+                        I&apos;m a dedicated web developer propelled by an unwavering passion for technology and innovation. 
+                        My journey into programming was ignited by an insatiable curiosity and a fervent desire to create solutions 
+                        that make a meaningful impact. With each project, I dive deep into the realm of versatile tools, harnessing 
+                        a diverse array of technologies to sculpt software solutions finely tuned to their intended purpose. 
+                        <br/><br/>Whether it&apos;s crafting intuitive user interfaces, architecting robust backend systems, or fine-tuning 
+                        performance, I thrive on the challenges and rewards that each endeavor brings. Currently, I&apos;m 
+                        diligently pursuing my academic aspirations while immersing myself in real-world experiences as a valued 
+                        member of the <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>. 
+                        Here, amidst dynamic projects and alongside talented peers, I contribute my expertise to push boundaries and 
+                        achieve collective goals.
+
+                        {/* I&apos;m a dedicated web developer driven by a profound passion for technology and innovation.
+                        My journey into the realm of programming began with an insatiable curiosity and a desire to create impactful solutions.
+                        As a fervent believer in the power of versatile tools, I relish the opportunity to employ 
+                        a diverse array of technologies to craft software solutions tailored to their intended purpose.
+                        <br/><br/> Whether it's designing intuitive user interfaces, architecting robust backend systems,
+                        or optimizing performance, I thrive on the challenges and rewards that each project presents.
+                        Currently, I&apos;m pursuing my academic endeavors while also immersing myself in real-world 
+                        experiences as part of the <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, 
+                        where I contribute to dynamic projects and collaborate with talented individuals to push boundaries 
+                    and achieve collective goals. */}
+                    </motion.p>
+
+                </div>
             </div>
         </div>
     )

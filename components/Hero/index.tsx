@@ -10,8 +10,8 @@ const Hero: FC<{onLoaded: () => void}> = (props) => {
     const [bgOffset, setBgOffset] = useState(100)
     const { scrollYProgress } = useScroll()
 
-    const x1 = useTransform(scrollYProgress, [0,5], [0, 600])
-    const x2 = useTransform(scrollYProgress, [0,5], [0, -600])
+    const x1 = useTransform(scrollYProgress, [0,3], [0, 600])
+    const x2 = useTransform(scrollYProgress, [0,3], [0, -600])
 
     return (
         <div className="fixed w-full h-screen text-zinc-900 overflow-hidden -z-10 bg-[radial-gradient(#aaa_1px,#fff_1px)] [background-size:16px_16px]">

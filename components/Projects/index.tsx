@@ -3,6 +3,7 @@
 import { FC } from "react"
 import { Property } from "csstype"
 import { useScroll, useTransform, motion } from "framer-motion"
+import ProjectDescLeft from "@/components/ProjectDescLeft"
 
 const Projects:
 FC<{ 
@@ -25,14 +26,14 @@ FC<{
             onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
             >
                 <motion.h1 
-                className="lg:text-9xl text-7xl text-nowrap" 
+                className="lg:text-9xl text-7xl text-nowrap lg:h-32 h-[72px] whitespace-nowrap" 
                 style={{x: titleX, transition: "all 4s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s"}}
                 >
                     MY PROJECTS - MY PROJECTS - MY PROJECTS - MY PROJECTS - MY PROJECTS
                 </motion.h1>
             </div>
             <div className="flex w-full flex-col gap-40">
-
+                <ProjectDescLeft/>
             </div>
         </div>
     )

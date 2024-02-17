@@ -16,7 +16,8 @@ const Hero: FC<{onLoaded: () => void}> = (props) => {
     return (
         <div className="fixed w-full h-screen text-zinc-900 overflow-hidden -z-10 bg-[radial-gradient(#aaa_1px,#fff_1px)] [background-size:16px_16px]">
             <div className="absolute w-full h-full">
-                <Image src={MyImage} alt="Rayhan Permana" quality={100} className="h-full object-cover" onLoad={()=>{props.onLoaded(); setBgOffset(0)}} />
+                <div className="h-2/5 md:hidden"></div>
+                <Image src={MyImage} alt="Rayhan Permana" quality={100} className="h-3/5 md:h-full object-cover" onLoad={()=>{props.onLoaded(); setBgOffset(0)}} />
             </div>
             <div className="absolute flex w-full h-full -z-20 justify-center overflow-hidden">
                 <div className="w-full">

@@ -2,8 +2,11 @@
 
 import { FC } from "react"
 import { Property } from "csstype"
-import { useScroll, useTransform, motion } from "framer-motion"
-import ProjectDescLeft from "@/components/ProjectDescLeft"
+import { useScroll, useTransform, motion, useTime, Transition } from "framer-motion"
+import Project from "@/components/Project"
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+
+import projectList from "@/libs/projectList"
 
 const Projects:
 FC<{ 
@@ -13,7 +16,6 @@ FC<{
 = (props) => {
     const { scrollYProgress } = useScroll()
     const titleX = useTransform(scrollYProgress, [0,1], [0, -800])
-    const titleY = useTransform(scrollYProgress, [0.5, 1], [0, 600])
 
     return (
         <div 
@@ -32,8 +34,40 @@ FC<{
                     MY PROJECTS - MY PROJECTS - MY PROJECTS - MY PROJECTS - MY PROJECTS
                 </motion.h1>
             </div>
-            <div className="flex w-full flex-col gap-40">
-                <ProjectDescLeft/>
+            <div className="flex w-full flex-col">
+                {projectList.map((projectData, idx) => {
+                    return (
+                        <Project 
+                            key={idx}
+                            mouseEnterHandler={props.mouseEnterHandler} 
+                            mouseLeaveHandler={props.mouseLeaveHandler}
+                            projectData={projectData}
+                        />
+                    )
+                })}
+                
+                <div 
+                    className="sticky flex w-fit bottom-0 pl-3 pb-3 flex-row gap-3 items-center" 
+                    onMouseEnter={()=>props.mouseEnterHandler(100, "white")}
+                    onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}>
+                    <h1>SCROLL<br/>DOWN</h1>
+                    <div className="flex justify-center items-center h-12 w-12 rounded border-2 border-black">
+                        <motion.div 
+                            className=""
+                            transition={{
+                                duration: 0.4,
+                                repeat: Infinity,
+                                ease: "easeOut",
+                                repeatType: "reverse"
+                            }}
+                            animate={{
+                                y: ["10px", "-10px"]
+                            }}
+                        >
+                            <ArrowDownwardIcon/>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </div>
     )

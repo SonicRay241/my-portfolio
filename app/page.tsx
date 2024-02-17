@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import HeroMobile from "@/components/HeroMobile";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import LoadingBar from "@/components/LoadingBar";
 
 type T2dCoord = {
   x: number
@@ -103,7 +104,9 @@ const Page = () => {
 
   return (
     <main className="h-screen w-full bg-transparent">
-    <motion.div className="fixed z-50 h-screen w-screen bg-black origin-bottom" variants={overlayVariants} animate="default"/>
+    <motion.div className="fixed flex justify-center items-center z-50 h-screen w-screen bg-black origin-bottom" variants={overlayVariants} animate="default">
+      <LoadingBar/>
+    </motion.div>
 
       { !isMobileDevice && 
         <motion.div 
@@ -121,7 +124,7 @@ const Page = () => {
           { isMobileDevice && <HeroMobile/> }
         </div>
         <About mouseEnterHandler={cursorChange} mouseLeaveHandler={defaultCursor}/>
-        <Projects mouseEnterHandler={cursorChange} mouseLeaveHandler={defaultCursor}/>
+          <Projects mouseEnterHandler={cursorChange} mouseLeaveHandler={defaultCursor}/>
       </div>
     </main>
   );

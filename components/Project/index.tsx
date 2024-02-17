@@ -21,6 +21,8 @@ FC<{
     const [rotateX, setRotateX] = useState(0);
     const [rotateY, setRotateY] = useState(0);
 
+    const [imageLoaded, setImageLoaded] = useState(false)
+
     const handleMouseMove = (event: MouseEvent) => {
         if (!cardRef.current) return;
     
@@ -64,7 +66,7 @@ FC<{
                         rotateY,
                     }}
                 >
-                    <Suspense fallback={<LoadingBar/>}>
+                    
                         <Image 
                             src={props.projectData.image} 
                             alt={props.projectData.imageAlt} 
@@ -74,8 +76,9 @@ FC<{
                                 transform: "translateZ(75px)",
                                 transformStyle: "preserve-3d",
                             }}
+                            placeholder="blur"
                         />
-                    </Suspense>
+                    
                     <div className="absolute bottom-0 left-0 p-4">
                         <h1 className="text-white text-3xl">{props.projectData.name}</h1>
                     </div>

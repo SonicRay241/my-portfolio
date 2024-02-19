@@ -2,9 +2,14 @@
 
 import { useEffect, useState, FC } from "react"
 import { motion, useTransform, useScroll } from "framer-motion"
-import { bebasNeue } from "@/libs/fonts"
 import MyImage from "@/public/mehd.png"
 import Image from "next/image"
+import { Bebas_Neue } from "next/font/google"
+
+export const bebasNeue = Bebas_Neue({
+    weight: "400",
+    subsets: ["latin"]
+})
 
 const Hero: FC<{onLoaded: () => void}> = (props) => {
     const [bgOffset, setBgOffset] = useState(100)

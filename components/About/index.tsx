@@ -123,7 +123,7 @@ const About: FC<{
                         {/* I&apos;m a passionate web developer adept at crafting purpose-driven software solutions using diverse tools. 
                         Currently, I balance studies with a role at <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, 
                         thriving on collaboration and continuous learning. */}
-                        {/* I&apos;m a dedicated web developer and a data science student, propelled by an unwavering passion for technology and innovation. 
+                        I&apos;m a dedicated web developer and a data science student, propelled by an unwavering passion for technology and innovation. 
                         My journey into programming was ignited by an insatiable curiosity and a fervent desire to create solutions 
                         that make a meaningful impact. With each project, I dive deep into the realm of versatile tools, harnessing 
                         a diverse array of technologies to sculpt software solutions finely tuned to their intended purpose. 
@@ -132,8 +132,8 @@ const About: FC<{
                         diligently pursuing my academic aspirations while immersing myself in real-world experiences as a valued 
                         member of <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>. 
                         Here, amidst dynamic projects and alongside talented peers, I contribute my expertise to push boundaries and 
-                        achieve collective goals. */}
-                        I&apos;m a
+                        achieve collective goals.
+                        {/* I&apos;m a */}
                         {/* I&apos;m a dedicated web developer driven by a profound passion for technology and innovation.
                         My journey into the realm of programming began with an insatiable curiosity and a desire to create impactful solutions.
                         As a fervent believer in the power of versatile tools, I relish the opportunity to employ 

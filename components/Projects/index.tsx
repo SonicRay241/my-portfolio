@@ -63,8 +63,11 @@ FC<{
                             style={{
                                 transform: "translateY(96px)"
                             }}
+                            onMouseEnter={()=>props.mouseEnterHandler(100, "white", "difference")}
+                            onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                         >
-                            More Coming Soon!</h1>
+                            More Coming Soon!
+                        </h1>
                     </div>
                 </motion.div>
                 <div 

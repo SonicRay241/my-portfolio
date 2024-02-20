@@ -32,7 +32,7 @@ const Contacts: FC<{
                 className=""
             >     
                 <h1 
-                    className="text-7xl pb-16 w-fit"
+                    className="text-7xl mb-16 w-fit h-fit"
                     onMouseEnter={()=>props.mouseEnterHandler(100, "white", "difference")}
                     onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                 >

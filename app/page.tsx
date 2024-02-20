@@ -9,7 +9,8 @@ import About from "@/components/About";
 import Projects from "@/components/Projects";
 import LoadingBar from "@/components/LoadingBar";
 import ProjectDescription from "@/components/ProjectDescription";
-import { TProjectData } from "@/libs/types";
+import { TNavChild, TProjectData } from "@/libs/types";
+import NavBar from "@/components/NavBar";
 
 type T2dCoord = {
   x: number
@@ -36,12 +37,19 @@ const Page = () => {
 
   const cursor = useRef<HTMLDivElement | null>(null)
 
-  const testRef = useRef<HTMLDivElement | null>(null)
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
 
-  const navbarChildren: { title: string, ref: HTMLDivElement | null }[] = [
-    { title: "test", ref: testRef.current }
+  const navbarData: TNavChild[] = [
+    {
+      title: "About",
+      ref: aboutRef
+    },
+    {
+      title: "Projects",
+      ref: projectsRef
+    }
   ]
-
 
   useEffect(() => {
     // setTimeout(()=>{
@@ -97,18 +105,15 @@ const Page = () => {
     default: {
       scaleY: overlayScale,
     },
-    main: {
-      scale: showProjectDescription ? 0.9 : 1
-    },
-    pad: {
-      height: showProjectDescription ? "10%" : 0
-    },
-    padmain: {
-      height: showProjectDescription ? "30%" : 0
-    },
     darken: {
       opacity: showProjectDescription ? 0.4 : 0,
       pointerEvents: showProjectDescription ? "all" : "none"
+    },
+    main: {
+      // position: showProjectDescription ? "fixed" : "static",
+      scale: showProjectDescription ? 0.9 : 1,
+      borderRadius: showProjectDescription ? 40 : 0,
+      borderColor: "black"
     }
   }
 
@@ -150,11 +155,8 @@ const Page = () => {
         show={showProjectDescription} 
         closeCallback={handleDescriptionClose}
         projectData={descriptionData}
-      />
-      <motion.div 
-        className="fixed bg-white w-screen z-20 top-0"
-        variants={overlayVariants}
-        animate="pad"
+        mouseEnterHandler={cursorChange}
+        mouseLeaveHandler={defaultCursor}
       />
       <motion.div 
         className="fixed bg-black w-screen h-screen z-30 top-0"
@@ -169,36 +171,47 @@ const Page = () => {
       >
         <LoadingBar/>
       </motion.div>
-      <main 
-        className="h-screen w-full bg-transparent flex justify-center items-center"
-      >
-        <motion.div 
-          className="h-full w-full origin-center"
-          variants={overlayVariants}
-          animate="main"
-        >
-          <motion.div 
+      <NavBar 
+        data={navbarData}
+        mouseEnterHandler={cursorChange}
+        mouseLeaveHandler={defaultCursor}
+      />
+      <main className="h-screen w-full">
+          <div 
             className="bg-white w-screen z-20 top-0"
-            variants={overlayVariants}
-            animate="padmain"
           />
           { !isMobileDevice && 
             <motion.div 
-              className="fixed z-40 rounded-full pointer-events-none hidden sm:block transition-colors"
+              className="fixed z-40 rounded-full pointer-events-none hidden sm:flex transition-colors"
               variants={variants} 
               animate="default"
               ref={cursor}
             /> 
           }
-
           {/* <NavBar mouseEnterHandler={(size, color) => cursorChange(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/> */}
-          <div className="w-full h-screen">
-            { !isMobileDevice && <Hero onLoaded={()=>setOverlayScale(0)}/> }
+          <motion.div 
+            className="flex items-center justify-center"
+            variants={overlayVariants}
+            animate="main"
+          >
+            <div className="w-full h-full">
+              { !isMobileDevice && <Hero onLoaded={()=>setOverlayScale(0)}/> }
             <div className="w-full h-[120vh]" onMouseEnter={defaultCursor}>
               { isMobileDevice && <HeroMobile/> }
             </div>
-            <About mouseEnterHandler={cursorChange} mouseLeaveHandler={defaultCursor}/>
-            <Projects mouseEnterHandler={cursorChange} mouseLeaveHandler={defaultCursor} descriptionCallback={handleDescription}/>
+            <div ref={aboutRef}>
+              <About
+                mouseEnterHandler={cursorChange}
+                mouseLeaveHandler={defaultCursor}
+                />
+            </div>
+            <div ref={projectsRef}>
+              <Projects
+                mouseEnterHandler={cursorChange}
+                mouseLeaveHandler={defaultCursor}
+                descriptionCallback={handleDescription}
+                />
+            </div>
           </div>
         </motion.div>
       </main>

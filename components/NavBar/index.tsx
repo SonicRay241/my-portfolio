@@ -1,136 +1,62 @@
-import { useEffect, useState, FC } from "react";
-import { Variants, motion, AnimatePresence } from "framer-motion"
+"use client"
+
+import { TNavChild } from "@/libs/types"
+import { Variants, motion } from "framer-motion"
+import { useState, FC, Dispatch, SetStateAction } from "react"
 import { Property } from "csstype"
-import { HamburgerMenuIcon, Cross2Icon } from "@radix-ui/react-icons"
-import { memo } from "react";
 
-const NavLink: 
-  FC<{
-    title: string, 
-    divRef: HTMLDivElement | null, 
-    closeMenuCallBack: () => void, 
-    mobile: boolean,
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor) => void, 
-    mouseLeaveHandler: () => void
+const Chip: FC<{
+  data: TNavChild,
+  mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
+  mouseLeaveHandler: () => void,
+}> = (props) => {
+  return (
+    <div 
+      className="p-2 rounded-md hover:cursor-pointer hover:underline"
+      onMouseEnter={()=>props.mouseEnterHandler(60, "transparent")}
+      onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
+      onClick={()=>props.data.ref.current?.scrollIntoView()}
+    >
+      <h2>
+        {props.data.title}
+      </h2>
+    </div>
+  )
+}
 
-  }> = (props) => {
+const NavBar: FC<{
+  data: TNavChild[],
+  mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
+  mouseLeaveHandler: () => void,
+}> = (props) => {
+  const [opacity, setOpacity] = useState(0)
 
-  const mobileVariants: Variants = {
-    initial: {
-      x: "-100vw",
-      transition: {
-        duration: 0.5
-      }
-    },
-    open: {
-      x: 0,
-      transition: {
-        duration: 0.7
-      }
-    },
-    
+  const variants: Variants = {
+    hover: {
+      opacity: opacity
+    }
   }
 
   return (
     <motion.div 
-      variants={props.mobile ? mobileVariants : undefined} 
-      initial={props.mobile ? "initial" : undefined} 
-      animate={props.mobile ? "open" : undefined} 
-      onMouseEnter={() => props.mouseEnterHandler(60, "white")} 
-      onMouseLeave={props.mouseLeaveHandler}
+      className="fixed rounded-2xl bg-white border border-gray-700 p-4 flex items-center flex-wrap z-30 bottom-4 left-1/2 -translate-x-1/2"
+      onHoverStart={()=>setOpacity(1)}
+      onHoverEnd={()=>setOpacity(0)}
+      variants={variants}
+      animate="hover"
     >
-      <h1 onClick={() => {if (props.divRef) {props.divRef.scrollIntoView()}; props.closeMenuCallBack()}} 
-          className="cursor-pointer text-lg"
-      >
-        {props.title}
-      </h1>
+      {props.data.map((d,n)=>{
+        return (
+          <Chip
+            data={d}
+            mouseEnterHandler={props.mouseEnterHandler}
+            mouseLeaveHandler={props.mouseLeaveHandler}
+            key={n}
+          />
+        )
+      })}
     </motion.div>
   )
 }
 
-const NavBar: 
-  FC<{
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor) => void, 
-    mouseLeaveHandler: () => void, 
-    mobile: boolean, 
-    links: { title: string, ref: HTMLDivElement | null }[]}> 
-= memo(({ mouseEnterHandler, mouseLeaveHandler, mobile, links }) => {
-    const [showBigMenu, setShowBigMenu] = useState(false)
-
-    const menuVars: Variants = {
-        init: {
-            scaleX: 0,
-        },
-        animate: {
-            scaleX: 1,
-            transition: {
-              duration: 0.3,
-              ease: [0.12, 0, 0.39, 0]
-            }
-        }, 
-        exit: {
-            scaleX: 0,
-            transition: {
-              duration: 0.3,
-              ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    }
-
-  return (
-    <>
-      {
-        !mobile ?
-          <div className="fixed flex justify-end gap-6 w-screen h-10 backdrop-blur-xl px-10">
-            {links.map((e)=>{
-              return (
-                <NavLink 
-                  key = {e.title}
-                  title={e.title} 
-                  divRef={e.ref} 
-                  closeMenuCallBack={() => setShowBigMenu(false)} 
-                  mobile={mobile} 
-                  mouseEnterHandler={(size, color) => mouseEnterHandler(size, color)} 
-                  mouseLeaveHandler={mouseLeaveHandler}/>
-              )
-            })}
-          </div>
-
-        :
-        <>
-        <div className="fixed top-3 right-3 cursor-pointer active:bg-black active:bg-opacity-20 p-2 rounded-full" onClick={()=>setShowBigMenu(!showBigMenu)}>
-          <HamburgerMenuIcon height={32} width={32} />
-        </div>
-        <AnimatePresence>
-        { showBigMenu && 
-            <motion.div className="fixed w-screen h-[102vh] z-10 bg-[#FF5900] origin-left top-[-2vh] pt-[2vh]" variants={menuVars} initial="init" animate="animate" exit="exit">
-                <div className="absolute top-3 right-3 cursor-pointer active:bg-white active:bg-opacity-20 p-2 rounded-full" onClick={()=>setShowBigMenu(!showBigMenu)}>
-                  <Cross2Icon height={32} width={32} color="white" />
-                </div>
-                <div className="flex w-full h-full justify-center">
-                  {links.map((e)=>{
-                    return (
-                        <NavLink 
-                          key={e.title} 
-                          title={e.title} 
-                          divRef={e.ref} 
-                          closeMenuCallBack={() => setShowBigMenu(false)} 
-                          mobile={mobile} 
-                          mouseEnterHandler={(size, color) => mouseEnterHandler(size, color)} 
-                          mouseLeaveHandler={mouseLeaveHandler}
-                        />
-                    )
-                  })}
-                </div>
-            </motion.div>
-        }
-        </AnimatePresence>
-        </>
-      }
-      
-      
-    </>
-  )
-})
-NavBar.displayName = "NavBar"
 export default NavBar

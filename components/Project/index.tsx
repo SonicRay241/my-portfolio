@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import { FC, useState, useRef, MouseEvent, Suspense } from "react"
 import { Property } from "csstype"
 import { TProjectData } from "@/libs/types"

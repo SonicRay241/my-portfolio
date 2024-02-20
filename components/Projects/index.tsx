@@ -11,7 +11,7 @@ import projectList from "@/libs/projectList"
 
 const Projects:
 FC<{ 
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode, border? : Property.BorderColor) => void, 
+    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
     mouseLeaveHandler: () => void,
     descriptionCallback: (projectData: TProjectData) => void
 }>

@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, useRef, useState } from "react"
+import { FC, useRef, useState, RefObject } from "react"
 import { Property } from "csstype"
 import { Variants, motion, cubicBezier } from "framer-motion"
 import { useIsInViewport } from "@/libs/hooks"
@@ -17,7 +17,7 @@ const Contacts: FC<{
 
 const About: FC<{ 
     mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
-    mouseLeaveHandler: () => void,  
+    mouseLeaveHandler: () => void,
 }>
 = (props) => {
     const aboutRef = useRef<HTMLDivElement>(null)

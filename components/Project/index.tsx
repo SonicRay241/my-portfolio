@@ -8,10 +8,11 @@ import { TProjectData } from "@/libs/types"
 
 const Project: 
 FC<{ 
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode, border? : Property.BorderColor) => void, 
+    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode, border? : Property.BorderColor, text?: string) => void, 
     mouseLeaveHandler: () => void,
     projectData: TProjectData,
-    descriptionCallback: (projectData: TProjectData) => void
+    descriptionCallback: (projectData: TProjectData) => void,
+    isMobile: boolean
 }> = (props) => {
     const ROTATION_RANGE = 32.5 ;
     const HALF_ROTATION_RANGE = 32.5 / 2;
@@ -57,7 +58,7 @@ FC<{
                 <motion.div 
                     className="w-full h-full rounded-xl p-4"
                     onMouseMove={handleMouseMove}
-                    onMouseEnter={()=>props.mouseEnterHandler(200, "transparent", "difference", "white")}
+                    onMouseEnter={()=>props.mouseEnterHandler(80, "white", "normal", "black", "View")}
                     onMouseLeave={handleMouseLeave}
                     ref={cardRef}
                     style={{
@@ -81,10 +82,11 @@ FC<{
                         }}
                         placeholder="blur"
                     />
-                    
-                    <div className="absolute bottom-0 left-0 p-4">
-                        <h1 className="text-white text-3xl">{props.projectData.name}</h1>
-                    </div>
+                    { !props.isMobile && 
+                        <div className="absolute bottom-0 left-0 p-4">
+                            <h1 className="text-white text-3xl">{props.projectData.name}</h1>
+                        </div>
+                    }
                 </motion.div>
             </div>
         </div>

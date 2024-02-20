@@ -14,6 +14,7 @@ FC<{
     mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
     mouseLeaveHandler: () => void,
     descriptionCallback: (projectData: TProjectData) => void
+    isMobile: boolean
 }>
 = (props) => {
     const { scrollYProgress } = useScroll()
@@ -30,10 +31,20 @@ FC<{
                     className="overflow-hidden mx-8 border-2 border-black rounded-xl"
                     onMouseEnter={()=>props.mouseEnterHandler(180, "white", "difference")}
                     onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
+                    style={{
+                        marginLeft: !props.isMobile ? 32 : 16,
+                        marginRight: !props.isMobile ? 32 : 16,
+                    }}
                 >
                     <motion.h1 
-                        className="lg:text-9xl text-7xl text-nowrap lg:h-32 h-[72px] whitespace-nowrap mb-3" 
-                        style={{x: titleX, transition: "all 4s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s"}}
+                        className="text-nowrap whitespace-nowrap mb-3" 
+                        style={{
+                            x: titleX, 
+                            transition: "all 4s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s",
+                            height: !props.isMobile ? 128 : 72,
+                            fontSize: !props.isMobile ? 128 : 72,
+                            lineHeight: 1,
+                        }}
                     >
                         MY PROJECTS - MY PROJECTS - MY PROJECTS - MY PROJECTS - MY PROJECTS
                     </motion.h1>
@@ -43,7 +54,8 @@ FC<{
                     style={{
                         y: projectsParallax,
                         transition: "transform 500ms cubic-bezier(0.165, 0.84, 0.44, 1)",
-                        translateY: 192
+                        translateY: !props.isMobile ? 192 : 312,
+                        gap: props.isMobile ? 128 : 0
                     }}
                 >
                     {projectList.map((projectData, idx) => {
@@ -54,14 +66,15 @@ FC<{
                                 mouseLeaveHandler={props.mouseLeaveHandler}
                                 projectData={projectData}
                                 descriptionCallback={props.descriptionCallback}
+                                isMobile={props.isMobile}
                             />
                             )
                         })}
                     <div className="flex w-full justify-center">
                         <h1
-                            className="text-5xl"
                             style={{
-                                transform: "translateY(96px)"
+                                transform: `translateY(${!props.isMobile ? 96 : 0}px)`,
+                                fontSize: !props.isMobile ? 48 : 24
                             }}
                             onMouseEnter={()=>props.mouseEnterHandler(100, "white", "difference")}
                             onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}

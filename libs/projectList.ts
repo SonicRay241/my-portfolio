@@ -6,7 +6,7 @@ import Livre from "@/public/projects/Livre.png"
 
 const projectList: TProjectData[] = [
     {
-        name: "Portfolio",
+        name: "rayy.dev",
         image: PortFolio,
         imageAlt: "My Portfolio",
         bgFrom: "#5e6177",

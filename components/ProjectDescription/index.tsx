@@ -45,13 +45,13 @@ FC<{
     return (
         <>
             <motion.div 
-                className="fixed w-screen h-[50vh] z-30 origin-bottom scale-y-0 bottom-0"
+                className="fixed w-screen h-[60vh] z-30 origin-bottom scale-y-0 bottom-0"
                 variants={variants}
                 animate="container"
             >
-                <div className="w-full h-full bg-white origin-bottom drop-shadow-lg p-6 rounded-2xl" style={{opacity: render ? 1 : 0}}>
+                <div className="w-full h-full bg-white origin-bottom drop-shadow-lg p-6 rounded-t-2xl" style={{opacity: render ? 1 : 0}}>
                     <motion.div 
-                        className="absolute h-8 w-8 top-6 left-6" 
+                        className="absolute h-8 w-8 top-6 left-6 hover:cursor-pointer" 
                         onClick={props.closeCallback}
                         onMouseEnter={()=>props.mouseEnterHandler(60, "white")}
                         onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}

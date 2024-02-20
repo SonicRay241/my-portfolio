@@ -35,6 +35,7 @@ const Page = () => {
   const [cursorBorderColor, setCursorBorderColor] = useState<Property.BorderColor>("transparent")
   const [renderCursor, setRenderCursor] = useState<boolean>(false)
   const [cursorClicking, setCursorClicking] = useState<boolean>(false)
+  const [cursorText, setCursorText] = useState("")
 
   const cursor = useRef<HTMLDivElement | null>(null)
 
@@ -127,11 +128,12 @@ const Page = () => {
     }
   }
 
-  const cursorChange = (size: number, color: Property.BackgroundColor, blend: Property.MixBlendMode = "difference", border: Property.BorderColor = "transparent") => {
+  const cursorChange = (size: number, color: Property.BackgroundColor, blend: Property.MixBlendMode = "difference", border: Property.BorderColor = "transparent", text: string = "") => {
     setCursorSize(Math.max(size, defaultCursorSize))
     setCursorColor(color)
     setCursorBlendMode(blend)
     setCursorBorderColor(border)
+    setCursorText(text)
   }
   
   const defaultCursor = () => {
@@ -139,6 +141,7 @@ const Page = () => {
     setCursorBlendMode("normal")
     setCursorColor(defaultCursorColor)
     setCursorBorderColor("transparent")
+    setCursorText("")
   }
 
   const handleDescription = (data: TProjectData) => {
@@ -192,11 +195,13 @@ const Page = () => {
           />
           { !isMobileDevice && 
             <motion.div 
-              className="fixed z-40 rounded-full pointer-events-none hidden sm:flex transition-colors"
+              className="fixed justify-center items-center z-40 rounded-full pointer-events-none hidden sm:flex transition-colors"
               variants={variants} 
               animate="default"
               ref={cursor}
-            /> 
+            >
+              <h1 className="text-lg">{cursorText}</h1>
+            </motion.div> 
           }
           {/* <NavBar mouseEnterHandler={(size, color) => cursorChange(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/> */}
           <motion.div 
@@ -205,9 +210,9 @@ const Page = () => {
             animate="main"
           >
             <div className="w-full h-full">
-              { !isMobileDevice && <Hero onLoaded={()=>setOverlayScale(0)}/> }
+              { <Hero onLoaded={()=>setOverlayScale(0)}/> }
             <div className="w-full h-[120vh]" onMouseEnter={defaultCursor}>
-              { isMobileDevice && <HeroMobile/> }
+              {/* { isMobileDevice && <HeroMobile/> } */}
             </div>
             <div ref={aboutRef}>
               <About
@@ -220,12 +225,14 @@ const Page = () => {
                 mouseEnterHandler={cursorChange}
                 mouseLeaveHandler={defaultCursor}
                 descriptionCallback={handleDescription}
-                />
+                isMobile={isMobileDevice}
+              />
             </div>
             <div ref={contactsRef}>
               <Contacts
                 mouseEnterHandler={cursorChange}
                 mouseLeaveHandler={defaultCursor}
+                isMobile={isMobileDevice}
               />
             </div>
           </div>

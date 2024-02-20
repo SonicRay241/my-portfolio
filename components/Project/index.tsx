@@ -21,8 +21,6 @@ FC<{
     const [rotateX, setRotateX] = useState(0);
     const [rotateY, setRotateY] = useState(0);
 
-    const [projectFocus, setProjectFocus] = useState(false)
-
     const handleMouseMove = (event: MouseEvent) => {
         if (!cardRef.current) return;
     
@@ -50,7 +48,6 @@ FC<{
 
     const handleMouseClick = () => {
         if (!cardRef.current) return;
-        setProjectFocus(!projectFocus)
         props.descriptionCallback(props.projectData)
     }
 
@@ -68,8 +65,8 @@ FC<{
                         background: `linear-gradient(${props.projectData.bgFrom}, ${props.projectData.bgTo})`,
                     }}
                     animate={{
-                        rotateX: !projectFocus ? rotateX : 0,
-                        rotateY: !projectFocus ? rotateY : 0,
+                        rotateX: rotateX,
+                        rotateY: rotateY,
                     }}
                     onClick={handleMouseClick}
                 >

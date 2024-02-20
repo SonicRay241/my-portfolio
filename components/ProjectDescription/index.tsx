@@ -18,18 +18,27 @@ FC<{
         container: {
             scaleY: props.show ? 1 : 0,
             transition: {
-                ease: [0.76, 0, 0.24, 1],
+                delay: props.show ? 0 : 0.25,
+                ease: [0.45, 0, 0.55, 1],
             }
         },
+        title: {
+            opacity: props.show ? 1 : 0,
+            y: props.show ? 0 : 50,
+            transition: {
+                delay: props.show ? 0.25 : 0,
+                ease: [0.45, 0, 0.55, 1],
+            }
+        }
     }
     
     return (
         <motion.div 
-            className="fixed w-screen h-[30vh] z-40 origin-bottom scale-y-0 bottom-0"
+            className="fixed w-screen h-[50vh] z-40 origin-bottom scale-y-0 bottom-0"
             variants={variants}
             animate="container"
         >
-            <div className="w-full h-full bg-white origin-bottom drop-shadow-lg p-6">
+            <div className="w-full h-full bg-white origin-bottom drop-shadow-lg p-6 rounded-2xl">
                 <motion.div 
                     className="absolute h-8 w-8 top-6 left-6" 
                     onClick={props.closeCallback}
@@ -38,21 +47,30 @@ FC<{
                 >
                     <CloseIcon className="h-full w-full"/>
                 </motion.div>
-                { props.projectData ? 
                     <div className="flex w-full h-full p-8 justify-center items-center">
                         <div 
+                            className="max-w-screen-md"
                             onMouseEnter={()=>props.mouseEnterHandler(100, "white")}
                             onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                         >
-                            <h1 className="text-5xl text-black">{props.projectData.name}</h1>
-                            <h2 className="text-2xl text-black">{props.projectData.description}</h2>
+                            <motion.h1 
+                                className="text-5xl text-black"
+                                variants={variants}
+                                animate="title"
+                            >
+                                <span className="text-violet-600">/</span>{props.projectData?.name ?? "(null)"}
+                            </motion.h1>
+                            <br/>
+                            <motion.h2 
+                                className="text-2xl text-black"
+                                variants={variants}
+                                animate="title"
+                            >
+                                {props.projectData?.description ?? "(null)"}
+                            </motion.h2>
                         </div>
                     </div>
-                    :
-                    <div className="flex h-full justify-center items-center">
-                        <h1 className="text-2xl text-black">Houston, we have a problem</h1>
-                    </div>
-                }
+                
             </div>
         </motion.div>
     )

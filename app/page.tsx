@@ -58,11 +58,9 @@ const Page = () => {
   ]
 
   useEffect(() => {
-    // setTimeout(()=>{
-    //   setOverlayScale(0)
-    // }, 1000)
     setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
     if (!renderCursor) setMousePos({x: window.innerWidth/2, y: window.innerHeight/2} )
+    if (isMobileDevice) setOverlayScale(0)
 
     const mouseMoveEvent = (e: MouseEvent) => {
       if (!renderCursor) {
@@ -113,13 +111,19 @@ const Page = () => {
     },
     darken: {
       opacity: showProjectDescription ? 0.4 : 0,
-      pointerEvents: showProjectDescription ? "all" : "none"
+      pointerEvents: showProjectDescription ? "all" : "none",
+      transition: {
+        delay: showProjectDescription ? 0 : 0.25,
+      }
     },
     main: {
       // position: showProjectDescription ? "fixed" : "static",
       scale: showProjectDescription ? 0.9 : 1,
       borderRadius: showProjectDescription ? 40 : 0,
-      borderColor: "black"
+      borderColor: "black",
+      transition: {
+        delay: showProjectDescription ? 0 : 0.25,
+      }
     }
   }
 
@@ -147,12 +151,12 @@ const Page = () => {
 
   const handleDescriptionClose = () => {
     setShowProjectDescription(false)
-    if (document) {
-      document.body.style.overflow = "auto"
-    }
     setTimeout(()=>{
+      if (document) {
+        document.body.style.overflow = "auto"
+      }
       setDescriptionData(null)
-    }, 250)
+    }, 500)
   }
 
   return (

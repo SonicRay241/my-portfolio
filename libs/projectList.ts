@@ -11,7 +11,7 @@ const projectList: TProjectData[] = [
         imageAlt: "My Portfolio",
         bgFrom: "#ddd",
         bgTo: "#999",
-        description: "This is a portfolio website i made with NextJS and Framer Motion",
+        description: "This is a portfolio website i made with NextJS and Framer Motion.",
         urls: [
             {
                 title: "Github",

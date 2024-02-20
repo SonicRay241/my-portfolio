@@ -169,7 +169,7 @@ const Page = () => {
         mouseLeaveHandler={defaultCursor}
       />
       <motion.div 
-        className="fixed bg-black w-screen h-screen z-30 top-0"
+        className="fixed bg-black w-screen h-screen z-20 top-0"
         variants={overlayVariants}
         animate="darken"
         onClick={handleDescriptionClose}

@@ -35,7 +35,7 @@ FC<{
     
     return (
         <motion.div 
-            className="fixed w-screen h-[50vh] z-40 origin-bottom scale-y-0 bottom-0"
+            className="fixed w-screen h-[50vh] z-30 origin-bottom scale-y-0 bottom-0"
             variants={variants}
             animate="container"
         >
@@ -51,27 +51,29 @@ FC<{
                     <div className="flex w-full h-full p-8 justify-center items-center">
                         <div 
                             className="max-w-screen-md"
-                            onMouseEnter={()=>props.mouseEnterHandler(100, "white")}
-                            onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                         >
                             <motion.h1 
-                                className="text-5xl text-black"
+                                className="text-5xl text-black w-fit"
                                 variants={variants}
                                 animate="title"
+                                onMouseEnter={()=>props.mouseEnterHandler(100, "white")}
+                                onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                             >
                                 <span className="text-violet-600">/</span>{props.projectData?.name ?? "(null)"}
                             </motion.h1>
                             <br/>
                             <motion.h2 
-                                className="text-2xl text-black"
+                                className="text-2xl text-black w-fit"
                                 variants={variants}
                                 animate="title"
+                                onMouseEnter={()=>props.mouseEnterHandler(100, "white")}
+                                onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                             >
                                 {props.projectData?.description ?? "(null)"}
                             </motion.h2>
                             <br />
                             <motion.div
-                                className="flex gap-4"
+                                className="flex gap-4 w-fit"
                                 variants={variants}
                                 animate="title"
                             >

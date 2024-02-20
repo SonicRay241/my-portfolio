@@ -77,7 +77,7 @@ const About: FC<{
             transition: {
                 duration: paragraphInViewport ? 0.75 : 0,
                 ease: cubicBezier(0.76, 0, 0.24, 1),
-                delay: paragraphInViewport ? 0.75: 0
+                delay: paragraphInViewport ? 0.75 : 0
             },
         }
     }
@@ -95,8 +95,10 @@ const About: FC<{
                     { aboutText.map((s, n)=>{
                         return (
                             <motion.h1 
-                            variants={variants}
-                            animate={`title${n}`} key={n}>
+                                variants={variants}
+                                animate={`title${n}`} 
+                                key={n}
+                            >
                                 {s}
                         </motion.h1>)
                     }) }

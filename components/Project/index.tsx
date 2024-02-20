@@ -8,12 +8,13 @@ import { TProjectData } from "@/libs/types"
 
 const Project: 
 FC<{ 
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
+    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode, border? : Property.BorderColor) => void, 
     mouseLeaveHandler: () => void,
-    projectData: TProjectData
+    projectData: TProjectData,
+    descriptionCallback: (projectData: TProjectData) => void
 }> = (props) => {
     const ROTATION_RANGE = 32.5 ;
-    const HALF_ROTATION_RANGE = 32.5     / 2;
+    const HALF_ROTATION_RANGE = 32.5 / 2;
 
     const cardRef = useRef<HTMLDivElement>(null);
 
@@ -47,13 +48,19 @@ FC<{
         setRotateY(0);
     };
 
+    const handleMouseClick = () => {
+        if (!cardRef.current) return;
+        setProjectFocus(!projectFocus)
+        props.descriptionCallback(props.projectData)
+    }
+
     return (
         <div className="flex w-full h-fit drop-shadow-2xl justify-center">
             <div className="flex justify-center items-center w-full max-w-screen-lg md:p-28 sm:p-12 p-3">
                 <motion.div 
                     className="w-full h-full rounded-xl p-4"
                     onMouseMove={handleMouseMove}
-                    onMouseEnter={()=>props.mouseEnterHandler(40, "transparent", "normal")}
+                    onMouseEnter={()=>props.mouseEnterHandler(200, "transparent", "difference", "white")}
                     onMouseLeave={handleMouseLeave}
                     ref={cardRef}
                     style={{
@@ -64,7 +71,7 @@ FC<{
                         rotateX: !projectFocus ? rotateX : 0,
                         rotateY: !projectFocus ? rotateY : 0,
                     }}
-                    onClick={()=>setProjectFocus(!projectFocus)}
+                    onClick={handleMouseClick}
                 >
                     <Image 
                         src={props.projectData.image} 

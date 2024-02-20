@@ -135,7 +135,7 @@ const About: FC<{
                         member of <a href="http://ict.binus.edu/" target="_blank" className="text-violet-600 hover:underline">BINUS IT Division</a>. 
                         Here, amidst dynamic projects and alongside talented peers, I contribute my expertise to push boundaries and 
                         achieve collective goals. */}
-                        I'm a passionate web developer and data science student driven by curiosity and a commitment to impactful innovation. 
+                        I&apos;m a passionate web developer and data science student driven by curiosity and a commitment to impactful innovation. 
                         From crafting intuitive interfaces to architecting robust backend systems, I thrive on diverse technological challenges. 
                         Currently balancing academic pursuits with real-world experiences at <a href="http://ict.binus.edu/" target="_blank" className="text-violet-600 hover:underline">BINUS IT Division</a>, I collaborate with talented peers to push boundaries and achieve collective goals.
                         {/* I&apos;m a */}

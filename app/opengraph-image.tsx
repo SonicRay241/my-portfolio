@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og"
 export const alt = 'Portfolio website'
 export const size = {
-    width: 1200,
-    height: 630,
+    width: 768,
+    height: 540,
 }
 
 export const contentType = 'image/png'
@@ -20,17 +20,27 @@ const Image = async () => {
                 width: "100%",
                 padding: "24px",
                 display: "flex",
+                flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "center"
+                // alignItems: "center"
+                backgroundColor: "white"
             }}>
                 <h1 
                     style={{
                         fontSize: 72,
-                        lineHeight: 1
+                        lineHeight: 0.3
                     }}
                 >
                     <span style={{color: "#7C3AED"}}>/</span>RAYHAN PERMANA
                 </h1>
+                <p
+                    style={{
+                        fontSize: 28,
+                        lineHeight: 0.3
+                    }}
+                >
+                    A software engineer.
+                </p>
             </div>
         ),
         {

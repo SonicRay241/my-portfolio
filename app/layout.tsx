@@ -7,6 +7,10 @@ const font = Rubik({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Rayhan Permana",
   description: "Rayhan's Portfolio Website",
+  metadataBase: new URL("https://rayy.dev"),
+  openGraph: {
+    images: '/og-image.png',
+  },
 };
 
 export default function RootLayout({

@@ -34,24 +34,24 @@ const ContactLinks: FC<{
     }
 
     return (
-        <motion.div 
+        <motion.a
             className="w-fit p-2 border-2 border-black rounded-lg"
             variants={variants}
             animate="button"
             onMouseEnter={onDownHandler}
             onMouseLeave={onUpHandler}
+            href={props.contactData.url}
+            target="_blank"
         >
-            <a 
+            <div 
                 className="w-fit"
-                href={props.contactData.url}
-                target="_blank"
             >
                 <div className="flex h-7">
                     <h1 className="text-2xl">{props.contactData.title}</h1>
                     <ArrowOutward className="h-full"/>
                 </div>
-            </a>
-        </motion.div>
+            </div>
+        </motion.a>
     )
 }
 

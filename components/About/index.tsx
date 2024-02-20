@@ -132,7 +132,7 @@ const About: FC<{
                         <br/><br/>Whether it&apos;s crafting intuitive user interfaces, architecting robust backend systems, or fine-tuning 
                         performance, I thrive on the challenges and rewards that each endeavor brings. Currently, I&apos;m 
                         diligently pursuing my academic aspirations while immersing myself in real-world experiences as a valued 
-                        member of <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>. 
+                        member of <a href="http://ict.binus.edu/" className="text-violet-600 hover:underline">BINUS IT Division</a>. 
                         Here, amidst dynamic projects and alongside talented peers, I contribute my expertise to push boundaries and 
                         achieve collective goals.
                         {/* I&apos;m a */}

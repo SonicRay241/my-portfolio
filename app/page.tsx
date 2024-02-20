@@ -11,6 +11,7 @@ import LoadingBar from "@/components/LoadingBar";
 import ProjectDescription from "@/components/ProjectDescription";
 import { TNavChild, TProjectData } from "@/libs/types";
 import NavBar from "@/components/NavBar";
+import Contacts from "@/components/Contacts";
 
 type T2dCoord = {
   x: number
@@ -39,6 +40,7 @@ const Page = () => {
 
   const aboutRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
+  const contactsRef = useRef<HTMLDivElement>(null)
 
   const navbarData: TNavChild[] = [
     {
@@ -48,6 +50,10 @@ const Page = () => {
     {
       title: "Projects",
       ref: projectsRef
+    },
+    {
+      title: "Contacts",
+      ref: contactsRef
     }
   ]
 
@@ -211,6 +217,12 @@ const Page = () => {
                 mouseLeaveHandler={defaultCursor}
                 descriptionCallback={handleDescription}
                 />
+            </div>
+            <div ref={contactsRef}>
+              <Contacts
+                mouseEnterHandler={cursorChange}
+                mouseLeaveHandler={defaultCursor}
+              />
             </div>
           </div>
         </motion.div>

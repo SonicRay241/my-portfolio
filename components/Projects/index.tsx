@@ -27,7 +27,7 @@ FC<{
                 onMouseEnter={()=>props.mouseEnterHandler(40, "black", "normal")}
             >
                 <div 
-                    className="overflow-hidden mb-48 mx-8 border-2 border-black rounded-xl"
+                    className="overflow-hidden mx-8 border-2 border-black rounded-xl"
                     onMouseEnter={()=>props.mouseEnterHandler(180, "white", "difference")}
                     onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
                 >
@@ -43,6 +43,7 @@ FC<{
                     style={{
                         y: projectsParallax,
                         transition: "all 500ms cubic-bezier(0.165, 0.84, 0.44, 1)",
+                        translateY: 192
                     }}
                 >
                     {projectList.map((projectData, idx) => {
@@ -56,8 +57,15 @@ FC<{
                             />
                             )
                         })}
-
-                    
+                    <div className="flex w-full justify-center">
+                        <h1
+                            className="text-5xl"
+                            style={{
+                                transform: "translateY(96px)"
+                            }}
+                        >
+                            More Coming Soon!</h1>
+                    </div>
                 </motion.div>
                 <div 
                     className="sticky flex w-fit bottom-0 pl-3 pb-3 flex-row gap-3 items-center" 

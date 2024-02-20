@@ -18,8 +18,13 @@ type TProjectData = {
 }
 
 type TNavChild = {
-    title: string;
-    ref: RefObject<HTMLDivElement>;
+    title: string,
+    ref: RefObject<HTMLDivElement>,
 }
 
-export type { TProjectData, TNavChild }
+type TContactData = {
+    title: string,
+    url: string,
+}
+
+export type { TProjectData, TNavChild, TContactData }

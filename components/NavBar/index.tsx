@@ -13,8 +13,6 @@ const Chip: FC<{
   return (
     <div 
       className="p-2 rounded-md hover:cursor-pointer hover:underline"
-      onMouseEnter={()=>props.mouseEnterHandler(60, "transparent")}
-      onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
       onClick={()=>props.data.ref.current?.scrollIntoView()}
     >
       <h2>
@@ -39,11 +37,13 @@ const NavBar: FC<{
 
   return (
     <motion.div 
-      className="fixed rounded-2xl bg-white border border-gray-700 p-4 flex items-center flex-wrap z-30 bottom-4 left-1/2 -translate-x-1/2"
+      className="fixed rounded-2xl bg-white border border-gray-700 px-4 py-3 flex items-center flex-wrap z-30 bottom-4 left-1/2 -translate-x-1/2"
       onHoverStart={()=>setOpacity(1)}
       onHoverEnd={()=>setOpacity(0)}
       variants={variants}
       animate="hover"
+      onMouseEnter={()=>props.mouseEnterHandler(40, "transparent", "normal")}
+      onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
     >
       {props.data.map((d,n)=>{
         return (

@@ -57,7 +57,7 @@ const Contacts: FC<{
                         <h2 className="text-xl">in Jakarta, Indonesia.</h2>
                     </div>
                 </div>
-                <div className="flex w-full gap-5">
+                <div className="flex w-full gap-5 justify-end">
                     {contacts.map((c, n)=>{
                         return (
                             <ContactLinks 

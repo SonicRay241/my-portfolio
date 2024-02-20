@@ -42,7 +42,7 @@ FC<{
                     className="flex w-full flex-col"
                     style={{
                         y: projectsParallax,
-                        transition: "all 500ms cubic-bezier(0.165, 0.84, 0.44, 1)",
+                        transition: "transform 500ms cubic-bezier(0.165, 0.84, 0.44, 1)",
                         translateY: 192
                     }}
                 >

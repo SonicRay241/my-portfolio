@@ -125,16 +125,19 @@ const About: FC<{
                         {/* I&apos;m a passionate web developer adept at crafting purpose-driven software solutions using diverse tools. 
                         Currently, I balance studies with a role at <a href="http://ict.binus.edu/" className="text-red-500 hover:underline">BINUS IT Division</a>, 
                         thriving on collaboration and continuous learning. */}
-                        I&apos;m a dedicated web developer and a data science student, propelled by an unwavering passion for technology and innovation. 
+                        {/* I&apos;m a dedicated web developer and a data science student, propelled by an unwavering passion for technology and innovation. 
                         My journey into programming was ignited by an insatiable curiosity and a fervent desire to create solutions 
                         that make a meaningful impact. With each project, I dive deep into the realm of versatile tools, harnessing 
                         a diverse array of technologies to sculpt software solutions finely tuned to their intended purpose. 
                         <br/><br/>Whether it&apos;s crafting intuitive user interfaces, architecting robust backend systems, or fine-tuning 
                         performance, I thrive on the challenges and rewards that each endeavor brings. Currently, I&apos;m 
                         diligently pursuing my academic aspirations while immersing myself in real-world experiences as a valued 
-                        member of <a href="http://ict.binus.edu/" className="text-violet-600 hover:underline">BINUS IT Division</a>. 
+                        member of <a href="http://ict.binus.edu/" target="_blank" className="text-violet-600 hover:underline">BINUS IT Division</a>. 
                         Here, amidst dynamic projects and alongside talented peers, I contribute my expertise to push boundaries and 
-                        achieve collective goals.
+                        achieve collective goals. */}
+                        I'm a passionate web developer and data science student driven by curiosity and a commitment to impactful innovation. 
+                        From crafting intuitive interfaces to architecting robust backend systems, I thrive on diverse technological challenges. 
+                        Currently balancing academic pursuits with real-world experiences at <a href="http://ict.binus.edu/" target="_blank" className="text-violet-600 hover:underline">BINUS IT Division</a>, I collaborate with talented peers to push boundaries and achieve collective goals.
                         {/* I&apos;m a */}
                         {/* I&apos;m a dedicated web developer driven by a profound passion for technology and innovation.
                         My journey into the realm of programming began with an insatiable curiosity and a desire to create impactful solutions.

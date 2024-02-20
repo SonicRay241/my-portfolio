@@ -9,8 +9,8 @@ const projectList: TProjectData[] = [
         name: "Portfolio",
         image: PortFolio,
         imageAlt: "My Portfolio",
-        bgFrom: "#ddd",
-        bgTo: "#999",
+        bgFrom: "#5e6177",
+        bgTo: "#404251",
         description: "Portfolio website i made with NextJS and Framer Motion.",
         urls: [
             {
@@ -29,7 +29,7 @@ const projectList: TProjectData[] = [
         imageAlt: "Livre App",
         bgFrom: "#a855f7",
         bgTo: "#8b5cf6",
-        description: "A markdown editor used for note-taking. Built with Sveltekit and Electron.",
+        description: "Livre is a markdown editor used for note-taking. Built with Sveltekit and Electron.",
         urls: [
             {
                 title: "Github",

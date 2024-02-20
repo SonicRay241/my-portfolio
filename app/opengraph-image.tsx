@@ -1,7 +1,4 @@
 import { ImageResponse } from "next/og"
-import { Rubik } from "next/font/google"
-
-export const runtime = 'edge'
 export const alt = 'Portfolio website'
 export const size = {
     width: 1200,
@@ -9,10 +6,11 @@ export const size = {
 }
 
 export const contentType = 'image/png'
+export const runtime = 'edge'
 
 const Image = async () => {
-    const rubikMedium = fetch(
-        new URL('./Rubik-Medium.ttf', import.meta.url)
+    const rubikNormal = fetch(
+        new URL('../public/Rubik-Regular.ttf', import.meta.url)
     ).then((res) => res.arrayBuffer())
 
     return new ImageResponse(
@@ -20,24 +18,27 @@ const Image = async () => {
             <div style={{
                 height: "100%",
                 width: "100%",
-                padding: "24px"
+                padding: "24px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
             }}>
-                <h1 style={{
-                    fontSize: 72,
-                    lineHeight: 1
-                }}>
+                <h1 
+                    style={{
+                        fontSize: 72,
+                        lineHeight: 1
+                    }}
+                >
                     <span style={{color: "#7C3AED"}}>/</span>RAYHAN PERMANA
                 </h1>
             </div>
         ),
         {
-            // For convenience, we can re-use the exported opengraph-image
-            // size config to also set the ImageResponse's width and height.
             ...size,
             fonts: [
                 {
                     name: 'Rubik',
-                    data: await rubikMedium,
+                    data: await rubikNormal,
                     style: 'normal',
                     weight: 400,
                 },

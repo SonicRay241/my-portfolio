@@ -27,7 +27,7 @@ const Contacts: FC<{
     ]
 
     return (
-        <div className="bg-white py-12 px-8 h-96">
+        <div className="bg-white py-12 px-8 h-96 border-t-2 border-black">
             <div 
                 className=""
             >     

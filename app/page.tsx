@@ -88,7 +88,7 @@ const Page = () => {
       window.removeEventListener("mouseup", mouseupEvent)
       document.body.style.overflow = "auto"
     }
-  }, [renderCursor])
+  }, [renderCursor, isMobileDevice])
 
   const variants: Variants = {
     default: {

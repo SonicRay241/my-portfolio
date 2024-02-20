@@ -5,6 +5,7 @@ import { FC } from "react"
 import CloseIcon from '@mui/icons-material/Close';
 import { TProjectData } from "@/libs/types";
 import { Property } from "csstype"
+import ContactLinks from "@/components/ContactLinks";
 
 const ProjectDescription: 
 FC<{
@@ -68,6 +69,23 @@ FC<{
                             >
                                 {props.projectData?.description ?? "(null)"}
                             </motion.h2>
+                            <br />
+                            <motion.div
+                                className="flex gap-4"
+                                variants={variants}
+                                animate="title"
+                            >
+                                {props.projectData?.urls.map((d, n) => {
+                                    return (
+                                        <ContactLinks 
+                                            mouseEnterHandler={props.mouseEnterHandler} 
+                                            mouseLeaveHandler={props.mouseLeaveHandler}
+                                            contactData={{title: d.title, url: d.url}}
+                                            key={n}
+                                        />
+                                    )
+                                })}
+                            </motion.div>
                         </div>
                     </div>
                 

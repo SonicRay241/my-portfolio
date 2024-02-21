@@ -2,17 +2,58 @@
 
 import { bebasNeue } from "@/libs/fonts"
 import { motion, useTransform, useScroll } from "framer-motion"
+import ContactLinks from "@/components/ContactLinks"
+import { TContactData } from "@/libs/types"
+import { FC } from "react"
+import MyImage from "@/public/mehd.png"
+import Image from "next/image"
 
-const HeroMobile = () => {
+const HeroMobile: FC<{
+    onLoaded: () => void
+}> = (props) => {
+    const contacts: TContactData[] = [
+        {
+            title: "Github",
+            url: "https://github.com/SonicRay241"
+        },
+        {
+            title: "LinkedIn",
+            url: "https://www.linkedin.com/in/rayhan-permana-733129292/"
+        },
+    ]
     const { scrollYProgress } = useScroll()
     const y = useTransform(scrollYProgress, [0,2], [0, 600])
 
+
     return (
-        <div className="flex w-full h-full items-center justify-center bg-[radial-gradient(#aaa_1px,#fff_1px)] [background-size:16px_16px]">
+        <div className="flex w-full h-screen items-center justify-center">
             <motion.div className="px-4" style={{y: y}}>
-                <h1 className={`text-8xl ${bebasNeue.className}`}>Rayhan Permana</h1>
-                <p className={`text-2xl ${bebasNeue.className}`}>A full-stack web developer &</p>
-                <p className={`text-2xl ${bebasNeue.className}`}>data science student.</p>
+                <div className="flex justify-center items-center w-full mb-10">
+                    <Image 
+                        src={MyImage} 
+                        alt="Rayhan Permana"
+                        style={{
+                            borderRadius: "100%",
+                            border: "2px solid black",
+                            aspectRatio: "1/1",
+                            objectPosition: "45% 0"
+                        }}
+                        className="object-cover w-1/2"
+                    />
+                </div>
+                <h1 className="text-4xl font-medium mb-3 w-full text-center">Hello, I&apos;m <span className=" text-violet-600">Rayhan</span></h1>
+                <p className="text-2xl mb-6 w-full text-center">A student in BINUS University who is also a Software Engineer.</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                    {contacts.map((c, n) => {
+                        return (
+                            <ContactLinks 
+                                contactData={c}
+                                mouseEnterHandler={()=>{}}
+                                mouseLeaveHandler={()=>{}}
+                            />
+                        )
+                    })}
+                </div>
             </motion.div>
         </div>
     )

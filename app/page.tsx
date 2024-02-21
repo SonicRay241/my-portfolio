@@ -61,7 +61,7 @@ const Page = () => {
   useEffect(() => {
     setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
     if (!renderCursor) setMousePos({x: window.innerWidth/2, y: window.innerHeight/2} )
-    if (isMobileDevice) setOverlayScale(0)
+    // if (isMobileDevice) setOverlayScale(0)
 
     const mouseMoveEvent = (e: MouseEvent) => {
       if (!renderCursor) {
@@ -184,11 +184,13 @@ const Page = () => {
       >
         <LoadingBar/>
       </motion.div>
-      <NavBar 
-        data={navbarData}
-        mouseEnterHandler={cursorChange}
-        mouseLeaveHandler={defaultCursor}
-      />
+      { !isMobileDevice && 
+        <NavBar 
+          data={navbarData}
+          mouseEnterHandler={cursorChange}
+          mouseLeaveHandler={defaultCursor}
+        />
+      }
       <main className="h-screen w-full">
           <div 
             className="bg-white w-screen z-20 top-0"
@@ -210,9 +212,9 @@ const Page = () => {
             animate="main"
           >
             <div className="w-full h-full">
-              { <Hero onLoaded={()=>setOverlayScale(0)}/> }
+              { !isMobileDevice && <Hero onLoaded={()=>setOverlayScale(0)}/> }
             <div className="w-full h-[120vh]" onMouseEnter={defaultCursor}>
-              {/* { isMobileDevice && <HeroMobile/> } */}
+              { isMobileDevice && <HeroMobile onLoaded={()=>setOverlayScale(0)}/> }
             </div>
             <div ref={aboutRef}>
               <About

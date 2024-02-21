@@ -39,6 +39,7 @@ const HeroMobile: FC<{
                             objectPosition: "45% 0"
                         }}
                         className="object-cover w-1/2"
+                        onLoadingComplete={props.onLoaded}
                     />
                 </div>
                 <h1 className="text-4xl font-medium mb-3 w-full text-center">Hello, I&apos;m <span className=" text-violet-600">Rayhan</span></h1>

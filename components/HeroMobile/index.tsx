@@ -50,6 +50,7 @@ const HeroMobile: FC<{
                                 contactData={c}
                                 mouseEnterHandler={()=>{}}
                                 mouseLeaveHandler={()=>{}}
+                                key={n}
                             />
                         )
                     })}

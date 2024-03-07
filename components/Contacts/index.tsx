@@ -67,7 +67,7 @@ const Contacts: FC<{
                             href="https://nextjs.org/"
                             target="_blank"
                         >
-                            <Image src={NextIcon} alt="React Icon" quality={50} height={28} className=""/>
+                            <Image src={NextIcon} alt="NextJS Icon" quality={50} height={28} className=""/>
                         </a>
                         <h2 className="text-xl">in Jakarta, Indonesia.</h2>
                     </div>

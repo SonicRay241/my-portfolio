@@ -12,7 +12,11 @@ const Contacts: FC<{
     mouseLeaveHandler: () => void,
     isMobile: boolean
 }> = (props) => {
-    const contacts: TContactData[] =[
+    const contacts: TContactData[] = [
+        {
+            title: "Blog",
+            url: "https://blogs.rayy.dev"
+        },
         {
             title: "Github",
             url: "https://github.com/SonicRay241"

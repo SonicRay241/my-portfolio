@@ -2,11 +2,11 @@ import { TProjectData } from "@/libs/types"
 
 import PortFolio from "@/public/projects/Portfolio.png"
 import Livre from "@/public/projects/Livre.png"
-
+import Blog from "@/public/projects/Blog.png"
 
 const projectList: TProjectData[] = [
     {
-        name: "rayy.dev",
+        name: "My Portfolio",
         image: PortFolio,
         imageAlt: "My Portfolio",
         bgFrom: "#5e6177",
@@ -34,6 +34,24 @@ const projectList: TProjectData[] = [
             {
                 title: "Github",
                 url: "https://github.com/SonicRay241/livre"
+            }
+        ]
+    },
+    {
+        name: "Blog Page",
+        image: Blog,
+        imageAlt: "Blog Page",
+        bgFrom: "#5e6177",
+        bgTo: "#404251",
+        description: "My blog website complete with a built-in editor, built with NextJS and ElysiaJS",
+        urls: [
+            {
+                title: "blogs.rayy.dev",
+                url: "https://blogs.rayy.dev"
+            },
+            {
+                title: "Github",
+                url: "https://github.com/SonicRay241/blog"
             }
         ]
     }

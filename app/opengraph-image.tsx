@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og"
-export const alt = 'Portfolio website'
+export const alt = "Rayhan"
 export const size = {
     width: 768,
     height: 540,
@@ -9,8 +9,8 @@ export const contentType = 'image/png'
 export const runtime = 'edge'
 
 const Image = async () => {
-    const rubikNormal = fetch(
-        new URL('../public/Rubik-Regular.ttf', import.meta.url)
+    const montrealNormal = fetch(
+        new URL('../fonts/NeueMontreal/NeueMontreal-Regular.otf', import.meta.url)
     ).then((res) => res.arrayBuffer())
 
     return new ImageResponse(
@@ -22,33 +22,38 @@ const Image = async () => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                // alignItems: "center"
-                backgroundColor: "white"
+                alignItems: "center",
+                backgroundColor: "#18181b",
             }}>
-                <h1 
+                <img
+                    src="/black-noise.png"
+                    alt="e"
+                    style={{
+                        opacity: 0.05,
+                        position: "absolute",
+                        left: 0,
+                        top: 0,
+                        width: "100%",
+                        height: "auto"
+                    }}
+                />
+                <h1
                     style={{
                         fontSize: 72,
-                        lineHeight: 0.3
+                        lineHeight: 0.3,
+                        color: "white",
                     }}
                 >
-                    <span style={{color: "#7C3AED"}}>/</span>RAYHAN PERMANA
+                    <span style={{ color: "#7C3AED" }}>/</span>rayhan.
                 </h1>
-                <p
-                    style={{
-                        fontSize: 28,
-                        lineHeight: 0.3
-                    }}
-                >
-                    A software engineer.
-                </p>
             </div>
         ),
         {
             ...size,
             fonts: [
                 {
-                    name: 'Rubik',
-                    data: await rubikNormal,
+                    name: 'Neue Montreal',
+                    data: await montrealNormal,
                     style: 'normal',
                     weight: 400,
                 },

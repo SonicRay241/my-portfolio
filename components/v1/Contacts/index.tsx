@@ -4,7 +4,7 @@ import { FC } from "react"
 import { Property } from "csstype"
 import Image from "next/image"
 import NextIcon from "@/public/next.png"
-import ContactLinks from "@/components/ContactLinks"
+import ContactLinks from "@/components/v1/ContactLinks"
 import { TContactData } from "@/libs/types"
 
 const Contacts: FC<{

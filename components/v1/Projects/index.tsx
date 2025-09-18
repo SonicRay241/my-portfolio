@@ -3,7 +3,7 @@
 import { FC, useState } from "react"
 import { Property } from "csstype"
 import { useScroll, useTransform, motion, useTime, Transition } from "framer-motion"
-import Project from "@/components/Project"
+import Project from "@/components/v1/Project"
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { TProjectData } from "@/libs/types"
 

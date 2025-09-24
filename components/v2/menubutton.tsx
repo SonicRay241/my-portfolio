@@ -2,6 +2,10 @@
 
 import GlassSurface from "./glasssurface";
 import MenuIcon from "@mui/icons-material/Menu";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import HomeIcon from '@mui/icons-material/Home';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import { AnimatePresence, motion, useSpring } from "motion/react";
 import {
   ButtonHTMLAttributes,
@@ -9,6 +13,7 @@ import {
   ReactNode,
   useRef,
   useEffect,
+  MouseEventHandler,
 } from "react";
 
 export default function Menubutton() {
@@ -26,29 +31,48 @@ export default function Menubutton() {
 
   return (
     <>
-      {showRefraction && (
-        <motion.div
-          className={`fixed bottom-4 right-4`}
-          style={{
-            scale: buttonScale,
-          }}
-          transition={{
-            type: "spring",
-          }}
-        >
-          <GlassSurface width={40} height={40} borderRadius={20} />
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {showRefraction && (
+          <motion.div
+            className={`fixed bottom-4 right-4`}
+            initial={{
+              translateY: -10,
+              translateX: -10,
+            }}
+            animate={{
+              translateY: 0,
+              translateX: 0,
+            }}
+            exit={{
+              opacity: 0,
+              translateY: -10,
+              translateX: -10,
+            }}
+            style={{
+              scale: buttonScale,
+            }}
+            transition={{
+              type: "spring",
+              duration: 0.4,
+              bounce: 0.4
+            }}
+          >
+            <GlassSurface width={40} height={40} borderRadius={20} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {!menuOpen && (
           <motion.button
             initial={{
               opacity: 0,
+              translateY: -10,
               filter: "blur(10px) brightness(2)",
             }}
             animate={{
               opacity: 0.6,
+              translateY: 0,
               filter: "blur(0px) brightness(1)",
               transition: {
                 filter: {
@@ -58,22 +82,30 @@ export default function Menubutton() {
             }}
             exit={{
               opacity: 0,
+              translateY: -10,
               filter: "blur(10px) brightness(2)",
             }}
             whileTap={{
               scale: 1.1,
-              filter: "brightness(2)",
+              filter: "brightness(1.2)",
+              background: "#fff2",
               opacity: 0.9,
               transition: {
                 type: "spring",
-                stiffness: 500,
               },
+            }}
+            transition={{
+              type: "spring",
+              bounce: 0.6,
+              duration: 0.4
             }}
             onTapStart={() => buttonScale.set(1.1)}
             onTapCancel={() => buttonScale.set(1)}
-            onMouseLeave={() => buttonScale.set(1)}
-            className="peer fixed bottom-4 right-4 w-10 h-10 flex justify-center items-center"
-            onClick={() => setMenuOpen(true)}
+            className="peer fixed bottom-4 right-4 w-10 h-10 flex justify-center items-center rounded-full"
+            onClick={() => {
+              setMenuOpen(true)
+              buttonScale.set(1)
+            }}
           >
             <MenuIcon className="size-2 text-zinc-300" />
           </motion.button>
@@ -98,45 +130,99 @@ function MenuSelect() {
   const bubbleOffsetY = useSpring(0);
   const bubbleHeight = useSpring(0);
 
+  const shiftX = useSpring(0, { stiffness: 200, damping: 20 });
+  const shiftY = useSpring(0, { stiffness: 200, damping: 20 });
+  const scaleX = useSpring(1, { stiffness: 200, damping: 20 });
+  const scaleY = useSpring(1, { stiffness: 200, damping: 20 });
+
+  const prevX = useRef(0);
+  const prevY = useRef(0);
+  const idleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const parentRef = useRef<HTMLDivElement>(null);
+
+  function menuHover(height: number, offsetY: number) {
+    if (!parentRef.current) return
+
+    bubbleOffsetY.set(offsetY - parentRef.current.getBoundingClientRect().top - 8)
+    bubbleHeight.set(height)
+  }
+
+  const handleMove: MouseEventHandler<HTMLDivElement> = (e) => {
+    const deltaX = e.clientX - prevX.current;
+    const deltaY = e.clientY - prevY.current;
+
+    prevX.current = e.clientX;
+    prevY.current = e.clientY;
+
+    // Direction (-1, 0, +1)
+    const dirX = deltaX === 0 ? 0 : deltaX > 0 ? 1 : -1;
+    const dirY = deltaY === 0 ? 0 : deltaY > 0 ? 1 : -1;
+
+    shiftX.set(dirX * 5);
+    shiftY.set(dirY * 5);
+    scaleX.set(dirX !== 0 ? 1.05 : 1);
+    scaleY.set(dirY !== 0 ? 1.05 : 1);
+
+    // Reset idle timer
+    if (idleTimeout.current) clearTimeout(idleTimeout.current);
+    idleTimeout.current = setTimeout(() => {
+      shiftX.set(0);
+      shiftY.set(0);
+      scaleX.set(1);
+      scaleY.set(1);
+    }, 150);
+  };
+
   return (
     <motion.div
-      className="fixed bottom-4 right-4 origin-bottom-right"
+      className="fixed bottom-4 right-4"
       initial={{
-        scale: 0.0,
+        scale: 0,
+        translateY: 80,
+        translateX: 40,
       }}
       animate={{
         scale: 1,
+        translateY: 0,
+        translateX: 0,
         transition: {
-          filter: {
-            duration: 0.7,
-          },
           duration: 0.6,
           type: "spring",
         },
       }}
       exit={{
-        scale: 0.0,
+        scale: 0,
+        translateY: 80,
+        translateX: 40,
         transition: {
-          filter: {
-            duration: 0.6,
-            delay: 0,
-          },
-          duration: 0.7,
+          duration: 0.4,
           delay: 0.1,
           type: "spring",
+          bounce: 0,
         },
       }}
+      whileTap={{
+        scale: 0.97
+      }}
+      style={{
+        x: shiftX,
+        y: shiftY,
+        scaleX: scaleX,
+        scaleY: scaleY,
+      }}
+      onMouseMove={handleMove}
     >
-      <div className="relative w-full h-full">
-        <GlassSurface width={160} height={288} borderRadius={20} />
+      <div className="relative">
+        <GlassSurface width={140} height={180} borderRadius={20} blur={10} />
         <motion.div
-          className="absolute top-0 left-0 w-full h-full bg-zinc-300/20 rounded-[20px] p-2"
+          className="absolute top-0 left-0 w-full h-full bg-zinc-300/20 rounded-[20px] p-2 overflow-hidden"
+          ref={parentRef}
           initial={{
             opacity: 0,
-            filter: "blur(10px) brightness(2)",
+            filter: "blur(10px) brightness(1.2)",
           }}
           animate={{
-            opacity: 1,
+            opacity: 0.9,
             filter: "blur(0px) brightness(1)",
             transition: {
               filter: {
@@ -148,7 +234,7 @@ function MenuSelect() {
           }}
           exit={{
             opacity: 0,
-            filter: "blur(10px) brightness(2)",
+            filter: "blur(10px) brightness(1.2)",
             transition: {
               filter: {
                 duration: 0.6,
@@ -160,9 +246,29 @@ function MenuSelect() {
             },
           }}
         >
-          {/* <motion.div className="absolute w-full rounded-xl bg-black/10"></motion.div> */}
-          <MenuSelectButton trigger={() => {}}>
+          <motion.div
+            className="absolute top-2 left-1.5 right-1.5 bg-zinc-500/50 rounded-[16px] pointer-events-none -z-10"
+            style={{
+              height: bubbleHeight,
+              translateY: bubbleOffsetY
+            }}
+
+          />
+          <MenuSelectButton trigger={menuHover}>
+            <HomeIcon fontSize="small" className="" />
+            <span>Home</span>
+          </MenuSelectButton>
+          <MenuSelectButton trigger={menuHover}>
+            <EmojiPeopleIcon fontSize="small" className="" />
+            <span>About</span>
+          </MenuSelectButton>
+          <MenuSelectButton trigger={menuHover}>
+            <AutoAwesomeIcon fontSize="small" className="" />
             <span>Projects</span>
+          </MenuSelectButton>
+          <MenuSelectButton trigger={menuHover}>
+            <ContactsIcon fontSize="small" className="" />
+            <span>Contact</span>
           </MenuSelectButton>
         </motion.div>
       </div>
@@ -188,7 +294,7 @@ function MenuSelectButton(
 
   return (
     <button
-      className={`flex gap-1 w-full px-3 py-2 rounded-xl text-sm font-medium text-zinc-300/70 ${props.className}`}
+      className={`flex items-center gap-2 w-full px-2 py-2 rounded-xl font-medium text-zinc-300/70 ${props.className}`}
       onMouseEnter={onHover}
       ref={buttonRef}
       {...buttonProps}

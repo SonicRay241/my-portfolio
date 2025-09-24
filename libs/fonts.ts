@@ -57,3 +57,7 @@ export const neueMontreal = localFont({
     ],
     display: "swap"
 })
+
+export const aeonik = localFont({
+    src: "../fonts/Aeonik/aeonikprovf.woff2"
+})

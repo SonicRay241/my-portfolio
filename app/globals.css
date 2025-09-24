@@ -3,6 +3,5 @@
 @tailwind utilities;
 
 :root {
-    scroll-behavior: smooth;
     background-color: white;
 }

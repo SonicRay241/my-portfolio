@@ -8,9 +8,7 @@ export default function Page() {
     <>
       <Hero />
       <Showcase />
-      <Menubutton/>
-      <div className="fixed bottom-2 left-2">
-      </div>
+      <Menubutton />
     </>
   );
 }

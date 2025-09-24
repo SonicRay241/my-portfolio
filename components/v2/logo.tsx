@@ -9,14 +9,14 @@ export default function Logo() {
     const STAGGER = 0.0125
 
     return (
-        <Link className="flex" href="/">
-            <div className="text-xl text-violet-500 font-bold pr-1">
+        <Link className="flex items-center" href="/">
+            <div className="text-2xl text-violet-500 font-bold pr-1">
                 /
             </div>
             <motion.div
                 initial="initial"
                 whileHover="hovered"
-                className="relative block text-lg text-white overflow-hidden whitespace-nowrap"
+                className="relative block text-xl text-white overflow-hidden whitespace-nowrap"
             >
                 <div>
                     {logoTitle.map((c, i) => {

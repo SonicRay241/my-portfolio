@@ -1,29 +1,30 @@
-import FuzzyOverlay from "@/components/v2/FuzzyOverlay";
-import Navbar from "@/components/v2/Navbar";
-// import ProjectList from "@/components/v2/Projects";
-import Hero from "@/components/v2/hero";
-import VersionOverlay from "@/components/v2/VersionOverlay";
-import { neueMontreal, vt323 } from "@/libs/fonts";
-import Menubutton from "@/components/v2/menubutton";
-import Showcase from "@/components/v2/showcase";
-import { ReactNode } from "react";
+"use client"
 
-const font = neueMontreal
+import FuzzyOverlay from "@/components/v2/FuzzyOverlay";
+import VersionOverlay from "@/components/v2/VersionOverlay";
+import { aeonik, vt323 } from "@/libs/fonts";
+import { ReactNode } from "react";
+import { ReactLenis } from "lenis/react"
+
+const font = aeonik
 
 export default function Layout(props: {
     children: ReactNode
 }) {
     return (
-        <div className="w-full h-screen bg-zinc-900">
-            <div className={`${font.className} min-h-screen pt-2`}>
-                {props.children}
+        <>
+            <ReactLenis root />
+            <div className="w-full min-h-screen bg-zinc-900">
+                <div className={`${font.className} min-h-screen pt-2`}>
+                    {props.children}
+                </div>
+                <VersionOverlay
+                    font={vt323}
+                    version={2}
+                    className="text-lg text-zinc-700/60"
+                />
+                <FuzzyOverlay />
             </div>
-            <VersionOverlay
-                font={vt323}
-                version={2}
-                className="text-lg text-zinc-700/60"
-            />
-            <FuzzyOverlay />
-        </div>
+        </>
     )
 }

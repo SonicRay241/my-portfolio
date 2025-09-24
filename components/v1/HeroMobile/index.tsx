@@ -1,7 +1,7 @@
 "use client"
 
 import { bebasNeue } from "@/libs/fonts"
-import { motion, useTransform, useScroll } from "framer-motion"
+import { motion, useTransform, useScroll } from "motion/react"
 import ContactLinks from "@/components/v1/ContactLinks"
 import { TContactData } from "@/libs/types"
 import { FC } from "react"
@@ -22,15 +22,15 @@ const HeroMobile: FC<{
         },
     ]
     const { scrollYProgress } = useScroll()
-    const y = useTransform(scrollYProgress, [0,2], [0, 600])
+    const y = useTransform(scrollYProgress, [0, 2], [0, 600])
 
 
     return (
         <div className="flex w-full h-screen items-center justify-center">
-            <motion.div className="px-4" style={{y: y}}>
+            <motion.div className="px-4" style={{ y: y }}>
                 <div className="flex justify-center items-center w-full mb-10">
-                    <Image 
-                        src={MyImage} 
+                    <Image
+                        src={MyImage}
                         alt="Rayhan Permana"
                         style={{
                             borderRadius: "100%",
@@ -47,10 +47,10 @@ const HeroMobile: FC<{
                 <div className="flex flex-wrap gap-2 justify-center">
                     {contacts.map((c, n) => {
                         return (
-                            <ContactLinks 
+                            <ContactLinks
                                 contactData={c}
-                                mouseEnterHandler={()=>{}}
-                                mouseLeaveHandler={()=>{}}
+                                mouseEnterHandler={() => { }}
+                                mouseLeaveHandler={() => { }}
                                 key={n}
                             />
                         )

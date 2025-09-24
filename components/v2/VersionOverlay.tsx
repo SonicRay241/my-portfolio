@@ -6,7 +6,7 @@ export default function VersionOverlay(props: {
     version: number
 }) {
     return (
-        <div className={`fixed bottom-0 right-2 pointer-events-none ${props.font.className} ${props.className || ""}`}>
+        <div className={`fixed bottom-0 left-2 pointer-events-none ${props.font.className} ${props.className || ""}`}>
             {`V${props.version}`}
         </div>
     )

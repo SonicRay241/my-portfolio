@@ -19,7 +19,7 @@ type TProjectData = {
 
 type TNavChild = {
     title: string,
-    ref: RefObject<HTMLDivElement>,
+    ref: RefObject<HTMLDivElement | null>,
 }
 
 type TContactData = {

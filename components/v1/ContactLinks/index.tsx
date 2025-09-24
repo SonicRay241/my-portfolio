@@ -1,6 +1,6 @@
 "use client"
 
-import { Variants, motion } from "framer-motion"
+import { Variants, motion } from "motion/react"
 import { FC, useState } from "react"
 import { Property } from "csstype"
 import { ArrowOutward } from "@mui/icons-material"
@@ -8,7 +8,7 @@ import { TContactData } from "@/libs/types"
 
 const ContactLinks: FC<{
     contactData: TContactData,
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
+    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void,
     mouseLeaveHandler: () => void,
 }> = (props) => {
     const [bgColor, setBgColor] = useState<Property.BackgroundColor>("white")
@@ -26,7 +26,7 @@ const ContactLinks: FC<{
         setTextColor("white")
         props.mouseEnterHandler(100, "white")
     }
-    
+
     const onUpHandler = () => {
         setBgColor("white")
         setTextColor("black")
@@ -43,12 +43,12 @@ const ContactLinks: FC<{
             href={props.contactData.url}
             target="_blank"
         >
-            <div 
+            <div
                 className="w-fit"
             >
                 <div className="flex h-7">
                     <h1 className="text-2xl">{props.contactData.title}</h1>
-                    <ArrowOutward className="h-full"/>
+                    <ArrowOutward className="h-full" />
                 </div>
             </div>
         </motion.a>

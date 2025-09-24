@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react";
-import { Variants, motion } from "framer-motion"
+import { Variants, motion } from "motion/react"
 import { Property } from "csstype"
 import Hero from "@/components/v1/Hero";
 import HeroMobile from "@/components/v1/HeroMobile";
@@ -28,7 +28,7 @@ const Page = () => {
   const defaultCursorColor: Property.BackgroundColor = "transparent"
   const defaultCursorSize: number = 40
 
-  const [mousePos, setMousePos] = useState<T2dCoord>({x: 0, y: 0})
+  const [mousePos, setMousePos] = useState<T2dCoord>({ x: 0, y: 0 })
   const [cursorSize, setCursorSize] = useState(defaultCursorSize)
   const [cursorBlendMode, setCursorBlendMode] = useState<Property.MixBlendMode>("normal")
   const [cursorColor, setCursorColor] = useState<Property.BackgroundColor>("transparent")
@@ -60,7 +60,7 @@ const Page = () => {
 
   useEffect(() => {
     setIsMobileDevice(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
-    if (!renderCursor) setMousePos({x: window.innerWidth/2, y: window.innerHeight/2} )
+    if (!renderCursor) setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
     // if (isMobileDevice) setOverlayScale(0)
 
     const mouseMoveEvent = (e: MouseEvent) => {
@@ -68,7 +68,7 @@ const Page = () => {
         setRenderCursor(true)
         setCursorColor(defaultCursorColor)
       }
-      setMousePos({x: e.clientX, y: e.clientY})
+      setMousePos({ x: e.clientX, y: e.clientY })
     }
 
     const mousedownEvent = (e: MouseEvent) => {
@@ -97,8 +97,8 @@ const Page = () => {
       y: mousePos.y,
       height: cursorSize * (cursorClicking ? 1.5 : 1),
       width: cursorSize * (cursorClicking ? 1.5 : 1),
-      top: -(cursorSize * (cursorClicking ? 1.5 : 1))/2,
-      left: -(cursorSize * (cursorClicking ? 1.5 : 1))/2,
+      top: -(cursorSize * (cursorClicking ? 1.5 : 1)) / 2,
+      left: -(cursorSize * (cursorClicking ? 1.5 : 1)) / 2,
       mixBlendMode: cursorBlendMode,
       backgroundColor: cursorColor,
       borderWidth: 2,
@@ -135,7 +135,7 @@ const Page = () => {
     setCursorBorderColor(border)
     setCursorText(text)
   }
-  
+
   const defaultCursor = () => {
     setCursorSize(defaultCursorSize)
     setCursorBlendMode("normal")
@@ -154,7 +154,7 @@ const Page = () => {
 
   const handleDescriptionClose = () => {
     setShowProjectDescription(false)
-    setTimeout(()=>{
+    setTimeout(() => {
       if (document) {
         document.body.style.overflow = "auto"
       }
@@ -164,63 +164,63 @@ const Page = () => {
 
   return (
     <>
-      <ProjectDescription 
-        show={showProjectDescription} 
+      <ProjectDescription
+        show={showProjectDescription}
         closeCallback={handleDescriptionClose}
         projectData={descriptionData}
         mouseEnterHandler={cursorChange}
         mouseLeaveHandler={defaultCursor}
       />
-      <motion.div 
+      <motion.div
         className="fixed bg-black w-screen h-screen z-20 top-0"
         variants={overlayVariants}
         animate="darken"
         onClick={handleDescriptionClose}
       />
-      <motion.div 
-        className="fixed flex justify-center items-center z-50 h-screen w-screen bg-black origin-bottom" 
+      <motion.div
+        className="fixed flex justify-center items-center z-50 h-screen w-screen bg-black origin-bottom"
         variants={overlayVariants}
         animate="default"
       >
-        <LoadingBar/>
+        <LoadingBar />
       </motion.div>
-      { !isMobileDevice && 
-        <NavBar 
+      {!isMobileDevice &&
+        <NavBar
           data={navbarData}
           mouseEnterHandler={cursorChange}
           mouseLeaveHandler={defaultCursor}
         />
       }
       <main className="h-screen w-full">
-          <div 
-            className="bg-white w-screen z-20 top-0"
-          />
-          { !isMobileDevice && 
-            <motion.div 
-              className="fixed justify-center items-center z-40 rounded-full pointer-events-none hidden sm:flex transition-colors"
-              variants={variants} 
-              animate="default"
-              ref={cursor}
-            >
-              <h1 className="text-lg">{cursorText}</h1>
-            </motion.div> 
-          }
-          {/* <NavBar mouseEnterHandler={(size, color) => cursorChange(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/> */}
-          <motion.div 
-            className="flex items-center justify-center"
-            variants={overlayVariants}
-            animate="main"
+        <div
+          className="bg-white w-screen z-20 top-0"
+        />
+        {!isMobileDevice &&
+          <motion.div
+            className="fixed justify-center items-center z-40 rounded-full pointer-events-none hidden sm:flex transition-colors"
+            variants={variants}
+            animate="default"
+            ref={cursor}
           >
-            <div className="w-full h-full">
-              { !isMobileDevice && <Hero onLoaded={()=>setOverlayScale(0)}/> }
+            <h1 className="text-lg">{cursorText}</h1>
+          </motion.div>
+        }
+        {/* <NavBar mouseEnterHandler={(size, color) => cursorChange(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/> */}
+        <motion.div
+          className="flex items-center justify-center"
+          variants={overlayVariants}
+          animate="main"
+        >
+          <div className="w-full h-full">
+            {!isMobileDevice && <Hero onLoaded={() => setOverlayScale(0)} />}
             <div className="w-full h-[120vh]" onMouseEnter={defaultCursor}>
-              { isMobileDevice && <HeroMobile onLoaded={()=>setOverlayScale(0)}/> }
+              {isMobileDevice && <HeroMobile onLoaded={() => setOverlayScale(0)} />}
             </div>
             <div ref={aboutRef}>
               <About
                 mouseEnterHandler={cursorChange}
                 mouseLeaveHandler={defaultCursor}
-                />
+              />
             </div>
             <div ref={projectsRef}>
               <Projects

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import blackNoise from "@/public/black-noise.png"
 import noise from "@/public/noise.png"
 

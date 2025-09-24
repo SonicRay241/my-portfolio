@@ -117,7 +117,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
 
         const x = useTransform(baseX, v => {
             if (copyWidth === 0) return '0px';
-            return `${wrap(-copyWidth, 0, v)}px`;
+            return `${wrap(-copyWidth, 8, v)}px`;
         });
 
         const directionFactor = useRef<number>(1);
@@ -146,7 +146,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
         return (
             <div className={`${parallaxClassName} relative overflow-x-hidden`} style={parallaxStyle}>
                 <motion.div
-                    className={`${scrollerClassName} flex whitespace-nowrap text-center text-4xl font-bold tracking-[-0.02em] drop-shadow md:text-[5rem] md:leading-[5rem]`}
+                    className={`${scrollerClassName} flex gap-2 whitespace-nowrap text-center text-4xl font-bold tracking-[-0.02em] drop-shadow md:text-[5rem] md:leading-[5rem]`}
                     style={{ x, ...scrollerStyle }}
                 >
                     {spans}
@@ -172,7 +172,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
                     parallaxStyle={parallaxStyle}
                     scrollerStyle={scrollerStyle}
                 >
-                    {text}&nbsp;
+                    {text}
                 </VelocityText>
             ))}
         </section>

@@ -4,17 +4,19 @@ import Navbar from "@/components/v2/Navbar";
 import Hero from "@/components/v2/hero";
 import VersionOverlay from "@/components/v2/VersionOverlay";
 import { neueMontreal, vt323 } from "@/libs/fonts";
-import Menubar from "@/components/v2/menubar";
+import Menubutton from "@/components/v2/menubutton";
 import Showcase from "@/components/v2/showcase";
+import { ReactNode } from "react";
 
 const font = neueMontreal
 
-export default function Page() {
+export default function Layout(props: {
+    children: ReactNode
+}) {
     return (
-        <div className="w-full h-screen overflow-hidden">
-            <div className={`${font.className} bg-zinc-900 h-screen pt-2`}>
-                <Hero />
-                <Showcase />
+        <div className="w-full h-screen bg-zinc-900">
+            <div className={`${font.className} min-h-screen pt-2`}>
+                {props.children}
             </div>
             <VersionOverlay
                 font={vt323}

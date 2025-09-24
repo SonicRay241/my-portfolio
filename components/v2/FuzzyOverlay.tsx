@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react"
 import blackNoise from "@/public/black-noise.png"
-import noise from "@/public/noise.png"
 
 export default function FuzzyOverlay() {
     return (
@@ -19,14 +18,8 @@ export default function FuzzyOverlay() {
                 ease: "linear",
                 repeatType: "mirror",
             }}
-            // You can download these PNGs here:
-            // https://www.hover.dev/black-noise.png
-            // https://www.hover.dev/noise.png
             style={{
                 backgroundImage: `url(${blackNoise.src})`,
-                // backgroundImage: `url(${noise.src})`,
-                // backgroundImage: "https://www.hover.dev/black-noise.png",
-                // backgroundImage: 'url("/noise.png")',
             }}
             className="pointer-events-none fixed -inset-[100%] opacity-5 z-50"
         />

@@ -16,7 +16,7 @@ export default function Showcase() {
 function Grid() {
   return (
     <motion.div
-      className="grid grid-cols-3 gap-4 pt-2 px-4 min-h-screen"
+      className="sticky top-0 grid grid-cols-3 gap-4 pt-2 px-4 min-h-screen"
     >
       <div className="flex flex-col">
         {/* <ProjectCard
@@ -51,7 +51,7 @@ function Scroller() {
       }}
     >
       <ScrollVelocity
-        texts={["HIGHLIGHTS"]}
+        texts={["SCROLL DOWN"]}
         className="text-sm font-bold"
         numCopies={50}
       />

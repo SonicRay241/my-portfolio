@@ -5,6 +5,7 @@ import VersionOverlay from "@/components/v2/VersionOverlay";
 import { aeonik, vt323 } from "@/libs/fonts";
 import { ReactNode } from "react";
 import { ReactLenis } from "lenis/react"
+import "./v2.css"
 
 const font = aeonik
 
@@ -14,8 +15,8 @@ export default function Layout(props: {
     return (
         <>
             <ReactLenis root />
-            <div className="w-full min-h-screen bg-zinc-900">
-                <div className={`${font.className} min-h-screen pt-2`}>
+            <div className="w-full min-h-screen">
+                <div className={`${font.className} relative min-h-screen pt-2`}>
                     {props.children}
                 </div>
                 <VersionOverlay

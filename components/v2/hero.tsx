@@ -5,6 +5,7 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
+  useScroll,
   useSpring,
   useTransform,
 } from "motion/react";
@@ -14,6 +15,8 @@ import BlurText from "./blurtext";
 export default function Hero() {
   const paragraphA = useRef<HTMLDivElement>(null);
   const paragraphB = useRef<HTMLDivElement>(null);
+
+  const { scrollY } = useScroll();
 
   const posX = useMotionValue(0);
   const posY = useMotionValue(0);
@@ -26,6 +29,10 @@ export default function Hero() {
   const size = useSpring(60, { stiffness: 300, damping: 15 });
   const maskB = useMotionTemplate`radial-gradient(circle ${size}px at ${posXB}px ${posY}px, #000 30%, transparent 100%)`;
   const maskA = useMotionTemplate`radial-gradient(circle ${size}px at ${posXA}px ${posY}px, #000 30%, transparent 100%)`;
+
+  const heroOpacity = useTransform(scrollY, [30, 150], [1, 0])
+  const heroScale = useTransform(scrollY, [30, 150], [1, 0.95])
+  const heroBlur = useTransform(scrollY, [30, 150], ["blur(0px)", "blur(10px)"])
 
   function handleMove(e: MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -52,7 +59,15 @@ export default function Hero() {
   // const paragraphBValue = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
   return (
-    <div className="px-4 w-full grid grid-cols-3" onMouseMove={handleMove}>
+    <motion.div
+      className="sticky top-2 px-4 w-full grid grid-cols-3"
+      onMouseMove={handleMove}
+      style={{
+        opacity: heroOpacity,
+        scale: heroScale,
+        filter: heroBlur
+      }}
+    >
       <div className="w-full h-full">
         <Logo />
       </div>
@@ -106,7 +121,7 @@ export default function Hero() {
           <SpanWords text={paragraphBValue} />
         </motion.p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

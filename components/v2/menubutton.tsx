@@ -129,6 +129,7 @@ export default function Menubutton() {
 function MenuSelect() {
   const bubbleOffsetY = useSpring(0);
   const bubbleHeight = useSpring(0);
+  const bubbleOpacity = useSpring(1);
 
   const shiftX = useSpring(0, { stiffness: 200, damping: 20 });
   const shiftY = useSpring(0, { stiffness: 200, damping: 20 });
@@ -145,6 +146,7 @@ function MenuSelect() {
 
     bubbleOffsetY.set(offsetY - parentRef.current.getBoundingClientRect().top - 8)
     bubbleHeight.set(height)
+    bubbleOpacity.set(1)
   }
 
   const handleMove: MouseEventHandler<HTMLDivElement> = (e) => {
@@ -172,6 +174,11 @@ function MenuSelect() {
       scaleY.set(1);
     }, 150);
   };
+
+  function handleLeave() {
+    bubbleOpacity.set(0)
+    // bubbleHeight.set(180)
+  }
 
   return (
     <motion.div
@@ -211,6 +218,7 @@ function MenuSelect() {
         scaleY: scaleY,
       }}
       onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
     >
       <div className="relative">
         <GlassSurface width={140} height={180} borderRadius={20} blur={10} />
@@ -250,7 +258,8 @@ function MenuSelect() {
             className="absolute top-2 left-1.5 right-1.5 bg-zinc-500/50 rounded-[16px] pointer-events-none -z-10"
             style={{
               height: bubbleHeight,
-              translateY: bubbleOffsetY
+              translateY: bubbleOffsetY,
+              opacity: bubbleOpacity
             }}
 
           />
@@ -294,7 +303,7 @@ function MenuSelectButton(
 
   return (
     <button
-      className={`flex items-center gap-2 w-full px-2 py-2 rounded-xl font-medium text-zinc-300/70 ${props.className}`}
+      className={`flex items-center gap-2 w-full px-2 py-2 rounded-xl font-medium text-zinc-300/70 hover:text-zinc-300 transition-colors ${props.className}`}
       onMouseEnter={onHover}
       ref={buttonRef}
       {...buttonProps}

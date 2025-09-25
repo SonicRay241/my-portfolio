@@ -8,6 +8,7 @@ export default function Page() {
     <>
       <Hero />
       <Showcase />
+    
       <Menubutton />
     </>
   );

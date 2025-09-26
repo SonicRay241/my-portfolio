@@ -1,10 +1,13 @@
 "use client";
 
+import { RefObject } from "react";
 import ProjectCard from "./projectcard";
 import ScrollVelocity from "./scrollvelocity";
 import { motion, useScroll, useTransform } from "motion/react";
 
-export default function Showcase() {
+export default function Showcase(props: {
+  heroRef?: RefObject<HTMLDivElement | null>
+}) {
   return (
     <div className="pt-8 text-zinc-700">
       <Scroller />

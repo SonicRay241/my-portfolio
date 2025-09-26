@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, RefObject, useEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -12,11 +12,16 @@ import {
 import Logo from "./logo";
 import BlurText from "./blurtext";
 
-export default function Hero() {
+export default function Hero(props: {
+  heroRef?: RefObject<HTMLDivElement | null>
+}) {
   const paragraphA = useRef<HTMLDivElement>(null);
   const paragraphB = useRef<HTMLDivElement>(null);
 
-  const { scrollY } = useScroll();
+  const { scrollYProgress } = useScroll({
+    target: props.heroRef,
+    offset: ["start start", "end end"],
+  });
 
   const posX = useMotionValue(0);
   const posY = useMotionValue(0);
@@ -30,9 +35,10 @@ export default function Hero() {
   const maskB = useMotionTemplate`radial-gradient(circle ${size}px at ${posXB}px ${posY}px, #000 30%, transparent 100%)`;
   const maskA = useMotionTemplate`radial-gradient(circle ${size}px at ${posXA}px ${posY}px, #000 30%, transparent 100%)`;
 
-  const heroOpacity = useTransform(scrollY, [30, 150], [1, 0])
-  const heroScale = useTransform(scrollY, [30, 150], [1, 0.95])
-  const heroBlur = useTransform(scrollY, [30, 150], ["blur(0px)", "blur(10px)"])
+  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0])
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.95])
+  const heroBlur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(10px)"])
+  const heroRotate = useTransform(scrollYProgress, [0, 1], [0, 60])
 
   function handleMove(e: MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -65,8 +71,10 @@ export default function Hero() {
       style={{
         opacity: heroOpacity,
         scale: heroScale,
-        filter: heroBlur
+        filter: heroBlur,
+        rotateX: heroRotate
       }}
+      ref={props.heroRef}
     >
       <div className="w-full h-full">
         <Logo />

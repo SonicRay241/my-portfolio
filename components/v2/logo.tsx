@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "motion/react";
-import Link from "next/link";
+import TransitionLink from "./transitionlink";
 
 export default function Logo() {
     const logoTitle = "rayhan.".split("")
@@ -9,8 +9,8 @@ export default function Logo() {
     const STAGGER = 0.0125
 
     return (
-        <Link className="flex items-center" href="/">
-            <div className="text-2xl text-violet-500 font-bold pr-1">
+        <TransitionLink className="flex items-center" href="/">
+            <div className="text-2xl text-violet-600 font-bold pr-1">
                 /
             </div>
             <motion.div
@@ -61,6 +61,6 @@ export default function Logo() {
                     })}
                 </div>
             </motion.div>
-        </Link>
+        </TransitionLink>
     )
 }

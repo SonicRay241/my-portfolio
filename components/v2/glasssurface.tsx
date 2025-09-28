@@ -97,9 +97,11 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const isDarkMode = useDarkMode();
 
   const generateDisplacementMap = () => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    const actualWidth = rect?.width || 400;
-    const actualHeight = rect?.height || 200;
+    // const rect = containerRef.current?.getBoundingClientRect();
+    // const actualWidth = rect?.width || 400;
+    const actualWidth = +width
+    // const actualHeight = rect?.height || 200;
+    const actualHeight = +height
     const edgeSize = Math.min(actualWidth, actualHeight) * (borderWidth * 0.5);
 
     const svgContent = `
@@ -193,9 +195,6 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
       return false;
     }
 
-    // const div = document.createElement("div");
-    // div.style.backdropFilter = `url(#${filterId})`;
-    // return div.style.backdropFilter !== "";
     return true
   };
 

@@ -53,7 +53,8 @@ const BlurText: React.FC<BlurTextProps> = ({
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setInView(true);
-                    observer.unobserve(ref.current as Element);
+                    if (typeof ref.current != "object")
+                        observer.unobserve(ref.current as Element);
                 }
             },
             { threshold, rootMargin }

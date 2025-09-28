@@ -8,13 +8,15 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import { AnimatePresence, motion, useSpring } from "motion/react";
 import {
-  ButtonHTMLAttributes,
   useState,
   ReactNode,
   useRef,
   useEffect,
   MouseEventHandler,
+  AnchorHTMLAttributes,
 } from "react";
+import Link from "next/link";
+import TransitionLink from "./transitionlink";
 
 export default function Menubutton() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -118,7 +120,7 @@ export default function Menubutton() {
               className="fixed top-0 left-0 right-0 bottom-0"
               onClick={() => setMenuOpen(false)}
             />
-            <MenuSelect />
+            <MenuSelect onClose={() => setMenuOpen(false)} />
           </>
         )}
       </AnimatePresence>
@@ -126,7 +128,11 @@ export default function Menubutton() {
   );
 }
 
-function MenuSelect() {
+function MenuSelect(props: {
+  onClose: () => void;
+}) {
+  const [ready, setReady] = useState(false);
+
   const bubbleOffsetY = useSpring(0);
   const bubbleHeight = useSpring(0);
   const bubbleOpacity = useSpring(1);
@@ -221,7 +227,7 @@ function MenuSelect() {
       onMouseLeave={handleLeave}
     >
       <div className="relative">
-        <GlassSurface width={140} height={180} borderRadius={20} blur={10} />
+        <GlassSurface width={140} height={100} borderRadius={20} />
         <motion.div
           className="absolute top-0 left-0 w-full h-full bg-zinc-300/20 rounded-[20px] p-2 overflow-hidden"
           ref={parentRef}
@@ -253,9 +259,13 @@ function MenuSelect() {
               type: "spring",
             },
           }}
+          onAnimationComplete={() => setReady(true)}
+          style={{
+            pointerEvents: ready ? "auto" : "none",
+          }}
         >
           <motion.div
-            className="absolute top-2 left-1.5 right-1.5 bg-zinc-500/50 rounded-[16px] pointer-events-none -z-10"
+            className="absolute top-2 left-1.5 right-1.5 bg-zinc-300/60 rounded-[16px] pointer-events-none -z-10"
             style={{
               height: bubbleHeight,
               translateY: bubbleOffsetY,
@@ -263,22 +273,18 @@ function MenuSelect() {
             }}
 
           />
-          <MenuSelectButton trigger={menuHover}>
+          <MenuSelectButton trigger={menuHover} href="/" onClick={props.onClose}>
             <HomeIcon fontSize="small" className="" />
             <span>Home</span>
           </MenuSelectButton>
-          <MenuSelectButton trigger={menuHover}>
+          <MenuSelectButton trigger={menuHover} href="/about" onClick={props.onClose}>
             <EmojiPeopleIcon fontSize="small" className="" />
             <span>About</span>
           </MenuSelectButton>
-          <MenuSelectButton trigger={menuHover}>
+          {/* <MenuSelectButton trigger={menuHover} href="/" onClick={props.onClose}>
             <AutoAwesomeIcon fontSize="small" className="" />
             <span>Projects</span>
-          </MenuSelectButton>
-          <MenuSelectButton trigger={menuHover}>
-            <ContactsIcon fontSize="small" className="" />
-            <span>Contact</span>
-          </MenuSelectButton>
+          </MenuSelectButton> */}
         </motion.div>
       </div>
     </motion.div>
@@ -286,12 +292,12 @@ function MenuSelect() {
 }
 
 function MenuSelectButton(
-  props: ButtonHTMLAttributes<HTMLButtonElement> & {
+  props: AnchorHTMLAttributes<HTMLAnchorElement> & {
     children?: ReactNode;
     trigger: (height: number, offsetY: number) => void;
-  }
-) {
-  const buttonRef = useRef<HTMLButtonElement>(null);
+    href: string;
+  }) {
+  const buttonRef = useRef<HTMLAnchorElement>(null);
   const { trigger, ...buttonProps } = props;
 
   function onHover() {
@@ -302,13 +308,13 @@ function MenuSelectButton(
   }
 
   return (
-    <button
+    <TransitionLink
       className={`flex items-center gap-2 w-full px-2 py-2 rounded-xl font-medium text-zinc-300/70 hover:text-zinc-300 transition-colors ${props.className}`}
       onMouseEnter={onHover}
       ref={buttonRef}
       {...buttonProps}
     >
       {props.children}
-    </button>
+    </TransitionLink>
   );
 }

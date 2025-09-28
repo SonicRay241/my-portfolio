@@ -8,7 +8,7 @@ import ContactLinks from "@/components/v1/ContactLinks"
 import { TContactData } from "@/libs/types"
 
 const Contacts: FC<{
-    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void, 
+    mouseEnterHandler: (size: number, color: Property.BackgroundColor, blendMode?: Property.MixBlendMode) => void,
     mouseLeaveHandler: () => void,
     isMobile: boolean
 }> = (props) => {
@@ -32,18 +32,18 @@ const Contacts: FC<{
     ]
 
     return (
-        <div 
+        <div
             className="bg-white py-12 h-min-96 border-t-2 border-black overflow-hidden"
             style={{
                 paddingLeft: props.isMobile ? 12 : 32,
                 paddingRight: props.isMobile ? 12 : 32,
             }}
         >
-            <div>     
-                <h1 
+            <div>
+                <h1
                     className="mb-16 w-fit h-fit"
-                    onMouseEnter={()=>props.mouseEnterHandler(100, "white", "difference")}
-                    onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
+                    onMouseEnter={() => props.mouseEnterHandler(100, "white", "difference")}
+                    onMouseLeave={() => props.mouseEnterHandler(40, "black", "normal")}
                     style={{
                         fontSize: !props.isMobile ? 72 : 40,
                         marginBottom: !props.isMobile ? 64 : 0
@@ -52,7 +52,7 @@ const Contacts: FC<{
                     <span className="text-violet-600">/</span>RAYHAN PERMANA
                 </h1>
             </div>
-            <div 
+            <div
                 className="flex"
                 style={{
                     flexDirection: props.isMobile ? "column" : "row",
@@ -60,31 +60,31 @@ const Contacts: FC<{
                 }}
             >
                 <div className="w-full">
-                    <div 
+                    <div
                         className="flex flex-wrap gap-2 w-fit"
-                        onMouseEnter={()=>props.mouseEnterHandler(100, "white", "difference")}
-                        onMouseLeave={()=>props.mouseEnterHandler(40, "black", "normal")}
+                        onMouseEnter={() => props.mouseEnterHandler(100, "white", "difference")}
+                        onMouseLeave={() => props.mouseEnterHandler(40, "black", "normal")}
                     >
                         <h2 className="text-xl">Made with</h2>
-                        <a 
+                        <a
                             className="h-7 w-7 hover:cursor-pointer"
                             href="https://nextjs.org/"
                             target="_blank"
                         >
-                            <Image src={NextIcon} alt="NextJS Icon" quality={50} height={28} className=""/>
+                            <Image src={NextIcon} alt="NextJS Icon" quality={50} height={28} className="" />
                         </a>
                         <h2 className="text-xl">in Jakarta, Indonesia.</h2>
                     </div>
                 </div>
-                <div 
+                <div
                     className="flex w-full gap-5 flex-wrap"
                     style={{
                         justifyContent: props.isMobile ? "start" : "end"
                     }}
                 >
-                    {contacts.map((c, n)=>{
+                    {contacts.map((c, n) => {
                         return (
-                            <ContactLinks 
+                            <ContactLinks
                                 contactData={c}
                                 mouseEnterHandler={props.mouseEnterHandler}
                                 mouseLeaveHandler={props.mouseLeaveHandler}

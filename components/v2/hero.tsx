@@ -5,6 +5,7 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
+  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
@@ -13,14 +14,14 @@ import Logo from "./logo";
 import BlurText from "./blurtext";
 
 export default function Hero(props: {
-  heroRef?: RefObject<HTMLDivElement | null>
+  ref?: RefObject<HTMLDivElement | null>
 }) {
   const paragraphA = useRef<HTMLDivElement>(null);
   const paragraphB = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
-    target: props.heroRef,
-    offset: ["start start", "end end"],
+    target: props.ref,
+    offset: ["start start", "end start"],
   });
 
   const posX = useMotionValue(0);
@@ -31,19 +32,27 @@ export default function Hero(props: {
   const posXB = useTransform(
     () => posX.get() - (paragraphB.current?.getBoundingClientRect().left || 100)
   );
-  const size = useSpring(60, { stiffness: 300, damping: 15 });
-  const maskB = useMotionTemplate`radial-gradient(circle ${size}px at ${posXB}px ${posY}px, #000 30%, transparent 100%)`;
-  const maskA = useMotionTemplate`radial-gradient(circle ${size}px at ${posXA}px ${posY}px, #000 30%, transparent 100%)`;
+  const posYA = useTransform(
+    () => posY.get() - (paragraphA.current?.getBoundingClientRect().top || 100)
+  );
+  const posYB = useTransform(
+    () => posY.get() - (paragraphB.current?.getBoundingClientRect().top || 100)
+  );
+
+  const size = useSpring(0, { stiffness: 300, damping: 15 });
+  const maskA = useMotionTemplate`radial-gradient(circle ${size}px at ${posXA}px ${posYA}px, #000 30%, transparent 100%)`;
+  const maskB = useMotionTemplate`radial-gradient(circle ${size}px at ${posXB}px ${posYB}px, #000 30%, transparent 100%)`;
 
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0])
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.95])
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.05])
   const heroBlur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(10px)"])
-  const heroRotate = useTransform(scrollYProgress, [0, 1], [0, 60])
+  const heroRotate = useTransform(scrollYProgress, [0, 1], [0, 15])
+  const heroTranslate = useTransform(scrollYProgress, [0, 1], [0, -20])
 
   function handleMove(e: MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.pageX - rect.left;
+    const y = e.pageY - rect.top;
     posX.set(x);
     posY.set(y);
   }
@@ -57,79 +66,78 @@ export default function Hero(props: {
   }
 
   const paragraphAValue =
-    "I'm Rayhan, an enthusiast in data science and AI with a strong interest in transforming data into practical solutions. My work spans a range of challenges, from training XGboost models to categorize obesity based on health metrics, to applying TrOCR to read doctor's handwritten prescriptions, and building LSTMs for forecasting sales, pricing, and air quality.";
+    "Rayhan is an enthusiast in data science and AI with a strong interest in transforming data into practical solutions. His work spans a range of challenges, from training XGboost models to categorizing obesity based on health metrics, and building LSTMs for forecasting sales, pricing, and air quality.";
   const paragraphBValue =
-    "I focus not only on model performance but also on efficiency. Exploring techniques like data augmentation, precision trade-offs, and lightweight architectures to create solutions that are both effective and scalable. To me, AI is about blending technical skill with creativity to uncover insights and solve real-world problems.";
-
-  // const paragraphAValue = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  // const paragraphBValue = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "He focuses not only on model performance but also on efficiency. Exploring techniques like data augmentation, precision trade-offs, and lightweight architectures to create solutions that are both effective and scalable. To him, AI is about blending technical skill with creativity to uncover insights and solve real-world problems.";
 
   return (
-    <motion.div
-      className="sticky top-2 px-4 w-full grid grid-cols-3"
-      onMouseMove={handleMove}
-      style={{
-        opacity: heroOpacity,
-        scale: heroScale,
-        filter: heroBlur,
-        rotateX: heroRotate
-      }}
-      ref={props.heroRef}
-    >
-      <div className="w-full h-full">
-        <Logo />
-      </div>
-      <div
-        className="relative block px-1"
-        ref={paragraphA}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
+    <div className="overflow-hidden" ref={props.ref}>
+      <motion.div
+        className="sticky top-0 px-4 pt-2 rig w-full grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-0"
+        onMouseMove={handleMove}
+        style={{
+          opacity: heroOpacity,
+          scale: heroScale,
+          filter: heroBlur,
+          rotateX: heroRotate,
+          translateY: heroTranslate
+        }}
       >
-        <BlurText
-          text={paragraphAValue}
-          delay={20}
-          animateBy="words"
-          direction="bottom"
-          className="text-sm md:text-base text-zinc-500 pointer-events-none"
-        />
-        <motion.p
-          className="text-sm md:text-base absolute top-0 left-1 right-1 text-zinc-300 pointer-events-none flex flex-wrap"
-          style={{
-            WebkitMaskImage: maskA,
-            WebkitMaskRepeat: "no-repeat",
-            maskImage: maskA,
-            maskRepeat: "no-repeat",
-          }}
+        <div className="w-full h-full">
+          <Logo />
+        </div>
+        <div
+          className="relative block px-1"
+          ref={paragraphA}
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
         >
-          <SpanWords text={paragraphAValue} />
-        </motion.p>
-      </div>
-      <div
-        className="relative block px-1"
-        ref={paragraphB}
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-      >
-        <BlurText
-          text={paragraphBValue}
-          delay={20}
-          animateBy="words"
-          direction="bottom"
-          className="text-sm md:text-base text-zinc-500 pointer-events-none"
-        />
-        <motion.p
-          className="text-sm md:text-base absolute top-0 left-1 right-1 text-zinc-300 pointer-events-none flex flex-wrap"
-          style={{
-            WebkitMaskImage: maskB,
-            WebkitMaskRepeat: "no-repeat",
-            maskImage: maskB,
-            maskRepeat: "no-repeat",
-          }}
+          <BlurText
+            text={paragraphAValue}
+            delay={20}
+            animateBy="words"
+            direction="bottom"
+            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-300 pointer-events-none"
+          />
+          <motion.p
+            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl absolute top-0 left-1 right-1 text-white pointer-events-none flex flex-wrap"
+            style={{
+              WebkitMaskImage: maskA,
+              WebkitMaskRepeat: "no-repeat",
+              maskImage: maskA,
+              maskRepeat: "no-repeat",
+            }}
+          >
+            <SpanWords text={paragraphAValue} />
+          </motion.p>
+        </div>
+        <div
+          className="relative block px-1"
+          ref={paragraphB}
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
         >
-          <SpanWords text={paragraphBValue} />
-        </motion.p>
-      </div>
-    </motion.div>
+          <BlurText
+            text={paragraphBValue}
+            delay={20}
+            animateBy="words"
+            direction="bottom"
+            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-300 pointer-events-none"
+          />
+          <motion.p
+            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl absolute top-0 left-1 right-1 text-white pointer-events-none flex flex-wrap"
+            style={{
+              WebkitMaskImage: maskB,
+              WebkitMaskRepeat: "no-repeat",
+              maskImage: maskB,
+              maskRepeat: "no-repeat",
+            }}
+          >
+            <SpanWords text={paragraphBValue} />
+          </motion.p>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 

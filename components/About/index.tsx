@@ -2,7 +2,7 @@
 
 import { FC, useRef, useState, RefObject } from "react"
 import { Property } from "csstype"
-import { Variants, motion, cubicBezier } from "motion/react"
+import { Variants, motion, cubicBezier } from "framer-motion"
 import { useIsInViewport } from "@/libs/hooks"
 
 const About: FC<{
@@ -101,8 +101,9 @@ const About: FC<{
                             animate="paragraph"
                             onMouseEnter={() => props.mouseEnterHandler(240, "white")}
                             onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}>
-                            An enthusiast in data science and AI with a strong interest in transforming data into practical solutions. My work spans a range of challenges, from training XGboost models to categorize obesity based on health metrics, to applying TrOCR to read doctor's handwritten prescriptions, and building LSTMs for forecasting sales, pricing, and air quality.
-                            I focus not only on model performance but also on efficiency. Exploring techniques like data augmentation, precision trade-offs, and lightweight architectures to create solutions that are both effective and scalable. To me, AI is about blending technical skill with creativity to uncover insights and solve real-world problems.
+                            I&apos;m a passionate web developer and data science student driven by curiosity and a commitment to impactful innovation.
+                            From crafting intuitive interfaces to architecting robust backend systems, I thrive on diverse technological challenges.
+                            Currently balancing academic pursuits with real-world experiences at <a href="http://ict.binus.edu/" target="_blank" className="text-violet-600 hover:underline">BINUS IT Division</a>, I collaborate with talented peers to push boundaries and achieve collective goals.
                         </motion.p>
                     </div>
                 </div>

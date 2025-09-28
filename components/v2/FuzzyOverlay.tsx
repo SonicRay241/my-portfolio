@@ -21,7 +21,7 @@ export default function FuzzyOverlay() {
             style={{
                 backgroundImage: `url(${blackNoise.src})`,
             }}
-            className="pointer-events-none fixed -inset-[100%] opacity-5 z-50"
+            className="pointer-events-none fixed -inset-[100%] opacity-5"
         />
     );
 };

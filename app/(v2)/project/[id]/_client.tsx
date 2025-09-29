@@ -9,7 +9,7 @@ export default function ClientPage(props: { projectId: string }) {
   const metadata = showcases[+props.projectId];
 
   return (
-    <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6">
+    <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
       <img
         className="w-full"
         src={`${metadata.path}/banner.jpg`}

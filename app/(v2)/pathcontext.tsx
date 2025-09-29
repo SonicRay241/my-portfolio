@@ -1,7 +1,7 @@
 "use client"
 
-import { usePathname } from "next/navigation"
-import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react"
 
 const PathContext = createContext<{
   path: string,
@@ -13,6 +13,25 @@ export function PathContextProvider(props: {
 }) {
   const pathname = usePathname()
   const [path, setPath] = useState(pathname)
+  const [isBrowserNav, setIsBrowserNav] = useState(false)
+
+  useEffect(() => {
+    function handlePopState() {
+      setIsBrowserNav(true)
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [])
+
+  useEffect(() => {
+    if (isBrowserNav) {
+      setPath(pathname)
+    }
+  }, [pathname])
 
   return (
     <PathContext.Provider value={{ path, setPath }}>

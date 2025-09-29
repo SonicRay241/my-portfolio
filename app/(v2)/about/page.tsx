@@ -16,7 +16,7 @@ export default function Page() {
           className="text-4xl font-medium min-w-full"
         />
         <p className="min-w-full mt-8">
-          Rayhan is an aspiring AI and Data Engineer currently pursuing a bachelor's degree in Data Science at BINUS University. His studies focus on machine learning, data engineering, and software development, complemented by hands-on projects in recommendation systems, predictive modeling, and deployment pipelines.
+          Rayhan is an aspiring AI and Data Engineer currently pursuing a bachelor&apos;s degree in Data Science at BINUS University. His studies focus on machine learning, data engineering, and software development, complemented by hands-on projects in recommendation systems, predictive modeling, and deployment pipelines.
         </p>
         <p className="min-w-full mt-6">
           His passion for AI stems from the challenge of transforming raw data into meaningful insights and building systems that can learn, adapt, and scale. Reflecting this, his skillset blends strong foundations (Python, SQL, Cloud, Full-Stack Development) with exploratory interests (Deep Learning, NLP, and scalable data pipelines).

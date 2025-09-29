@@ -101,7 +101,7 @@ const About: FC<{
                             animate="paragraph"
                             onMouseEnter={() => props.mouseEnterHandler(240, "white")}
                             onMouseLeave={() => props.mouseEnterHandler(40, "white", "normal")}>
-                            An enthusiast in data science and AI with a strong interest in transforming data into practical solutions. My work spans a range of challenges, from training XGboost models to categorize obesity based on health metrics, to applying TrOCR to read doctor's handwritten prescriptions, and building LSTMs for forecasting sales, pricing, and air quality.
+                            An enthusiast in data science and AI with a strong interest in transforming data into practical solutions. My work spans a range of challenges, from training XGboost models to categorize obesity based on health metrics, and building LSTMs for forecasting sales, pricing, and air quality.
                             I focus not only on model performance but also on efficiency. Exploring techniques like data augmentation, precision trade-offs, and lightweight architectures to create solutions that are both effective and scalable. To me, AI is about blending technical skill with creativity to uncover insights and solve real-world problems.
                         </motion.p>
                     </div>

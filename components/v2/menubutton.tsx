@@ -229,7 +229,7 @@ function MenuSelect(props: {
       <div className="relative">
         <GlassSurface width={140} height={100} borderRadius={20} />
         <motion.div
-          className="absolute top-0 left-0 w-full h-full bg-zinc-300/20 rounded-[20px] p-2 overflow-hidden"
+          className="absolute top-0 left-0 w-full h-full bg-zinc-600/50 rounded-[20px] p-2 overflow-hidden"
           ref={parentRef}
           initial={{
             opacity: 0,
@@ -265,7 +265,7 @@ function MenuSelect(props: {
           }}
         >
           <motion.div
-            className="absolute top-2 left-1.5 right-1.5 bg-zinc-300/60 rounded-[16px] pointer-events-none -z-10"
+            className="absolute top-2 left-1.5 right-1.5 bg-zinc-300/40 rounded-[16px] pointer-events-none -z-10"
             style={{
               height: bubbleHeight,
               translateY: bubbleOffsetY,

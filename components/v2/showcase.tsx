@@ -36,9 +36,9 @@ export default function Showcase(props: {
 }
 
 function Grid() {
-  const columns: ShowcaseMeta[][] = [[], [], []];
+  const columns: (ShowcaseMeta & { id: number })[][] = [[], [], []];
   showcases.forEach((val, i) => {
-    columns[i % 3].push(val);
+    columns[i % 3].push({ id: i, ...val });
   });
 
   const renderGrid = useMediaQuery("(min-width:768px)");
@@ -50,6 +50,7 @@ function Grid() {
           <div className="flex flex-col gap-6">
             {columns[0].map((v, k) => (
               <ProjectCard
+                id={v.id}
                 title={v.name}
                 description={v.description}
                 thumbnailUrl={`${v.path}/${v.thumbnailName}`}
@@ -61,6 +62,7 @@ function Grid() {
           <div className="flex flex-col gap-6">
             {columns[1].map((v, k) => (
               <ProjectCard
+                id={v.id}
                 title={v.name}
                 description={v.description}
                 thumbnailUrl={`${v.path}/${v.thumbnailName}`}
@@ -72,6 +74,7 @@ function Grid() {
           <div className="flex flex-col gap-6">
             {columns[2].map((v, k) => (
               <ProjectCard
+                id={v.id}
                 title={v.name}
                 description={v.description}
                 thumbnailUrl={`${v.path}/${v.thumbnailName}`}
@@ -85,6 +88,7 @@ function Grid() {
         <div className="flex flex-col gap-6">
           {showcases.map((v, k) => (
             <ProjectCard
+              id={k}
               title={v.name}
               description={v.description}
               thumbnailUrl={`${v.path}/${v.thumbnailName}`}

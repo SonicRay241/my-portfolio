@@ -9,23 +9,23 @@ export default function ClientPage(props: { projectId: string }) {
   const metadata = showcases[+props.projectId];
 
   return (
-    <div className="pt-6 text-zinc-100 px-6">
+    <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6">
       <img
         className="w-full"
         src={`${metadata.path}/banner.jpg`}
         alt={`${metadata.name} banner`}
       />
-      <div className="grid grid-cols-3 gap-2 pt-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-6">
         <div className="">
           <h1>{metadata.name}</h1>
           <p className="text-zinc-500">{metadata.description}</p>
         </div>
-        <div className="col-span-2 space-y-6">
-          <div className="grid grid-cols-2 gap-2">
+        <div className="md:col-span-2 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <p>{metadata.details?.firstHalf}</p>
             <p>{metadata.details?.secondHalf}</p>
           </div>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
             {metadata.role && (
               <>
                 <div className="">

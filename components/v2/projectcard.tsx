@@ -41,7 +41,7 @@ export default function ProjectCard(props: {
         
       }
       </div>
-      <p className="text-zinc-300 text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl">{props.title}</p>
+      <p className="text-zinc-100 text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl">{props.title}</p>
       <p className="text-zinc-500 text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl">{props.description}</p>
       </TransitionLink>
     </motion.div>

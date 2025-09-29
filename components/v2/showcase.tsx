@@ -18,7 +18,7 @@ export default function Showcase(props: {
 
   const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1])
   const filter = useTransform(scrollYProgress, [0, 1], ["brightness(0.5) blur(2px)", "brightness(1) blur(0px)"])
-  const pointerEvents = useTransform(scrollYProgress, [0, 0.99, 1], ["none", "none", "auto"])
+  const pointerEvents = useTransform(scrollYProgress, [0, 0.95, 1], ["none", "none", "auto"])
 
   return (
     <motion.div

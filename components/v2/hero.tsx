@@ -98,7 +98,7 @@ export default function Hero(props: {
             delay={20}
             animateBy="words"
             direction="bottom"
-            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-300 pointer-events-none"
+            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-400 pointer-events-none"
           />
           <motion.p
             className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl absolute top-0 left-1 right-1 text-white pointer-events-none flex flex-wrap"
@@ -123,7 +123,7 @@ export default function Hero(props: {
             delay={20}
             animateBy="words"
             direction="bottom"
-            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-300 pointer-events-none"
+            className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-400 pointer-events-none"
           />
           <motion.p
             className="text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl absolute top-0 left-1 right-1 text-white pointer-events-none flex flex-wrap"

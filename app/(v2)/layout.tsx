@@ -19,7 +19,7 @@ export default function Layout(props: {
   return (
     <>
       <ReactLenis root />
-      <div className={`${font.className} w-full relative min-h-screen`}>
+      <div className={`${font.className} w-full relative min-h-screen`} id="root">
         <FuzzyOverlay />
         <VersionOverlay
           font={vt323}

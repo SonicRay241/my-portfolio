@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
-  if (!(request.nextUrl.pathname.startsWith("/v1") || request.nextUrl.pathname.startsWith("/under-construction"))) {
-    return NextResponse.redirect(new URL("/under-construction", request.url));
-  }
+  return NextResponse.next()
 }
 
 export const config = {

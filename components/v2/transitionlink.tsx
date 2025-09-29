@@ -23,7 +23,6 @@ export default function TransitionLink(props: LinkProps & {
       }, 500)
     }
 
-
     if (props.onClick) props.onClick(e)
   }
 

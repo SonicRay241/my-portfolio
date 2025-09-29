@@ -32,9 +32,7 @@ export default function TransitionRoot(props: { children: ReactNode }) {
         animate={loaded ? "focus" : "blur"}
         transition={{
           type: "spring",
-          opacity: {
-            bounce: 0.1
-          }
+          bounce: 0,
         }}
       >
         {props.children}

@@ -103,13 +103,13 @@ export default function Menubutton() {
             }}
             onTapStart={() => buttonScale.set(1.1)}
             onTapCancel={() => buttonScale.set(1)}
-            className="peer fixed bottom-4 right-4 w-10 h-10 flex justify-center items-center rounded-full"
+            className="peer fixed bottom-4 right-4 w-10 h-10 flex justify-center items-center rounded-full bg-black/40"
             onClick={() => {
               setMenuOpen(true)
               buttonScale.set(1)
             }}
           >
-            <MenuIcon className="size-2 text-zinc-300" />
+            <MenuIcon className="size-2 text-zinc-100" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -229,7 +229,7 @@ function MenuSelect(props: {
       <div className="relative">
         <GlassSurface width={140} height={100} borderRadius={20} />
         <motion.div
-          className="absolute top-0 left-0 w-full h-full bg-zinc-600/50 rounded-[20px] p-2 overflow-hidden"
+          className="absolute top-0 left-0 w-full h-full bg-black/40 rounded-[20px] p-2 overflow-hidden"
           ref={parentRef}
           initial={{
             opacity: 0,
@@ -265,7 +265,7 @@ function MenuSelect(props: {
           }}
         >
           <motion.div
-            className="absolute top-2 left-1.5 right-1.5 bg-zinc-300/40 rounded-[16px] pointer-events-none -z-10"
+            className="absolute top-2 left-1.5 right-1.5 bg-zinc-100/20 rounded-[16px] pointer-events-none -z-10"
             style={{
               height: bubbleHeight,
               translateY: bubbleOffsetY,
@@ -309,7 +309,7 @@ function MenuSelectButton(
 
   return (
     <TransitionLink
-      className={`flex items-center gap-2 w-full px-2 py-2 rounded-xl font-medium text-zinc-300/70 hover:text-zinc-300 transition-colors ${props.className}`}
+      className={`flex items-center gap-2 w-full px-2 py-2 rounded-xl font-medium text-zinc-100 hover:text-white transition-colors ${props.className}`}
       onMouseEnter={onHover}
       ref={buttonRef}
       {...buttonProps}

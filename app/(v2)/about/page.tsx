@@ -63,7 +63,7 @@ function Contact(props: {
 }) {
   return (
     <a className="group flex justify-between items-center min-w-full py-2" href={props.url} target="_blank" rel="noreferrer">
-      <h3 className="text-xl text-zinc-300 group-hover:text-violet-600 transition-colors">{props.contact}</h3>
+      <h3 className="text-xl text-zinc-100 group-hover:text-violet-600 transition-colors">{props.contact}</h3>
       <p className="text-xs text-zinc-500">{props.type}</p>
     </a>
   )

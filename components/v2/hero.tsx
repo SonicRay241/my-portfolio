@@ -12,6 +12,7 @@ import {
 } from "motion/react";
 import Logo from "./logo";
 import BlurText from "./blurtext";
+import SpanWords from "./spanwords";
 
 export default function Hero(props: {
   ref?: RefObject<HTMLDivElement | null>
@@ -138,22 +139,5 @@ export default function Hero(props: {
         </div>
       </motion.div>
     </div>
-  );
-}
-
-function SpanWords(props: { text: string }) {
-  const words = props.text.split(" ");
-
-  return (
-    <>
-      {words.map((v, k) => {
-        return (
-          <span className="inline-block" key={k}>
-            {v}
-            {k < words.length - 1 && "\u00A0"}
-          </span>
-        );
-      })}
-    </>
   );
 }

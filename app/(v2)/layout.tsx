@@ -10,6 +10,7 @@ import Menubutton from "@/components/v2/menubutton";
 import TransitionRoot from "@/components/v2/transitionroot";
 import { PathContextProvider } from "./pathcontext";
 import Footer from "@/components/v2/footer";
+import Menubar from "@/components/v2/menubar";
 
 const font = aeonik
 
@@ -35,7 +36,8 @@ export default function Layout(props: {
               <Footer />
             </div>
           </TransitionRoot>
-          <Menubutton />
+          {/* <Menubutton /> */}
+          <Menubar/>
         </PathContextProvider>
       </div>
     </>

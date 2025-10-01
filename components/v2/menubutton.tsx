@@ -2,9 +2,7 @@
 
 import GlassSurface from "./glasssurface";
 import MenuIcon from "@mui/icons-material/Menu";
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import HomeIcon from '@mui/icons-material/Home';
-import ContactsIcon from '@mui/icons-material/Contacts';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
 import { AnimatePresence, motion, useSpring } from "motion/react";
 import {
@@ -271,7 +269,6 @@ function MenuSelect(props: {
               translateY: bubbleOffsetY,
               opacity: bubbleOpacity
             }}
-
           />
           <MenuSelectButton trigger={menuHover} href="/" onClick={props.onClose}>
             <HomeIcon fontSize="small" className="" />

@@ -16,6 +16,9 @@ const config: Config = {
       screens: {
         "3xl": "1920px",
         "4xl": "2560px",
+      },
+      fontSize: {
+        "2xs": ["0.625rem", "0.875rem"]
       }
     },
   },

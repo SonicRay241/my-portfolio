@@ -25,7 +25,7 @@ export default function BackButton() {
   }
 
   return (
-    <div className="fixed top-4 left-4">
+    <div className="relative w-10 h-10 pointer-events-auto">
       <motion.div
         className="absolute top-0 left-0"
         initial={{
@@ -91,7 +91,7 @@ export default function BackButton() {
         }}
         onTapStart={() => buttonScale.set(1.1)}
         onTapCancel={() => buttonScale.set(1)}
-        className="peer absolute top-0 left-0 w-10 h-10 flex justify-center items-center rounded-full bg-black/40"
+        className="peer absolute top-0 left-0 w-10 h-10 flex justify-center items-center rounded-full bg-black/60"
         onClick={(e) => {
           buttonScale.set(1);
           handleTransition(e);

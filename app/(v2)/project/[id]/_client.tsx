@@ -73,9 +73,9 @@ export default function ClientPage(props: { projectId: string }) {
           </div>
         </div>
       </div>
-      <OverlayPortal>
+      {/* <OverlayPortal>
         <BackButton />
-      </OverlayPortal>
+      </OverlayPortal> */}
     </div>
   );
 }

@@ -50,7 +50,9 @@ export default function BackButton() {
           bounce: 0.4,
         }}
       >
-        <GlassSurface width={40} height={40} borderRadius={20} />
+        <GlassSurface width={40} height={40} borderRadius={20}>
+          <div className="w-full h-full rounded-full bg-black/60"></div>
+        </GlassSurface>
       </motion.div>
       <motion.button
         initial={{

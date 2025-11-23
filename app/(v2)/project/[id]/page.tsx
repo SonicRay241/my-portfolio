@@ -1,7 +1,10 @@
+"use client";
+
 import ClientPage from "./_client"
+import { useParams } from 'next/navigation';
 
-export default async function Page(props: PageProps<'/project/[id]'>) {
-  const { id } = await props.params
+export default function Page() {
+  const { id }: { id: string | undefined } = useParams();
 
-  return <ClientPage projectId={id}/>
+  return <ClientPage projectId={id || ""}/>
 }

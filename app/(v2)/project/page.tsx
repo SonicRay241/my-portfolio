@@ -3,8 +3,17 @@
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { showcases } from "@/libs/showcasemeta";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function ClientPage() {
+export default function Page() {
+  return (
+    <Suspense>
+      <ClientPage />
+    </Suspense>
+  )
+}
+
+function ClientPage() {
   const searchParams = useSearchParams();
   const id = searchParams.get('id') || "";
 

@@ -15,9 +15,11 @@ export default function TransitionLink(props: LinkProps & {
 
   function handleTransition(e: MouseEvent<HTMLAnchorElement>) {
     e.preventDefault()
-    setPath(props.href.toString())
+    const url = new URL(props.href.toString(), window.location.origin);
 
-    if (path != props.href.toString()) {
+    setPath(url.pathname)
+
+    if (path != url.pathname) {
       setTimeout(() => {
         router.push(props.href.toString())
       }, 500)

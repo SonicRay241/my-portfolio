@@ -2,11 +2,22 @@
 
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { showcases } from "@/libs/showcasemeta";
-import BackButton from "@/components/v2/backbutton";
-import OverlayPortal from "@/components/v2/overlayportal";
+import { useSearchParams } from "next/navigation";
 
-export default function ClientPage(props: { projectId: string }) {
-  const metadata = showcases[+props.projectId];
+export default function ClientPage() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id') || "";
+
+  if (!id || isNaN(+id) || +id < 0 || +id >= showcases.length) {
+    return (
+      <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
+        <h1>Project Not Found</h1>
+        <p className="text-zinc-500">The project you are looking for does not exist.</p>
+      </div>
+    );
+  }
+
+  const metadata = showcases[+id];
 
   return (
     <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">

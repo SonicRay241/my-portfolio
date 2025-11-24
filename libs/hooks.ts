@@ -1,22 +1,21 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef, MutableRefObject } from "react"
+import { useState, useEffect, useRef, RefObject } from "react";
 
-function useIsInViewport(ref: MutableRefObject<any>) {
-    const [isIntersecting, setIsIntersecting] = useState(false);
-    const observer = useRef<IntersectionObserver | null>(null)
-    
-    useEffect(() => {
-        observer.current = new IntersectionObserver(([entry]) => setIsIntersecting(entry.isIntersecting),),
-        observer.current?.observe(ref.current);
-        
+export function useIsInViewport(ref: RefObject<any>) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const observer = useRef<IntersectionObserver | null>(null);
 
-        return () => {
-            observer.current?.disconnect();
-        };
-    }, [ref, observer]);
+  useEffect(() => {
+    (observer.current = new IntersectionObserver(([entry]) =>
+      setIsIntersecting(entry.isIntersecting)
+    )),
+      observer.current?.observe(ref.current);
 
-    return isIntersecting;
+    return () => {
+      observer.current?.disconnect();
+    };
+  }, [ref, observer]);
+
+  return isIntersecting;
 }
-
-export { useIsInViewport }

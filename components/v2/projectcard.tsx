@@ -22,7 +22,7 @@ export default function ProjectCard(props: {
     >
       <TransitionLink
         className="block"
-        href={`/project?id=${props.id}`}
+        href={`/project/${props.id}`}
       >
         <div className="bg-white mb-2">
           {props.thumbnailType == "image" ? (

@@ -93,7 +93,7 @@ export default function BackButton() {
         }}
         onTapStart={() => buttonScale.set(1.1)}
         onTapCancel={() => buttonScale.set(1)}
-        className="peer absolute top-0 left-0 w-10 h-10 flex justify-center items-center rounded-full bg-black/60"
+        className="peer absolute top-0 left-0 w-10 h-10 flex justify-center items-center rounded-full"
         onClick={(e) => {
           buttonScale.set(1);
           handleTransition(e);

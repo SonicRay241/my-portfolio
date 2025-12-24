@@ -20,7 +20,7 @@ export default function Layout(props: {
   return (
     <>
       <ReactLenis root />
-      <div className={`${font.className} w-full relative min-h-screen`} id="root">
+      <div className={`${font.className} w-full relative min-h-screen hide-scrollbar`} id="root">
         <FuzzyOverlay />
         <VersionOverlay
           font={vt323}
@@ -37,7 +37,7 @@ export default function Layout(props: {
             </div>
           </TransitionRoot>
           {/* <Menubutton /> */}
-          <Menubar/>
+          <Menubar />
         </PathContextProvider>
       </div>
     </>

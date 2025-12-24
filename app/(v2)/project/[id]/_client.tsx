@@ -1,7 +1,6 @@
-"use client";
-
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { showcases } from "@/libs/showcasemeta";
+import CaseStudy from "./_caseStudy";
 
 export default function ClientPage(props: {
   projectId: string
@@ -15,10 +14,12 @@ export default function ClientPage(props: {
         src={`${metadata.path}/banner.jpg`}
         alt={`${metadata.name} banner`}
       />
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-6">
-        <div className="">
-          <h1>{metadata.name}</h1>
-          <p className="text-zinc-500">{metadata.description}</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-6 items-stretch">
+        <div>
+          <div className="md:sticky top-6">
+            <h1>{metadata.name}</h1>
+            <p className="text-zinc-500">{metadata.description}</p>
+          </div>
         </div>
         <div className="md:col-span-2 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -60,9 +61,17 @@ export default function ClientPage(props: {
                   <p className="text-zinc-500">
                     Tool{metadata.tools.length > 1 && "s"}
                   </p>
-                  {metadata.tools.map((v, k) => (
-                    <p key={k}>{v}</p>
-                  ))}
+                  {metadata.tools.map((v, k) => {
+                    if (Array.isArray(v)) {
+                      return (
+                        <a className="flex items-center gap-2 hover:text-violet-600 transition-colors" target="_blank" href={v[1]} key={k}>
+                          <span>{v[0]}</span>
+                          <ArrowOutwardIcon fontSize="small" />
+                        </a>
+                      )
+                    }
+                    return <p key={k}>{v}</p>
+                  })}
                 </div>
               </>
             )}
@@ -71,11 +80,13 @@ export default function ClientPage(props: {
             {metadata.links &&
               metadata.links.map((v, k) => <Link key={k} {...v} />)}
           </div>
+          {metadata.caseStudy && (
+            <CaseStudy
+              mdUrl={`${metadata.path}/case-study.md`}
+            />
+          )}
         </div>
       </div>
-      {/* <OverlayPortal>
-        <BackButton />
-      </OverlayPortal> */}
     </div>
   );
 }
@@ -83,7 +94,7 @@ export default function ClientPage(props: {
 function Link(props: { name: string; url: string }) {
   return (
     <a
-      className="p-4 flex flex-nowrap justify-between bg-zinc-800 text-zinc-500 rounded-lg transition-colors hover:bg-violet-600 hover:text-zinc-100"
+      className="p-4 flex flex-nowrap justify-between items-center bg-zinc-800 text-zinc-500 rounded-lg transition-colors hover:bg-violet-600 hover:text-zinc-100"
       href={props.url}
       target="_blank"
     >

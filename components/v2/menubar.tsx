@@ -180,9 +180,8 @@ function Menubutton(props: {
   return (
     <TransitionLink
       href={props.href}
-      className={`flex flex-col items-center justify-center transition-colors h-full aspect-square ${
-        path == props.href ? "text-violet-100" : "text-zinc-400"
-      }`}
+      className={`flex flex-col items-center justify-center transition-colors h-full aspect-square ${path == props.href ? "text-violet-100" : "text-zinc-400"
+        }`}
       ref={ref}
     >
       {props.icon}

@@ -19,6 +19,9 @@ const config: Config = {
       },
       fontSize: {
         "2xs": ["0.625rem", "0.875rem"]
+      },
+      maxWidth: {
+        "8xl": "112.5rem"
       }
     },
   },

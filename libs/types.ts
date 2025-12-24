@@ -14,7 +14,7 @@ type TProjectData = {
     bgFrom: Property.BackgroundColor,
     bgTo: Property.BackgroundColor,
     description: string,
-    urls: TProjectURL[]
+    urls: TProjectURL[],
 }
 
 type TNavChild = {

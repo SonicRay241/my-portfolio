@@ -6,7 +6,7 @@ export const dynamicParams = false
 export default async function Page(props: PageProps<'/project/[id]'>) {
   const { id } = await props.params
 
-  return <ClientPage projectId={id}/>
+  return <ClientPage projectId={id} />
 }
 
 export async function generateStaticParams() {

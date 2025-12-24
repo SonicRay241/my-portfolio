@@ -74,7 +74,7 @@ export default async function CaseStudy(props: {
           },
           pre(props) {
             const { node, className, ...rest } = props
-            return <pre className="text-sm xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl mt-6 bg-zinc-800 p-4 rounded-lg" {...rest} />
+            return <pre className="text-sm xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl mt-6 bg-zinc-800 p-4 rounded-lg overflow-auto" {...rest} />
           },
         }}
       >

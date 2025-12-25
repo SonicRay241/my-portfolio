@@ -50,7 +50,15 @@ export default function BackButton() {
           bounce: 0.4,
         }}
       >
-        <GlassSurface width={40} height={40} borderRadius={20}>
+        <GlassSurface
+          width={40}
+          height={40}
+          borderRadius={20}
+          borderWidth={0}
+          greenOffset={5}
+          blueOffset={10}
+          distortionScale={-60}
+        >
           <div className="w-full h-full rounded-full bg-black/60"></div>
         </GlassSurface>
       </motion.div>

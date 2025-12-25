@@ -6,6 +6,7 @@ export type ShowcaseMeta = {
   path: string;
   thumbnailType: "image" | "video"
   thumbnailName: string;
+  bannerType?: "image" | "video"
   links?: {
     name: string,
     url: string,
@@ -90,14 +91,15 @@ export const showcases: Record<string, ShowcaseMeta> = {
       }
     ],
     details: {
-      firstHalf: "This project demonstrates a content-based recommendation system that suggests similar items using cosine similarity.",
-      secondHalf: "The system is deployed with FastAPI as a backend API and Streamlit as a user-friendly frontend interface."
+      firstHalf: "This study presents a content-based recommendation system that suggests similar Netflix titles by analyzing textual metadata, enabling users to discover relevant content without relying on viewing history or user interaction data.",
+      secondHalf: "The system is deployed with FastAPI as a backend and Streamlit as the frontend interface."
     },
     tools: [
       "FastAPI",
       "Sklearn",
       "Streamlit",
-    ]
+    ],
+    caseStudy: true
   },
   "obesity-classifier": {
     name: "Obesity classifier",
@@ -105,6 +107,7 @@ export const showcases: Record<string, ShowcaseMeta> = {
     path: "/assets/showcase/obesity-prediction",
     thumbnailType: "image",
     thumbnailName: "image.jpg",
+    bannerType: "video",
     links: [
       {
         name: "Github",
@@ -112,15 +115,16 @@ export const showcases: Record<string, ShowcaseMeta> = {
       }
     ],
     details: {
-      firstHalf: "This project demonstrates a complete machine learning pipeline for predicting obesity levels using user-provided health metrics.",
-      secondHalf: "The model is deployed using FastAPI as a backend API and Streamlit as a user-friendly frontend interface."
+      firstHalf: "This study aims to develop a multi-class obesity classification model using demographic, lifestyle, and behavioral data, leveraging machine learning techniques to accurately predict obesity severity levels.",
+      secondHalf: "The model is deployed using FastAPI as a backend and Streamlit as the frontend interface."
     },
     tools: [
       "FastAPI",
       "Sklearn",
       "Streamlit",
       "XGBoost",
-    ]
+    ],
+    caseStudy: true
   },
   "manna-kofie": {
     name: "Manna Kofie",

@@ -1,6 +1,8 @@
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coldarkDark as theme } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 export default async function CaseStudy(props: {
   mdUrl: string
@@ -75,6 +77,29 @@ export default async function CaseStudy(props: {
           pre(props) {
             const { node, className, ...rest } = props
             return <pre className="text-sm xl:text-base 2xl:text-lg 3xl:text-xl 4xl:text-2xl mt-6 bg-zinc-800 p-4 rounded-lg overflow-auto" {...rest} />
+          },
+          code({ node, inline, className, children, ...props }: any) {
+            const match = /language-(\w+)/.exec(className || '');
+
+            return !inline && match ? (
+              <SyntaxHighlighter
+                style={theme}
+                customStyle={{
+                  background: 'none',
+                  padding: 0,
+                  margin: 0,
+                }}
+                PreTag="div"
+                language={match[1]}
+                {...props}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            );
           },
         }}
       >

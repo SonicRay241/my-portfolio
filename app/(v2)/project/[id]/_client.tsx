@@ -9,11 +9,25 @@ export default function ClientPage(props: {
 
   return (
     <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
-      <img
-        className="w-full"
-        src={`${metadata.path}/banner.jpg`}
-        alt={`${metadata.name} banner`}
-      />
+      {metadata.bannerType == "video" ? (
+        <video
+          className="w-full h-auto block"
+          src={`${metadata.path}/banner.mp4`}
+          controls={false}
+          playsInline
+          loop
+          muted
+          autoPlay
+        />
+      )
+        : (
+          <img
+            className="w-full"
+            src={`${metadata.path}/banner.jpg`}
+            alt={`${metadata.name} banner`}
+          />
+        )
+      }
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-6 items-stretch">
         <div>
           <div className="md:sticky top-6">

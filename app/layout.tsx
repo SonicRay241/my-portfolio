@@ -6,10 +6,11 @@ const font = Rubik({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Rayhan Permana",
-  description: "Rayhan's Portfolio Website",
+  description: "I like making stuff.",
   metadataBase: new URL("https://rayy.dev"),
   openGraph: {
     images: '/og-image.png',
+    type: "website"
   },
 };
 
@@ -20,21 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Rayhan Permana</title>
-    <meta name="title" content="Rayhan Permana" />
-    <meta name="description" content="I create software." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rayy.dev" />
-    <meta property="og:title" content="Rayhan Permana" />
-    <meta property="og:description" content="I create software." />
-
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://rayy.dev" />
-    <meta property="twitter:title" content="Rayhan Permana" />
-    <meta property="twitter:description" content="I create software." />
-
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <body className={font.className}>
         {children}
       </body>

@@ -144,59 +144,39 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Andreas Immanuel Lukito (CEO)"
     ]
   },
-  "realtime-pricing-pipeline": {
-    name: "Realtime pricing pipeline",
-    description: "Project",
-    path: "/assets/showcase/realtime-pricing-pipeline",
-    thumbnailType: "video",
-    thumbnailName: "video.mp4",
-    links: [
-      {
-        name: "Github",
-        url: "https://github.com/SonicRay241/project-omega"
-      }
-    ],
-    details: {
-      firstHalf: "This project demonstrates a real-time data pipeline that calculates product prices based on stock and demand of each product.",
-      secondHalf: "The system integrates Flask for AI model deployment, RabbitMQ-Stream for real-time message streaming, and ElysiaJS as the backend consumer and server."
-    },
-    collaborators: [
-      "Andreas Immanuel Lukito"
-    ],
-    tools: [
-      "ElysiaJS",
-      "Flask",
-      "RabbitMQ Stream",
-      "Websocket",
-    ]
-  },
-  "air-quality-lstm": {
-    name: "Air quality LSTM",
-    description: "Project",
-    path: "/assets/showcase/air-quality-lstm",
-    thumbnailType: "image",
-    thumbnailName: "image.jpg",
-    links: [
-      {
-        name: "Github",
-        url: "https://github.com/SonicRay241/time-series-air-quality-prediction"
-      }
-    ],
-    details: {
-      firstHalf: "This project demonstrates a deep learning model for predicting air temperature based on historical air quality and environmental data.",
-      secondHalf: "The model is built with PyTorch using an LSTM (Long Short-Term Memory) architecture and visualized with Matplotlib."
-    },
-    tools: [
-      "PyTorch",
-      "Sklearn",
-    ]
-  },
+  // "realtime-pricing-pipeline": {
+  //   name: "Realtime pricing pipeline",
+  //   description: "Project",
+  //   path: "/assets/showcase/realtime-pricing-pipeline",
+  //   thumbnailType: "video",
+  //   thumbnailName: "video.mp4",
+  //   links: [
+  //     {
+  //       name: "Github",
+  //       url: "https://github.com/SonicRay241/project-omega"
+  //     }
+  //   ],
+  //   details: {
+  //     firstHalf: "This project demonstrates a real-time data pipeline that calculates product prices based on stock and demand of each product.",
+  //     secondHalf: "The system integrates Flask for AI model deployment, RabbitMQ-Stream for real-time message streaming, and ElysiaJS as the backend consumer and server."
+  //   },
+  //   collaborators: [
+  //     "Andreas Immanuel Lukito"
+  //   ],
+  //   tools: [
+  //     "ElysiaJS",
+  //     "Flask",
+  //     "RabbitMQ Stream",
+  //     "Websocket",
+  //   ]
+  // },
   "hotel-booking-prediction": {
     name: "Hotel booking confirmation predictor",
     description: "Project",
     path: "/assets/showcase/hotel-booking-prediction",
     thumbnailType: "image",
     thumbnailName: "image.jpg",
+    bannerType: "video",
     links: [
       {
         name: "Github",
@@ -212,6 +192,29 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Sklearn",
       "Streamlit",
       "XGBoost",
-    ]
+    ],
+    caseStudy: true
+  },
+  "air-quality-lstm": {
+    name: "Air quality LSTM",
+    description: "Project",
+    path: "/assets/showcase/air-quality-lstm",
+    thumbnailType: "image",
+    thumbnailName: "image.jpg",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/SonicRay241/time-series-air-quality-prediction"
+      }
+    ],
+    details: {
+      firstHalf: "This study focuses on predicting hourly ambient temperature (AT) as a proxy target using historical air quality and meteorological data, leveraging a Long Short-Term Memory (LSTM) neural network to capture temporal dependencies in multivariate time-series data.",
+      secondHalf: "The model is built with PyTorch using an LSTM (Long Short-Term Memory) architecture and visualized with Matplotlib."
+    },
+    tools: [
+      "PyTorch",
+      "Sklearn",
+    ],
+    caseStudy: true
   },
 }

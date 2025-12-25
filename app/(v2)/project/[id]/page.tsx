@@ -1,6 +1,6 @@
 import { showcases } from "@/libs/showcasemeta"
 import ClientPage from "./_client"
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 
 export const dynamicParams = false
 

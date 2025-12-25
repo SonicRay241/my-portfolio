@@ -24,8 +24,8 @@ export type ShowcaseMeta = {
   caseStudy?: boolean;
 }
 
-export const showcases: ShowcaseMeta[] = [
-  {
+export const showcases: Record<string, ShowcaseMeta> = {
+  "f1-tyre-strategy-optimizer": {
     name: "Formula 1 tyre strategy optimizer",
     description: "Project",
     path: "/assets/showcase/f1-tyre-strategy-optimizer",
@@ -52,7 +52,7 @@ export const showcases: ShowcaseMeta[] = [
     ],
     caseStudy: true
   },
-  {
+  "telkom-intern": {
     name: "Telkom vocational high school",
     description: "Full stack intern",
     path: "/assets/showcase/telkom-intern",
@@ -77,7 +77,7 @@ export const showcases: ShowcaseMeta[] = [
       end: new Date("2022-03-01")
     }
   },
-  {
+  "movie-recommendation-model": {
     name: "Movie recommendation system",
     description: "Project",
     path: "/assets/showcase/movie-recommendation-model",
@@ -99,7 +99,7 @@ export const showcases: ShowcaseMeta[] = [
       "Streamlit",
     ]
   },
-  {
+  "obesity-classifier": {
     name: "Obesity classifier",
     description: "Project",
     path: "/assets/showcase/obesity-prediction",
@@ -122,7 +122,7 @@ export const showcases: ShowcaseMeta[] = [
       "XGBoost",
     ]
   },
-  {
+  "manna-kofie": {
     name: "Manna Kofie",
     description: "Project",
     path: "/assets/showcase/manna-kofie",
@@ -140,29 +140,7 @@ export const showcases: ShowcaseMeta[] = [
       "Andreas Immanuel Lukito (CEO)"
     ]
   },
-  {
-    name: "Hotel booking confirmation predictor",
-    description: "Project",
-    path: "/assets/showcase/hotel-booking-prediction",
-    thumbnailType: "image",
-    thumbnailName: "image.jpg",
-    links: [
-      {
-        name: "Github",
-        url: "https://github.com/SonicRay241/streamlit-booking-prediction"
-      }
-    ],
-    details: {
-      firstHalf: "This project demonstrates a machine learning model that predicts whether a hotel booking will be confirmed or canceled.",
-      secondHalf: "The model is trained using XGBoost and deployed with Streamlit as a simple, interactive web application."
-    },
-    tools: [
-      "FastAPI",
-      "Sklearn",
-      "Streamlit",
-      "XGBoost",
-    ]
-  },{
+  "hotel-booking-prediction": {
     name: "Hotel booking confirmation predictor",
     description: "Project",
     path: "/assets/showcase/hotel-booking-prediction",
@@ -185,7 +163,7 @@ export const showcases: ShowcaseMeta[] = [
       "XGBoost",
     ]
   },
-  {
+  "air-quality-lstm": {
     name: "Air quality LSTM",
     description: "Project",
     path: "/assets/showcase/air-quality-lstm",
@@ -206,7 +184,7 @@ export const showcases: ShowcaseMeta[] = [
       "Sklearn",
     ]
   },
-  {
+  "realtime-pricing-pipeline": {
     name: "Realtime pricing pipeline",
     description: "Project",
     path: "/assets/showcase/realtime-pricing-pipeline",
@@ -232,4 +210,4 @@ export const showcases: ShowcaseMeta[] = [
       "Websocket",
     ]
   },
-]
+}

@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import TransitionLink from "./transitionlink";
 
 export default function ProjectCard(props: {
-  id: number
+  id: string
   title: string;
   description: string;
   thumbnailUrl: string;

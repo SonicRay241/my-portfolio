@@ -23,7 +23,7 @@ export default async function Page(props: PageProps<'/project/[id]'>) {
 }
 
 export async function generateStaticParams() {
-  const paths = [...showcases.keys().map((id) => ({ id: id.toString() }))]
+  const paths = Object.keys(showcases).map((id) => ({ id: id.toString() }))
 
   return paths
 }

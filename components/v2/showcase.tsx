@@ -36,9 +36,9 @@ export default function Showcase(props: {
 }
 
 function Grid() {
-  const columns: (ShowcaseMeta & { id: number })[][] = [[], [], []];
-  showcases.forEach((val, i) => {
-    columns[i % 3].push({ id: i, ...val });
+  const columns: (ShowcaseMeta & { id: string })[][] = [[], [], []];
+  Object.entries(showcases).forEach((val, i) => {
+    columns[i % 3].push({ id: val[0], ...val[1] });
   });
 
   const renderGrid = useMediaQuery("(min-width:768px)");
@@ -86,13 +86,13 @@ function Grid() {
         </>
       ) : (
         <div className="flex flex-col gap-6">
-          {showcases.map((v, k) => (
+          {Object.entries(showcases).map((v, k) => (
             <ProjectCard
-              id={k}
-              title={v.name}
-              description={v.description}
-              thumbnailUrl={`${v.path}/${v.thumbnailName}`}
-              thumbnailType={v.thumbnailType}
+              id={v[0]}
+              title={v[1].name}
+              description={v[1].description}
+              thumbnailUrl={`${v[1].path}/${v[1].thumbnailName}`}
+              thumbnailType={v[1].thumbnailType}
               key={k}
             />
           ))}

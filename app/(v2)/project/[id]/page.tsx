@@ -9,10 +9,15 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { id } = await props.params
   const project = showcases[id]
+  const ogImage = project.thumbnailType == "image" ? `${project.path}/${project.thumbnailName}` : `${project.path}/banner.jpg`;
 
   return {
-    title: "Project",
-    description: project.name,
+    title: project.name,
+    description: project.details?.firstHalf || project.description,
+    openGraph: {
+      images: ogImage,
+      type: "website"
+    }
   };
 }
 

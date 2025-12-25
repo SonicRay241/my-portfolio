@@ -140,50 +140,6 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Andreas Immanuel Lukito (CEO)"
     ]
   },
-  "hotel-booking-prediction": {
-    name: "Hotel booking confirmation predictor",
-    description: "Project",
-    path: "/assets/showcase/hotel-booking-prediction",
-    thumbnailType: "image",
-    thumbnailName: "image.jpg",
-    links: [
-      {
-        name: "Github",
-        url: "https://github.com/SonicRay241/streamlit-booking-prediction"
-      }
-    ],
-    details: {
-      firstHalf: "This project demonstrates a machine learning model that predicts whether a hotel booking will be confirmed or canceled.",
-      secondHalf: "The model is trained using XGBoost and deployed with Streamlit as a simple, interactive web application."
-    },
-    tools: [
-      "FastAPI",
-      "Sklearn",
-      "Streamlit",
-      "XGBoost",
-    ]
-  },
-  "air-quality-lstm": {
-    name: "Air quality LSTM",
-    description: "Project",
-    path: "/assets/showcase/air-quality-lstm",
-    thumbnailType: "image",
-    thumbnailName: "image.jpg",
-    links: [
-      {
-        name: "Github",
-        url: "https://github.com/SonicRay241/time-series-air-quality-prediction"
-      }
-    ],
-    details: {
-      firstHalf: "This project demonstrates a deep learning model for predicting air temperature based on historical air quality and environmental data.",
-      secondHalf: "The model is built with PyTorch using an LSTM (Long Short-Term Memory) architecture and visualized with Matplotlib."
-    },
-    tools: [
-      "PyTorch",
-      "Sklearn",
-    ]
-  },
   "realtime-pricing-pipeline": {
     name: "Realtime pricing pipeline",
     description: "Project",
@@ -208,6 +164,50 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Flask",
       "RabbitMQ Stream",
       "Websocket",
+    ]
+  },
+  "air-quality-lstm": {
+    name: "Air quality LSTM",
+    description: "Project",
+    path: "/assets/showcase/air-quality-lstm",
+    thumbnailType: "image",
+    thumbnailName: "image.jpg",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/SonicRay241/time-series-air-quality-prediction"
+      }
+    ],
+    details: {
+      firstHalf: "This project demonstrates a deep learning model for predicting air temperature based on historical air quality and environmental data.",
+      secondHalf: "The model is built with PyTorch using an LSTM (Long Short-Term Memory) architecture and visualized with Matplotlib."
+    },
+    tools: [
+      "PyTorch",
+      "Sklearn",
+    ]
+  },
+  "hotel-booking-prediction": {
+    name: "Hotel booking confirmation predictor",
+    description: "Project",
+    path: "/assets/showcase/hotel-booking-prediction",
+    thumbnailType: "image",
+    thumbnailName: "image.jpg",
+    links: [
+      {
+        name: "Github",
+        url: "https://github.com/SonicRay241/streamlit-booking-prediction"
+      }
+    ],
+    details: {
+      firstHalf: "This project demonstrates a machine learning model that predicts whether a hotel booking will be confirmed or canceled.",
+      secondHalf: "The model is trained using XGBoost and deployed with Streamlit as a simple, interactive web application."
+    },
+    tools: [
+      "FastAPI",
+      "Sklearn",
+      "Streamlit",
+      "XGBoost",
     ]
   },
 }

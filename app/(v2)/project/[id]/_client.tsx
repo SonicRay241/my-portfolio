@@ -18,6 +18,7 @@ export default function ClientPage(props: {
           loop
           muted
           autoPlay
+          disablePictureInPicture
         />
       )
         : (

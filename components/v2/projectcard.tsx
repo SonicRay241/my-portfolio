@@ -36,6 +36,7 @@ export default function ProjectCard(props: {
               loop
               muted
               autoPlay
+              disablePictureInPicture
             />
           )
 

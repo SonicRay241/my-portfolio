@@ -1,6 +1,8 @@
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { showcases } from "@/libs/showcasemeta";
 import CaseStudy from "./_caseStudy";
+import LazyImage from "@/components/v2/lazyimage";
+import LazyVideo from "@/components/v2/lazyvideo";
 
 export default function ClientPage(props: {
   projectId: string
@@ -10,8 +12,13 @@ export default function ClientPage(props: {
   return (
     <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
       {metadata.bannerType == "video" ? (
-        <video
-          className="w-full h-auto block"
+        // <video
+        //   className="w-full h-auto block"
+        //   src={`${metadata.path}/banner.mp4`}
+
+        // />
+        <LazyVideo
+          className="w-full min-h-[20vh]"
           src={`${metadata.path}/banner.mp4`}
           controls={false}
           playsInline
@@ -19,13 +26,17 @@ export default function ClientPage(props: {
           muted
           autoPlay
           disablePictureInPicture
+          loadingText="Loading banner..."
+          initLoad
         />
       )
         : (
-          <img
-            className="w-full"
+          <LazyImage
+            className="w-full min-h-[20vh]"
             src={`${metadata.path}/banner.jpg`}
             alt={`${metadata.name} banner`}
+            loadingText="Loading banner..."
+            initLoad
           />
         )
       }

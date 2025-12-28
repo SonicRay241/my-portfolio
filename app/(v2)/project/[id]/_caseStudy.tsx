@@ -3,6 +3,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark as theme } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import LazyImage from '@/components/v2/lazyimage';
 
 export default async function CaseStudy(props: {
   mdUrl: string
@@ -57,10 +58,8 @@ export default async function CaseStudy(props: {
             )
           },
           img(props) {
-            const { node, className, ...rest } = props
-            return (
-              <img className="w-full mt-4" {...rest} />
-            )
+            const { node, className, alt, src, ...rest } = props
+            return <LazyImage src={src} alt={alt} className="w-full mt-4" />
           },
           table(props) {
             const { node, className, ...rest } = props

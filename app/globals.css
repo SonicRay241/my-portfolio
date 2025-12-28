@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-    background-color: white;
+  background-color: white;
 }
 
 *::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 * {

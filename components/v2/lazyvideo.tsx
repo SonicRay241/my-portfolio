@@ -50,15 +50,15 @@ export default function LazyVideo(props: VideoHTMLAttributes<HTMLVideoElement> &
       )}
 
       {/* Video */}
-      {shouldLoad && (
-        <video
-          src={src}
-          className="h-auto w-full block"
-          onCanPlay={() => setIsLoaded(true)}
-          style={{ display: isLoaded ? "block" : "none" }}
-          {...rest}
-        />
-      )}
+      <video
+        src={shouldLoad ? src : undefined}
+        className="h-auto w-full block"
+        onCanPlay={() => setIsLoaded(true)}
+        onLoadedMetadata={() => setIsLoaded(true)}
+        preload={shouldLoad ? "auto" : "none"}
+        style={{ display: isLoaded ? "block" : "none" }}
+        {...rest}
+      />
     </span>
   );
 }

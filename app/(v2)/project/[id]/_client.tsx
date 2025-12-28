@@ -12,14 +12,9 @@ export default function ClientPage(props: {
   return (
     <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
       {metadata.bannerType == "video" ? (
-        // <video
-        //   className="w-full h-auto block"
-        //   src={`${metadata.path}/banner.mp4`}
-
-        // />
         <LazyVideo
           className="w-full min-h-[20vh]"
-          src={`${metadata.path}/banner.mp4`}
+          src={metadata.bannerUrl ? metadata.bannerUrl : `${metadata.path}/banner.mp4`}
           controls={false}
           playsInline
           loop

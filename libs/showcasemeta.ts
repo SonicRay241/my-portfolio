@@ -7,6 +7,7 @@ export type ShowcaseMeta = {
   thumbnailType: "image" | "video"
   thumbnailName: string;
   bannerType?: "image" | "video"
+  bannerUrl?: string;
   links?: {
     name: string,
     url: string,
@@ -108,6 +109,7 @@ export const showcases: Record<string, ShowcaseMeta> = {
     thumbnailType: "image",
     thumbnailName: "image.jpg",
     bannerType: "video",
+    bannerUrl: "https://c6epmz16xz.ufs.sh/f/j15UPhT7n8z1AqNCD7NuYSwEmVM3hWqFs6Cn2Ugy8QZcxPeR",
     links: [
       {
         name: "Github",
@@ -177,6 +179,7 @@ export const showcases: Record<string, ShowcaseMeta> = {
     thumbnailType: "image",
     thumbnailName: "image.jpg",
     bannerType: "video",
+    bannerUrl: "https://c6epmz16xz.ufs.sh/f/j15UPhT7n8z1tzvQ2jXvmPDLMG6ZF0cauWXnUqTidY39KISJ",
     links: [
       {
         name: "Github",

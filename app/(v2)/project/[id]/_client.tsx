@@ -22,6 +22,7 @@ export default function ClientPage(props: {
           autoPlay
           disablePictureInPicture
           loadingText="Loading banner..."
+          preload="auto"
           initLoad
         />
       )

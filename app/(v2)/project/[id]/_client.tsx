@@ -3,14 +3,17 @@ import { showcases } from "@/libs/showcasemeta";
 import CaseStudy from "./_caseStudy";
 import LazyImage from "@/components/v2/lazyimage";
 import LazyVideo from "@/components/v2/lazyvideo";
+import ContentList from "./_contentList";
 
-export default function ClientPage(props: {
+export default async function ClientPage(props: {
   projectId: string
 }) {
   const metadata = showcases[props.projectId];
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL!}${metadata.path}/case-study.md`)
+  const markdown = await res.text()
 
   return (
-    <div className="text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
+    <div className="relative text-zinc-100 px-4 pt-4 md:pt-6 md:px-6 text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl">
       {metadata.bannerType == "video" ? (
         <LazyVideo
           className="w-full min-h-[20vh]"
@@ -36,11 +39,20 @@ export default function ClientPage(props: {
           />
         )
       }
+      <div
+        data-sentinel
+        className="h-px"
+      />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-6 items-stretch">
         <div>
-          <div className="md:sticky top-6">
-            <h1>{metadata.name}</h1>
-            <p className="text-zinc-500">{metadata.description}</p>
+          <div className="md:sticky top-6 flex flex-col justify-center md:h-[calc(100dvh-3rem)]">
+            <div className="md:absolute top-0 left-0">
+              <h1>{metadata.name}</h1>
+              <p className="text-zinc-500">{metadata.description}</p>
+            </div>
+            {metadata.caseStudy && (
+              <ContentList markdown={markdown} />
+            )}
           </div>
         </div>
         <div className="md:col-span-2 space-y-6">
@@ -104,7 +116,7 @@ export default function ClientPage(props: {
           </div>
           {metadata.caseStudy && (
             <CaseStudy
-              mdUrl={`${metadata.path}/case-study.md`}
+              markdown={markdown}
             />
           )}
         </div>

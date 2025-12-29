@@ -4,29 +4,45 @@ import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark as theme } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import LazyImage from '@/components/v2/lazyimage';
+import { slugify } from '@/libs/utils'
 
 export default async function CaseStudy(props: {
-  mdUrl: string
+  markdown: string
 }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_URL!}${props.mdUrl}`)
-  const content = await res.text()
-
   return (
     <div className="">
       <Markdown
         remarkPlugins={[remarkGfm]}
         components={{
           h1(props) {
-            const { node, className, ...rest } = props
-            return <h1 className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl mt-8 text-zinc-500" {...rest} />
+            const { node, className, id, ...rest } = props
+            return (
+              <h1
+                className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl mt-8 text-zinc-500"
+                id={slugify(rest.children?.toString() || "")}
+                {...rest}
+              />
+            )
           },
           h2(props) {
-            const { node, className, ...rest } = props
-            return <h2 className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl mt-8 text-zinc-500" {...rest} />
+            const { node, className, id, ...rest } = props
+            return (
+              <h2
+                className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl mt-8 text-zinc-500"
+                id={slugify(rest.children?.toString() || "")}
+                {...rest}
+              />
+            )
           },
           h3(props) {
-            const { node, className, ...rest } = props
-            return <h3 className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl mt-8 text-zinc-500" {...rest} />
+            const { node, className, id, ...rest } = props
+            return (
+              <h3
+                className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl mt-8 text-zinc-500"
+                id={slugify(rest.children?.toString() || "")}
+                {...rest}
+              />
+            )
           },
           p(props) {
             const { node, className, ...rest } = props
@@ -102,7 +118,7 @@ export default async function CaseStudy(props: {
           },
         }}
       >
-        {content}
+        {props.markdown}
       </Markdown>
     </div>
   )

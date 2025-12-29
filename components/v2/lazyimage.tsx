@@ -11,8 +11,18 @@ export default function LazyImage(props: {
   initLoad?: boolean
 }) {
   const containerRef = useRef<HTMLSpanElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(props.initLoad || false);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const image = imgRef.current
+    if (!image) return
+
+    if (image.complete) {
+      setIsLoaded(true)
+    }
+  }, [])
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -42,15 +52,14 @@ export default function LazyImage(props: {
       )}
 
       {/* Image */}
-      {shouldLoad && (
-        <img
-          src={props.src}
-          alt={props.alt}
-          className="w-full"
-          onLoad={() => setIsLoaded(true)}
-          style={{ display: isLoaded ? "block" : "none" }}
-        />
-      )}
+      <img
+        ref={imgRef}
+        src={shouldLoad ? props.src : undefined}
+        alt={props.alt}
+        className="w-full"
+        onLoadedMetadata={() => setIsLoaded(true)}
+        onLoad={() => setIsLoaded(true)}
+      />
     </span>
   );
 }

@@ -101,7 +101,7 @@ export default function ContentList(props: {
     <AnimatePresence>
       {display && (
         <motion.aside
-          className="hidden md:block w-fit pr-8 max-h-[50vh] overflow-y-auto overscroll-contain [mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)]"
+          className="hidden md:block w-fit pr-8 max-h-[50dvh] overflow-y-auto overscroll-contain [mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)]"
           data-lenis-prevent
           tabIndex={0}
           initial={{

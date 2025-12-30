@@ -1,18 +1,7 @@
-import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 
 const font = Rubik({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Rayhan Permana",
-  description: "I like making stuff.",
-  metadataBase: new URL("https://rayy.dev"),
-  openGraph: {
-    images: '/og-image.png',
-    type: "website"
-  },
-};
 
 export default function RootLayout({
   children,

@@ -2,7 +2,7 @@
 
 import { slugify } from "@/libs/utils"
 import { useLenis } from "lenis/react"
-import { RefObject, useEffect, useState } from "react"
+import { RefObject, useEffect, useRef, useState } from "react"
 import { AnimatePresence, motion, useInView, useTransform } from "motion/react"
 import { useSentinel } from "@/libs/hooks"
 
@@ -39,17 +39,27 @@ function extractToc(markdown: string): TocItem[] {
 
 function useActiveHeading(ids: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null)
+  const [lastScrollTop, setLastScrolltop] = useState(0)
 
   useEffect(() => {
-    if (!ids.length) return
+    if (!ids.length || !window) return
 
     const observer = new IntersectionObserver(
       entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id)
-          }
-        })
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .map(entry => ({
+            id: entry.target.id,
+            top: entry.boundingClientRect.top
+          }))
+
+        if (!visible.length) return
+
+        if (window && lastScrollTop > window.scrollY) {
+          visible.sort((a, b) => a.top - b.top)
+        }
+
+        setActiveId(visible[0].id)
       },
       {
         rootMargin: "-70px 0px -70% 0px",
@@ -57,12 +67,22 @@ function useActiveHeading(ids: string[]) {
       }
     )
 
+    function onScroll(e: Event) {
+      const currentScrollY = window.scrollY;
+      setLastScrolltop(currentScrollY)
+    }
+
+    window.addEventListener("scroll", onScroll)
+
     ids.forEach(id => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      window.removeEventListener("scroll", onScroll)
+    }
   }, [ids])
 
   return activeId
@@ -80,8 +100,9 @@ export default function ContentList(props: {
   return (
     <AnimatePresence>
       {display && (
-        <motion.div
-          className="hidden md:block pr-8"
+        <motion.aside
+          className="hidden md:block w-fit pr-8 max-h-[50vh] overflow-y-auto overscroll-contain [mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)]"
+          data-lenis-prevent
           tabIndex={0}
           initial={{
             opacity: 0,
@@ -112,7 +133,7 @@ export default function ContentList(props: {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </motion.aside>
       )}
     </AnimatePresence>
   )
@@ -124,6 +145,16 @@ function TocItem(props: {
   isActive: boolean
 }) {
   const lenis = useLenis()
+  const buttonRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!props.isActive || !buttonRef) return
+    buttonRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    })
+  }, [props.isActive])
 
   return (
     <button
@@ -138,6 +169,7 @@ function TocItem(props: {
         }
       }}
       className={`relative transition-colors text-left flex flex-col 2xl:gap-1 ${props.isActive ? "text-white" : "text-zinc-500"}`}
+      ref={buttonRef}
     >
       <span>{props.text}</span>
       <motion.span

@@ -101,26 +101,35 @@ export default function ContentList(props: {
     <AnimatePresence>
       {display && (
         <motion.aside
-          className="hidden md:block w-fit pr-8 max-h-[50dvh] overflow-y-auto overscroll-contain [mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)]"
+          className="hidden md:block w-fit pr-8 max-h-[50dvh] overflow-y-auto overscroll-contain origin-left [mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)]"
           data-lenis-prevent
           tabIndex={0}
           initial={{
             opacity: 0,
-            x: -5,
+            x: -10,
+            scale: 0.98,
             filter: "brightness(2) blur(2px)",
             transition: {
-              bounce: 0
+              bounce: 0.2
             }
           }}
           animate={{
             opacity: 1,
             x: 0,
-            filter: "brightness(1) blur(0px)"
+            scale: 1,
+            filter: "brightness(1) blur(0px)",
+            transition: {
+              bounce: 0.2
+            }
           }}
           exit={{
             opacity: 0,
-            x: -5,
-            filter: "brightness(2) blur(2px)"
+            x: 10,
+            scale: 1.02,
+            filter: "brightness(2) blur(2px)",
+            transition: {
+              bounce: 0.2
+            }
           }}
         >
           <ul className="py-8">

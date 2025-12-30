@@ -220,4 +220,12 @@ export const showcases: Record<string, ShowcaseMeta> = {
     ],
     caseStudy: true
   },
+  // "testing": {
+  //   name: "testing",
+  //   description: "Test",
+  //   path: "/assets/showcase/test",
+  //   thumbnailType: "image",
+  //   thumbnailName: "image.jpg",
+  //   caseStudy: true
+  // }
 }

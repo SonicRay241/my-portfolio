@@ -14,50 +14,49 @@ export const vt323 = VT323({
 export const neueMontreal = localFont({
     src: [
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-Light.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-Light.otf",
             weight: "300",
             style: "normal"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-LightItalic.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-LightItalic.otf",
             weight: "300",
             style: "italic"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-Regular.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-Regular.otf",
             weight: "400",
             style: "normal"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-Italic.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-Italic.otf",
             weight: "400",
             style: "italic"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-Medium.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-Medium.otf",
             weight: "500",
             style: "normal"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-MediumItalic.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-MediumItalic.otf",
             weight: "500",
             style: "italic"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-Bold.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-Bold.otf",
             weight: "700",
             style: "normal"
         },
         {
-            path: "../fonts/NeueMontreal/NeueMontreal-BoldItalic.otf",
+            path: "../public/assets/fonts/NeueMontreal/NeueMontreal-BoldItalic.otf",
             weight: "700",
             style: "italic"
         },
-        
     ],
     display: "swap"
 })
 
 export const aeonik = localFont({
-    src: "../fonts/Aeonik/aeonikprovf.woff2"
+    src: "../public/assets/fonts/Aeonik/aeonikprovf.woff2"
 })

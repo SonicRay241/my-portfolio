@@ -1,3 +1,16 @@
 body {
     background-color: #18181b;
 }
+
+@keyframes noise-drift {
+    from {
+        transform: translate(-10%, -10%);
+    }
+    to {
+        transform: translate(10%, 10%);
+    }
+}
+
+.animate-noise {
+    animation: noise-drift 0.2s linear infinite alternate;
+}

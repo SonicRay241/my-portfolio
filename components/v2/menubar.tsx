@@ -11,7 +11,7 @@ import TransitionLink from "./transitionlink";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import { usePathContext } from "@/app/(v2)/pathcontext";
+import { usePathContext } from "@/app/(versions)/(v2)/pathcontext";
 import BackButton from "./backbutton";
 
 export default function Menubar() {

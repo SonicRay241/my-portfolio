@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathContext } from "@/app/(v2)/pathcontext";
+import { usePathContext } from "@/app/(versions)/(v2)/pathcontext";
 import GlassSurface from "./glasssurface";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { motion, useSpring } from "motion/react";

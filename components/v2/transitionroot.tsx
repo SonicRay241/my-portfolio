@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathContext } from "@/app/(v2)/pathcontext";
+import { usePathContext } from "@/app/(versions)/(v2)/pathcontext";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";

@@ -1,15 +1,17 @@
 "use client"
 
+import { useVersionModal } from "@/app/(versions)/_versionContext";
 import { motion } from "motion/react";
-import TransitionLink from "./transitionlink";
 
 export default function Logo() {
     const logoTitle = "rayhan.".split("")
     const DURATION = 0.25
     const STAGGER = 0.0125
 
+    const [showModal, setShowModal] = useVersionModal()
+
     return (
-        <TransitionLink className="flex items-center" href="/">
+        <button className="flex items-center" onClick={() => setShowModal(true)} >
             <div className="text-2xl text-violet-600 font-bold pr-1">
                 /
             </div>
@@ -61,6 +63,6 @@ export default function Logo() {
                     })}
                 </div>
             </motion.div>
-        </TransitionLink>
+        </button>
     )
 }

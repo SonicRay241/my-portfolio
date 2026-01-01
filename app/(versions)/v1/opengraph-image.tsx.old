@@ -10,7 +10,7 @@ export const runtime = 'edge'
 
 const Image = async () => {
     const montrealNormal = fetch(
-        new URL('../../public/assets/fonts/NeueMontreal/NeueMontreal-Regular.otf', import.meta.url)
+        new URL('../../../public/assets/fonts/NeueMontreal/NeueMontreal-Regular.otf', import.meta.url)
     ).then((res) => res.arrayBuffer())
 
     return new ImageResponse(

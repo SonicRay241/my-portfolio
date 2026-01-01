@@ -1,7 +1,14 @@
 import { Rubik } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next";
 
 const font = Rubik({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Rayhan Permana",
+  description: "I like building stuff.",
+  metadataBase: new URL("https://rayy.dev"),
+};
 
 export default function RootLayout({
   children,

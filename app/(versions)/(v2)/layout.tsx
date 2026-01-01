@@ -14,11 +14,8 @@ import Head from "next/head";
 const font = aeonik
 
 export const metadata: Metadata = {
-  title: "Rayhan Permana",
-  description: "I like building stuff.",
-  metadataBase: new URL("https://rayy.dev"),
   openGraph: {
-    images: "/assets/preview.png",
+    images: "/assets/preview/v2.png",
     type: "website"
   }
 };
@@ -32,7 +29,7 @@ export default function Layout(props: {
         <link rel="mask-icon" color="#7F22FF"></link>
       </Head>
       <ReactLenis root />
-      <div className={`${font.className} w-full relative min-h-screen`} id="root">
+      <div className={`${font.className} w-full relative min-h-screen bg-zinc-900`} id="root">
         <FuzzyOverlay />
         <PathContextProvider>
           <noscript>

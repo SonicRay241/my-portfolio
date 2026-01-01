@@ -1,6 +1,6 @@
 "use client"
 
-import { usePathContext } from "@/app/(v2)/pathcontext";
+import { usePathContext } from "@/app/(versions)/(v2)/pathcontext";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
 import { MouseEvent, ReactNode, RefObject } from "react";

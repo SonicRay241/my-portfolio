@@ -5,7 +5,7 @@ import { FC, useState, useEffect } from "react"
 import CloseIcon from '@mui/icons-material/Close';
 import { TProjectData } from "@/libs/types";
 import { Property } from "csstype"
-import ContactLinks from "@/components/v1/ContactLinks";
+import ContactLinks from "@/components/v1/contactlinks";
 
 const ProjectDescription:
     FC<{

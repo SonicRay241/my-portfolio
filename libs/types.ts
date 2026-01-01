@@ -9,7 +9,7 @@ type TProjectURL = {
 
 type TProjectData = {
     name: string,
-    image: StaticImageData,
+    image: string,
     imageAlt: string,
     bgFrom: Property.BackgroundColor,
     bgTo: Property.BackgroundColor,

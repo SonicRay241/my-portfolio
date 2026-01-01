@@ -3,15 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Variants, motion } from "motion/react"
 import { Property } from "csstype"
-import Hero from "@/components/v1/Hero";
-import HeroMobile from "@/components/v1/HeroMobile";
-import About from "@/components/v1/About";
-import Projects from "@/components/v1/Projects";
-import LoadingBar from "@/components/v1/LoadingBar";
-import ProjectDescription from "@/components/v1/ProjectDescription";
+import Hero from "@/components/v1/hero";
+import HeroMobile from "@/components/v1/heromobile";
+import About from "@/components/v1/about";
+import Projects from "@/components/v1/projects";
+import LoadingBar from "@/components/v1/loadingbar";
+import ProjectDescription from "@/components/v1/projectdescription";
 import { TNavChild, TProjectData } from "@/libs/types";
-import NavBar from "@/components/v1/NavBar";
-import Contacts from "@/components/v1/Contacts";
+import NavBar from "@/components/v1/navbar";
+import Contacts from "@/components/v1/contacts";
+import ReactLenis from "lenis/react";
 
 type T2dCoord = {
   x: number
@@ -164,6 +165,7 @@ const Page = () => {
 
   return (
     <>
+      <ReactLenis root />
       <ProjectDescription
         show={showProjectDescription}
         closeCallback={handleDescriptionClose}
@@ -205,7 +207,6 @@ const Page = () => {
             <h1 className="text-lg">{cursorText}</h1>
           </motion.div>
         }
-        {/* <NavBar mouseEnterHandler={(size, color) => cursorChange(size, color)} mouseLeaveHandler={mouseLeave} mobile={isMobileDevice} links={navbarChildren}/> */}
         <motion.div
           className="flex items-center justify-center"
           variants={overlayVariants}

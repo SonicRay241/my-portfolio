@@ -53,10 +53,10 @@ const Project:
         }
 
         return (
-            <div className="flex w-full h-fit drop-shadow-2xl justify-center">
-                <div className="flex justify-center items-center w-full max-w-screen-lg md:p-28 sm:p-12 p-3">
+            <div className="w-full h-full drop-shadow-2xl justify-center">
+                <div className="flex justify-center items-center w-full h-full max-w-screen-lg md:p-28 sm:p-12 p-3">
                     <motion.div
-                        className="w-full h-full rounded-xl p-4"
+                        className="flex justify-center items-center w-full h-full rounded-xl p-4"
                         onMouseMove={handleMouseMove}
                         onMouseEnter={() => props.mouseEnterHandler(80, "white", "normal", "black", "View")}
                         onMouseLeave={handleMouseLeave}
@@ -71,19 +71,25 @@ const Project:
                         }}
                         onClick={handleMouseClick}
                     >
-                        <Image
+                        <img
                             src={props.projectData.image}
                             alt={props.projectData.imageAlt}
-                            quality={100}
+                            // quality={100}
                             className="object-contain drop-shadow-lg"
                             style={{
                                 transform: "translateZ(75px)",
                                 transformStyle: "preserve-3d",
                             }}
-                            placeholder="blur"
+                        // placeholder="blur"
                         />
                         {!props.isMobile &&
-                            <div className="absolute bottom-0 left-0 p-4">
+                            <div
+                                className="absolute bottom-0 left-0 p-4"
+                                style={{
+                                    transform: "translateZ(100px)",
+                                    transformStyle: "preserve-3d",
+                                }}
+                            >
                                 <h1 className="text-white text-3xl">{props.projectData.name}</h1>
                             </div>
                         }

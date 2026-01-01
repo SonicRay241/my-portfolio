@@ -1,3 +1,5 @@
+import { Property } from "csstype";
+
 export type Tool = string | string[]
 
 export type ShowcaseMeta = {
@@ -24,6 +26,8 @@ export type ShowcaseMeta = {
   };
   tools?: Tool[];
   caseStudy?: boolean;
+  bgFrom?: Property.BackgroundColor,
+  bgTo?: Property.BackgroundColor,
 }
 
 export const showcases: Record<string, ShowcaseMeta> = {
@@ -52,7 +56,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Andreas Immanuel Lukito",
       "Malvin Ferdinand Tanzil"
     ],
-    caseStudy: true
+    caseStudy: true,
+    bgFrom: "#FF2308",
+    bgTo: "#15151E"
   },
   "telkom-intern": {
     name: "Telkom vocational high school",
@@ -77,7 +83,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
     duration: {
       start: new Date("2022-01-01"),
       end: new Date("2022-03-01")
-    }
+    },
+    bgFrom: "#F34849",
+    bgTo: "#0E1118"
   },
   "movie-recommendation-model": {
     name: "Movie recommendation system",
@@ -100,7 +108,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Sklearn",
       "Streamlit",
     ],
-    caseStudy: true
+    caseStudy: true,
+    bgFrom: "#FF4A4C",
+    bgTo: "#0E1118"
   },
   "obesity-classifier": {
     name: "Obesity classifier",
@@ -126,7 +136,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Streamlit",
       "XGBoost",
     ],
-    caseStudy: true
+    caseStudy: true,
+    bgFrom: "#FF4A4C",
+    bgTo: "#0E1118"
   },
   "manna-kofie": {
     name: "Manna Kofie",
@@ -144,7 +156,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
     ],
     collaborators: [
       "Andreas Immanuel Lukito (CEO)"
-    ]
+    ],
+    bgFrom: "#000000",
+    bgTo: "#000000"
   },
   // "realtime-pricing-pipeline": {
   //   name: "Realtime pricing pipeline",
@@ -196,7 +210,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "Streamlit",
       "XGBoost",
     ],
-    caseStudy: true
+    caseStudy: true,
+    bgFrom: "#FF4A4C",
+    bgTo: "#0E1118"
   },
   "air-quality-lstm": {
     name: "Air quality LSTM",
@@ -218,7 +234,9 @@ export const showcases: Record<string, ShowcaseMeta> = {
       "PyTorch",
       "Sklearn",
     ],
-    caseStudy: true
+    caseStudy: true,
+    bgFrom: "#111015",
+    bgTo: "#111015"
   },
   // "testing": {
   //   name: "testing",

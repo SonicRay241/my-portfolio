@@ -28,8 +28,8 @@ const Hero: FC<{ onLoaded: () => void }> = (props) => {
                 <div className="w-full">
                     {Array.from(Array(4).keys()).map((n) =>
                         <div key={n}>
-                            <motion.h1 className={`text-9xl -z-50 whitespace-nowrap text-center ${bebasNeue.className}`} style={{ x: x1, transition: "all 2s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s", translateX: -300 + bgOffset }}>Rayhan Permana  Rayhan Permana  Rayhan Permana  Rayhan Permana</motion.h1>
-                            <motion.h1 className={`text-9xl -z-50 whitespace-nowrap text-center ${bebasNeue.className}`} style={{ x: x2, transition: "all 2s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s", translateX: -bgOffset }}>Rayhan Permana  Rayhan Permana  Rayhan Permana  Rayhan Permana</motion.h1>
+                            <motion.h1 className={`text-9xl 2xl:text-12xl -z-50 whitespace-nowrap text-center ${bebasNeue.className}`} style={{ x: x1, transition: "all 2s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s", translateX: -300 + bgOffset }}>Rayhan Permana  Rayhan Permana  Rayhan Permana  Rayhan Permana</motion.h1>
+                            <motion.h1 className={`text-9xl 2xl:text-12xl -z-50 whitespace-nowrap text-center ${bebasNeue.className}`} style={{ x: x2, transition: "all 2s cubic-bezier(0.165, 0.84, 0.44, 1), font-size 0s", translateX: -bgOffset }}>Rayhan Permana  Rayhan Permana  Rayhan Permana  Rayhan Permana</motion.h1>
                         </div>
                     )}
                 </div>

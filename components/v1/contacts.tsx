@@ -4,7 +4,7 @@ import { FC } from "react"
 import { Property } from "csstype"
 import Image from "next/image"
 import NextIcon from "@/public/next.png"
-import ContactLinks from "@/components/v1/ContactLinks"
+import ContactLinks from "@/components/v1/contactlinks"
 import { TContactData } from "@/libs/types"
 
 const Contacts: FC<{
@@ -14,8 +14,8 @@ const Contacts: FC<{
 }> = (props) => {
     const contacts: TContactData[] = [
         {
-            title: "Blog",
-            url: "https://blogs.rayy.dev"
+            title: "My Resume",
+            url: "/CV.pdf"
         },
         {
             title: "Github",

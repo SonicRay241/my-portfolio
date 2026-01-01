@@ -2,7 +2,7 @@
 
 import { bebasNeue } from "@/libs/fonts"
 import { motion, useTransform, useScroll } from "motion/react"
-import ContactLinks from "@/components/v1/ContactLinks"
+import ContactLinks from "@/components/v1/contactlinks"
 import { TContactData } from "@/libs/types"
 import { FC } from "react"
 import MyImage from "@/public/mehd.png"

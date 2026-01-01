@@ -22,7 +22,7 @@ export default function Footer() {
         <p className="text-zinc-500 mt-12">Links</p>
         <a
           href="/CV.pdf"
-          className="text-lg flex items-center transition-colors hover:text-violet-600"
+          className="text-lg flex items-center transition-colors hover:text-violet-600 w-fit"
           target="_blank"
           rel="noreferrer"
         >
@@ -31,7 +31,7 @@ export default function Footer() {
         </a>
         <a
           href="https://www.linkedin.com/in/rayhan-permana-733129292/"
-          className="text-lg flex items-center transition-colors hover:text-violet-600"
+          className="text-lg flex items-center transition-colors hover:text-violet-600 w-fit"
           target="_blank"
           rel="noreferrer"
         >
@@ -40,7 +40,7 @@ export default function Footer() {
         </a>
         <a
           href="https://github.com/SonicRay241"
-          className="text-lg flex items-center transition-colors hover:text-violet-600"
+          className="text-lg flex items-center transition-colors hover:text-violet-600 w-fit"
           target="_blank"
           rel="noreferrer"
         >

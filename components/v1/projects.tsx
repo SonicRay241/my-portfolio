@@ -3,11 +3,11 @@
 import { FC, useState } from "react"
 import { Property } from "csstype"
 import { useScroll, useTransform, motion, useTime, Transition } from "motion/react"
-import Project from "@/components/v1/Project"
+import Project from "@/components/v1/project"
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { TProjectData } from "@/libs/types"
 
-import projectList from "@/libs/projectList"
+import { showcases } from "@/libs/showcasemeta"
 
 const Projects:
     FC<{
@@ -50,7 +50,7 @@ const Projects:
                         </motion.h1>
                     </div>
                     <motion.div
-                        className="flex w-full flex-col"
+                        className="grid grid-cols-1 items-stretch xl:grid-cols-2 3xl:grid-cols-3"
                         style={{
                             y: projectsParallax,
                             transition: "transform 500ms cubic-bezier(0.165, 0.84, 0.44, 1)",
@@ -58,30 +58,30 @@ const Projects:
                             gap: props.isMobile ? 128 : 0
                         }}
                     >
-                        {projectList.map((projectData, idx) => {
+                        {Object.entries(showcases).map(([k, v]) => {
+                            if (v.description != "Project") return null
                             return (
                                 <Project
-                                    key={idx}
+                                    key={k}
                                     mouseEnterHandler={props.mouseEnterHandler}
                                     mouseLeaveHandler={props.mouseLeaveHandler}
-                                    projectData={projectData}
+                                    projectData={{
+                                        name: v.name,
+                                        image: `${v.path}/${v.thumbnailName}`,
+                                        imageAlt: v.name,
+                                        bgFrom: v.bgFrom || "#FFFFFF",
+                                        bgTo: v.bgTo || "#FFFFFF",
+                                        description: v.details?.firstHalf + " " + v.details?.secondHalf,
+                                        urls: v.links?.map((link) => ({
+                                            title: link.name,
+                                            url: link.url
+                                        })) || []
+                                    }}
                                     descriptionCallback={props.descriptionCallback}
                                     isMobile={props.isMobile}
                                 />
                             )
                         })}
-                        <div className="flex w-full justify-center">
-                            <h1
-                                style={{
-                                    transform: `translateY(${!props.isMobile ? 96 : 0}px)`,
-                                    fontSize: !props.isMobile ? 48 : 24
-                                }}
-                                onMouseEnter={() => props.mouseEnterHandler(100, "white", "difference")}
-                                onMouseLeave={() => props.mouseEnterHandler(40, "black", "normal")}
-                            >
-                                More Coming Soon!
-                            </h1>
-                        </div>
                     </motion.div>
                     <div
                         className="sticky flex w-fit bottom-0 pl-3 pb-3 flex-row gap-3 items-center"

@@ -14,3 +14,10 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@layer utilities {
+  .text-12xl {
+    font-size: 12rem;
+    line-height: 1;
+  }
+}

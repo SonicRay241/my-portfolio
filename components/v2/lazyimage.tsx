@@ -57,7 +57,6 @@ export default function LazyImage(props: {
         src={shouldLoad ? props.src : undefined}
         alt={props.alt}
         className="w-full"
-        onLoadedMetadata={() => setIsLoaded(true)}
         onLoad={() => setIsLoaded(true)}
       />
     </span>

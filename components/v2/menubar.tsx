@@ -28,7 +28,7 @@ export default function Menubar() {
   const glassBubbleScale = useSpring(1, { bounce: 0 });
   const glassBubbleShow = useMotionValue("none");
 
-  const [show, setShow] = useState(false)
+  const [jsCheck, setJSCheck] = useState(false)
 
   function moveIndicator(width: number, offsetLeft: number) {
     const isWebkit =
@@ -70,12 +70,14 @@ export default function Menubar() {
   }, [path]);
 
   useEffect(() => {
-
+    setJSCheck(true)
   }, [])
+
+  if (!jsCheck) return null
 
   return (
     <>
-      <div className={`${show ? "flex" : "hidden"} fixed bottom-2 left-2 right-2 justify-center items-center gap-4 pointer-events-none`}>
+      <div className="flex fixed bottom-2 left-2 right-2 justify-center items-center gap-4 pointer-events-none">
         <motion.div
           style={{
             x: barOffsetX,

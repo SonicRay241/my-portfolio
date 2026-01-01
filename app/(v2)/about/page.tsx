@@ -2,9 +2,18 @@
 
 import BlurText from "@/components/v2/blurtext";
 import Logo from "@/components/v2/logo";
-import TransitionRoot from "@/components/v2/transitionroot";
+import { useEffect, useState } from "react";
+import NoScriptContent from "./noscript";
 
 export default function Page() {
+  const [jsCheck, setJSCheck] = useState(false)
+
+  useEffect(() => {
+    setJSCheck((true))
+  }, [])
+
+  if (!jsCheck) return <NoScriptContent />
+
   return (
     <div className="flex justify-center w-full px-4">
       <div className="flex flex-col items-center w-full text-zinc-300 max-w-screen-md pt-16">

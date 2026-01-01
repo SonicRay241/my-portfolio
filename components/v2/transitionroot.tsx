@@ -3,9 +3,10 @@
 import { usePathContext } from "@/app/(v2)/pathcontext";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import { usePathname } from "next/navigation";
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 export default function TransitionRoot(props: { children: ReactNode }) {
+  const [jsCheck, setJSCheck] = useState(false)
   const { path } = usePathContext();
   const pathname = usePathname();
 
@@ -23,6 +24,12 @@ export default function TransitionRoot(props: { children: ReactNode }) {
       opacity: 0
     },
   };
+
+  useEffect(() => {
+    setJSCheck(true)
+  }, [])
+
+  if (!jsCheck) return null
 
   return (
     <AnimatePresence mode="wait">

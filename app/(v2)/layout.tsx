@@ -34,17 +34,18 @@ export default function Layout(props: {
       <ReactLenis root />
       <div className={`${font.className} w-full relative min-h-screen`} id="root">
         <FuzzyOverlay />
-        <VersionOverlay
-          font={vt323}
-          version={2}
-          className="text-lg text-zinc-700/60"
-        />
+
         <PathContextProvider>
           <TransitionRoot>
             <div className="flex flex-col justify-between min-h-screen">
               <main>
                 {props.children}
               </main>
+              <VersionOverlay
+                font={vt323}
+                version={2}
+                className="text-lg text-zinc-700/60 mt-12"
+              />
               <Footer />
             </div>
           </TransitionRoot>

@@ -1,5 +1,6 @@
 import Logo from "@/components/v2/logo";
 import { ShowcaseMeta, showcases } from "@/libs/showcasemeta";
+import Link from "next/link";
 
 export default function NoScriptContent() {
   return (
@@ -27,9 +28,9 @@ export default function NoScriptContent() {
           </h1>
           {Object.entries(showcases).map(([k, v]) => v.description != "Project" ? <Project id={k} {...v} key={k} /> : null)}
           <div className="w-full mt-12">
-            <a className="group flex justify-start items-center w-fit py-2" href="/about">
+            <Link className="group flex justify-start items-center w-fit py-2" href="/about">
               <h3 className="text-xl text-zinc-100 group-hover:text-violet-600 transition-colors">About</h3>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -44,12 +45,12 @@ function Project(props: ShowcaseMeta & { id: string }) {
 function ItemList(props: {
   name: string;
   type: string;
-  url?: string;
+  url: string;
 }) {
   return (
-    <a className="group flex justify-between items-center min-w-full py-2" href={props.url} rel="noreferrer">
+    <Link className="group flex justify-between items-center min-w-full py-2" href={props.url} rel="noreferrer">
       <h3 className="text-xl text-zinc-100 group-hover:text-violet-600 transition-colors">{props.name}</h3>
       <p className="text-xs text-zinc-500">{props.type}</p>
-    </a>
+    </Link>
   )
 }

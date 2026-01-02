@@ -13,6 +13,7 @@ import { TNavChild, TProjectData } from "@/libs/types";
 import NavBar from "@/components/v1/navbar";
 import Contacts from "@/components/v1/contacts";
 import ReactLenis from "lenis/react";
+import VersionInfo from "@/components/versioninfo";
 
 type T2dCoord = {
   x: number
@@ -166,6 +167,7 @@ const Page = () => {
   return (
     <>
       <ReactLenis root />
+      <VersionInfo version={0} />
       <ProjectDescription
         show={showProjectDescription}
         closeCallback={handleDescriptionClose}

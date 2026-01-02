@@ -11,7 +11,6 @@ export default function Page() {
   const heroRef = useRef<HTMLDivElement>(null)
 
   const [show, setShow] = useState(false)
-  const [version] = useVersion()
 
   useEffect(() => {
     setShow(true)

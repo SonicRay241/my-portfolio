@@ -6,7 +6,7 @@ import { useEffect } from "react"
 export default function VersionInfo(props: {
   version: number;
 }) {
-  const [version, setVersion] = useVersion()
+  const [_, setVersion] = useVersion()
 
   useEffect(() => {
     setVersion(props.version)

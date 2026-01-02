@@ -61,7 +61,9 @@ function FramerCarousel() {
   const [index, setIndex] = useState(version);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const x = useMotionValue(0);
+  const CONTAINER_WIDTH_INIT = 384
+
+  const x = useMotionValue(-index * CONTAINER_WIDTH_INIT);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -75,19 +77,6 @@ function FramerCarousel() {
       });
     }
   }, [index, x]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth || 1;
-        const targetX = -index * containerWidth;
-
-        animate(x, targetX, {
-          duration: 0
-        });
-      }
-    }, 10)
-  }, [])
 
   return (
     <div className='w-full max-w-3xl h-full flex items-center lg:p-10 sm:p-4 p-2'>

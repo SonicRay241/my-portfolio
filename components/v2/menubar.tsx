@@ -3,10 +3,10 @@
 import GlassSurface from "./glasssurface";
 import {
   AnimatePresence,
-  motion,
   useMotionValue,
   useSpring,
 } from "motion/react";
+import * as m from "motion/react-m"
 import TransitionLink from "./transitionlink";
 import { ReactNode, useEffect, useRef, useState } from "react";
 import HomeIcon from "@mui/icons-material/Home";
@@ -78,7 +78,7 @@ export default function Menubar() {
   return (
     <>
       <div className="flex fixed bottom-2 left-2 right-2 justify-center items-center gap-4 pointer-events-none">
-        <motion.div
+        <m.div
           style={{
             x: barOffsetX,
           }}
@@ -103,7 +103,7 @@ export default function Menubar() {
                 icon={<EmojiPeopleIcon />}
                 trigger={moveIndicator}
               />
-              <motion.div
+              <m.div
                 className="absolute top-1 left-0 h-12 bg-zinc-100/40 rounded-full pointer-events-none -z-10"
                 style={{
                   width: bubbleWidth,
@@ -113,11 +113,11 @@ export default function Menubar() {
               />
             </div>
           </GlassSurface>
-        </motion.div>
+        </m.div>
       </div>
       <div className="fixed bottom-2 left-2 right-2 flex justify-center pointer-events-none">
         <div className="relative w-36 h-14">
-          <motion.div
+          <m.div
             className="absolute top-1 left-0 h-12 pointer-events-none origin-center"
             style={{
               width: glassBubbleWidth,
@@ -135,12 +135,12 @@ export default function Menubar() {
               blueOffset={10}
               distortionScale={-60}
             />
-          </motion.div>
+          </m.div>
         </div>
         <div className="fixed bottom-2 left-2 right-2 flex justify-center items-center gap-4 pointer-events-none">
           <AnimatePresence mode="wait">
             {path.includes("/project") && (
-              <motion.div
+              <m.div
                 initial={{
                   scale: 0,
                 }}
@@ -153,7 +153,7 @@ export default function Menubar() {
                 className="w-10 h-10"
               >
                 <BackButton />
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
           <div className="relative w-36 h-14" />

@@ -10,6 +10,7 @@ import Footer from "@/components/v2/footer";
 import Menubar from "@/components/v2/menubar";
 import { Metadata } from "next";
 import Head from "next/head";
+import { domAnimation, LazyMotion } from "motion/react";
 
 const font = aeonik
 
@@ -29,30 +30,32 @@ export default function Layout(props: {
         <link rel="mask-icon" color="#7F22FF"></link>
       </Head>
       <ReactLenis root />
-      <div className={`${font.className} w-full relative min-h-screen bg-zinc-900`} id="root">
-        <FuzzyOverlay />
-        <PathContextProvider>
-          <noscript>
-            <main>
-              {props.children}
-            </main>
-          </noscript>
-          <TransitionRoot>
-            <div className="flex flex-col justify-between min-h-screen">
+      <LazyMotion features={domAnimation} strict>
+        <div className={`${font.className} w-full relative min-h-screen bg-zinc-900`} id="root">
+          <FuzzyOverlay />
+          <PathContextProvider>
+            <noscript>
               <main>
                 {props.children}
               </main>
-              <VersionOverlay
-                font={vt323}
-                version={2}
-                className="text-lg text-zinc-700/60 mt-12"
-              />
-              <Footer />
-            </div>
-          </TransitionRoot>
-          <Menubar />
-        </PathContextProvider>
-      </div>
+            </noscript>
+            <TransitionRoot>
+              <div className="flex flex-col justify-between min-h-screen">
+                <main>
+                  {props.children}
+                </main>
+                <VersionOverlay
+                  font={vt323}
+                  version={2}
+                  className="text-lg text-zinc-700/60 mt-12"
+                />
+                <Footer />
+              </div>
+            </TransitionRoot>
+            <Menubar />
+          </PathContextProvider>
+        </div>
+      </LazyMotion>
     </>
   )
 }

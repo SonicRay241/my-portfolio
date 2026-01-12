@@ -1,6 +1,7 @@
 "use client"
 
-import { animate, AnimatePresence, motion, useMotionValue } from "motion/react"
+import { animate, AnimatePresence, domAnimation, LazyMotion, useMotionValue } from "motion/react"
+import * as m from "motion/react-m"
 import { useVersion, useVersionModal } from "./_versionContext"
 import CloseIcon from "@mui/icons-material/Close"
 import { useEffect, useRef, useState } from "react"
@@ -12,33 +13,35 @@ export default function VersionModal() {
   const [show, setShow] = useVersionModal()
 
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          className="fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center items-center"
-          initial={{
-            backdropFilter: "blur(0px) brightness(1)",
-            opacity: 0,
-          }}
-          animate={{
-            backdropFilter: "blur(10px) brightness(0.6)",
-            opacity: 1,
-          }}
-          exit={{
-            backdropFilter: "blur(0px) brightness(1)",
-            opacity: 0,
-          }}
-        >
-          <button
-            className="absolute top-4 right-4"
-            onClick={() => setShow(false)}
+    <LazyMotion features={domAnimation} strict>
+      <AnimatePresence>
+        {show && (
+          <m.div
+            className="fixed top-0 bottom-0 left-0 right-0 z-50 flex justify-center items-center"
+            initial={{
+              backdropFilter: "blur(0px) brightness(1)",
+              opacity: 0,
+            }}
+            animate={{
+              backdropFilter: "blur(10px) brightness(0.6)",
+              opacity: 1,
+            }}
+            exit={{
+              backdropFilter: "blur(0px) brightness(1)",
+              opacity: 0,
+            }}
           >
-            <CloseIcon fontSize="large" className="text-white" />
-          </button>
-          <FramerCarousel />
-        </motion.div>
-      )}
-    </AnimatePresence>
+            <button
+              className="absolute top-4 right-4"
+              onClick={() => setShow(false)}
+            >
+              <CloseIcon fontSize="large" className="text-white" />
+            </button>
+            <FramerCarousel />
+          </m.div>
+        )}
+      </AnimatePresence>
+    </LazyMotion>
   )
 }
 
@@ -82,7 +85,7 @@ function FramerCarousel() {
     <div className='w-full max-w-3xl h-full flex items-center lg:p-10 sm:p-4 p-2'>
       <div className='relative flex flex-col gap-3'>
         <div className='relative overflow-hidden rounded-lg' ref={containerRef}>
-          <motion.div className='flex' style={{ x }}>
+          <m.div className='flex' style={{ x }}>
             {items.map((item, idx) => (
               <div key={idx} className='relative shrink-0 w-full h-full group'>
                 <img
@@ -102,11 +105,11 @@ function FramerCarousel() {
                 )}
               </div>
             ))}
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Navigation Buttons */}
-        <motion.button
+        <m.button
           disabled={index <= 0}
           onClick={() => setIndex((i) => Math.max(0, i - 1))}
           className={`absolute -left-16 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg transition-transform z-10
@@ -116,10 +119,10 @@ function FramerCarousel() {
             }`}
         >
           <ChevronLeftIcon fontSize="large" />
-        </motion.button>
+        </m.button>
 
         {/* Next Button */}
-        <motion.button
+        <m.button
           disabled={index >= items.length - 1}
           onClick={() => {
             setIndex((i) => Math.min(items.length - 1, i + 1))
@@ -131,7 +134,7 @@ function FramerCarousel() {
             }`}
         >
           <ChevronRightIcon fontSize="large" />
-        </motion.button>
+        </m.button>
         {/* Progress Indicator */}
         <div className='absolute -bottom-4 left-1/2 -translate-x-1/2 flex gap-2'>
           {items.map((_, i) => (

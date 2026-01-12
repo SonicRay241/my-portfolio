@@ -3,7 +3,8 @@
 import { slugify } from "@/libs/utils"
 import { useLenis } from "lenis/react"
 import { RefObject, useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, useInView, useTransform } from "motion/react"
+import { AnimatePresence } from "motion/react"
+import * as m from "motion/react-m"
 import { useSentinel } from "@/libs/hooks"
 
 type TocItem = {
@@ -100,7 +101,7 @@ export default function ContentList(props: {
   return (
     <AnimatePresence>
       {display && (
-        <motion.aside
+        <m.aside
           className="hidden md:block w-fit pr-8 max-h-[50dvh] overflow-y-auto overscroll-contain origin-left [mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0px,black_2rem,black_calc(100%-2rem),transparent_100%)]"
           data-lenis-prevent
           tabIndex={0}
@@ -142,7 +143,7 @@ export default function ContentList(props: {
               </li>
             ))}
           </ul>
-        </motion.aside>
+        </m.aside>
       )}
     </AnimatePresence>
   )
@@ -181,7 +182,7 @@ function TocItem(props: {
       ref={buttonRef}
     >
       <span>{props.text}</span>
-      <motion.span
+      <m.span
         className="h-0.5 bg-violet-600"
         initial={{
           width: 0

@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import * as m from "motion/react-m"
 import TransitionLink from "./transitionlink";
 
 export default function ProjectCard(props: {
@@ -11,7 +11,7 @@ export default function ProjectCard(props: {
   locked?: boolean;
 }) {
   return (
-    <motion.div
+    <m.div
       className="w-full h-fit"
       whileHover={{
         filter: "brightness(0.8)"
@@ -38,13 +38,11 @@ export default function ProjectCard(props: {
               autoPlay
               disablePictureInPicture
             />
-          )
-
-          }
+          )}
         </div>
         <p className="text-zinc-100 xl:text-lg 2xl:text-xl">{props.title}</p>
         <p className="text-zinc-500 xl:text-lg 2xl:text-xl">{props.description}</p>
       </TransitionLink>
-    </motion.div>
+    </m.div>
   )
 }

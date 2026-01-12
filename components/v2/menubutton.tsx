@@ -4,7 +4,8 @@ import GlassSurface from "./glasssurface";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from '@mui/icons-material/Home';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
-import { AnimatePresence, motion, useSpring } from "motion/react";
+import { AnimatePresence, useSpring } from "motion/react";
+import * as m from "motion/react-m"
 import {
   useState,
   ReactNode,
@@ -13,7 +14,6 @@ import {
   MouseEventHandler,
   AnchorHTMLAttributes,
 } from "react";
-import Link from "next/link";
 import TransitionLink from "./transitionlink";
 
 export default function Menubutton() {
@@ -33,7 +33,7 @@ export default function Menubutton() {
     <>
       <AnimatePresence>
         {showRefraction && (
-          <motion.div
+          <m.div
             className={`fixed bottom-4 right-4`}
             initial={{
               translateY: -10,
@@ -58,13 +58,13 @@ export default function Menubutton() {
             }}
           >
             <GlassSurface width={40} height={40} borderRadius={20} />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       <AnimatePresence>
         {!menuOpen && (
-          <motion.button
+          <m.button
             initial={{
               opacity: 0,
               translateY: -10,
@@ -108,7 +108,7 @@ export default function Menubutton() {
             }}
           >
             <MenuIcon className="size-2 text-zinc-100" />
-          </motion.button>
+          </m.button>
         )}
       </AnimatePresence>
       <AnimatePresence>
@@ -185,7 +185,7 @@ function MenuSelect(props: {
   }
 
   return (
-    <motion.div
+    <m.div
       className="fixed bottom-4 right-4"
       initial={{
         scale: 0,
@@ -226,7 +226,7 @@ function MenuSelect(props: {
     >
       <div className="relative">
         <GlassSurface width={140} height={100} borderRadius={20} />
-        <motion.div
+        <m.div
           className="absolute top-0 left-0 w-full h-full bg-black/40 rounded-[20px] p-2 overflow-hidden"
           ref={parentRef}
           initial={{
@@ -262,7 +262,7 @@ function MenuSelect(props: {
             pointerEvents: ready ? "auto" : "none",
           }}
         >
-          <motion.div
+          <m.div
             className="absolute top-2 left-1.5 right-1.5 bg-zinc-100/20 rounded-[16px] pointer-events-none -z-10"
             style={{
               height: bubbleHeight,
@@ -282,9 +282,9 @@ function MenuSelect(props: {
             <AutoAwesomeIcon fontSize="small" className="" />
             <span>Projects</span>
           </MenuSelectButton> */}
-        </motion.div>
+        </m.div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 

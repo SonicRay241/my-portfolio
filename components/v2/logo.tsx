@@ -1,7 +1,7 @@
 "use client"
 
 import { useVersionModal } from "@/app/(versions)/_versionContext";
-import { motion } from "motion/react";
+import * as m from "motion/react-m"
 
 export default function Logo() {
     const logoTitle = "rayhan.".split("")
@@ -15,7 +15,7 @@ export default function Logo() {
             <div className="text-2xl text-violet-600 font-bold pr-1">
                 /
             </div>
-            <motion.div
+            <m.div
                 initial="initial"
                 whileHover="hovered"
                 className="relative block text-xl text-white overflow-hidden whitespace-nowrap"
@@ -23,7 +23,7 @@ export default function Logo() {
                 <div>
                     {logoTitle.map((c, i) => {
                         return (
-                            <motion.span
+                            <m.span
                                 key={i}
                                 variants={{
                                     initial: { y: 0 },
@@ -37,14 +37,14 @@ export default function Logo() {
                                 className={`inline-block ${c == " " ? "w-1" : ""}`}
                             >
                                 {c}
-                            </motion.span>
+                            </m.span>
                         )
                     })}
                 </div>
                 <div className="absolute inset-0">
                     {logoTitle.map((c, i) => {
                         return (
-                            <motion.span
+                            <m.span
                                 key={i}
                                 variants={{
                                     initial: { y: "100%", textDecoration: "none" },
@@ -58,11 +58,11 @@ export default function Logo() {
                                 className={`inline-block ${c == " " ? "w-1" : ""}`}
                             >
                                 {c}
-                            </motion.span>
+                            </m.span>
                         )
                     })}
                 </div>
-            </motion.div>
+            </m.div>
         </button>
     )
 }

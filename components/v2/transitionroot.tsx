@@ -1,7 +1,8 @@
 "use client";
 
 import { usePathContext } from "@/app/(versions)/(v2)/pathcontext";
-import { AnimatePresence, motion, Variants } from "motion/react";
+import { AnimatePresence, Variants } from "motion/react";
+import * as m from "motion/react-m"
 import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 
@@ -33,7 +34,7 @@ export default function TransitionRoot(props: { children: ReactNode }) {
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div
+      <m.div
         variants={variants}
         initial={loaded ? "blur" : "focus"}
         animate={loaded ? "focus" : "blur"}
@@ -43,7 +44,7 @@ export default function TransitionRoot(props: { children: ReactNode }) {
         }}
       >
         {props.children}
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }

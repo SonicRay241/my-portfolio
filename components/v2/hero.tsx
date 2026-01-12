@@ -1,15 +1,14 @@
 "use client";
 
-import { MouseEvent, RefObject, useEffect, useRef, useState } from "react";
+import { MouseEvent, RefObject, useRef } from "react";
 import {
-  motion,
   useMotionTemplate,
   useMotionValue,
-  useMotionValueEvent,
   useScroll,
   useSpring,
   useTransform,
 } from "motion/react";
+import * as m from "motion/react-m"
 import Logo from "./logo";
 import BlurText from "./blurtext";
 import SpanWords from "./spanwords";
@@ -73,7 +72,7 @@ export default function Hero(props: {
 
   return (
     <div className="overflow-hidden" ref={props.ref}>
-      <motion.div
+      <m.div
         className="sticky top-0 px-4 pt-2 rig w-full grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-0"
         onMouseMove={handleMove}
         style={{
@@ -100,7 +99,7 @@ export default function Hero(props: {
             direction="bottom"
             className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-400 pointer-events-none"
           />
-          <motion.p
+          <m.p
             className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl absolute top-0 left-1 right-1 text-white pointer-events-none flex flex-wrap"
             style={{
               WebkitMaskImage: maskA,
@@ -110,7 +109,7 @@ export default function Hero(props: {
             }}
           >
             <SpanWords text={paragraphAValue} />
-          </motion.p>
+          </m.p>
         </div>
         <div
           className="relative block px-1"
@@ -125,7 +124,7 @@ export default function Hero(props: {
             direction="bottom"
             className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl text-zinc-400 pointer-events-none"
           />
-          <motion.p
+          <m.p
             className="text-base xl:text-lg 2xl:text-xl 3xl:text-2xl 4xl:text-3xl absolute top-0 left-1 right-1 text-white pointer-events-none flex flex-wrap"
             style={{
               WebkitMaskImage: maskB,
@@ -135,9 +134,9 @@ export default function Hero(props: {
             }}
           >
             <SpanWords text={paragraphBValue} />
-          </motion.p>
+          </m.p>
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 }

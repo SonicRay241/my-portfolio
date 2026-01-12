@@ -2,8 +2,8 @@
 
 import { RefObject, useRef } from "react";
 import ProjectCard from "./projectcard";
-import ScrollVelocity from "./scrollvelocity";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useScroll, useTransform } from "motion/react";
+import * as m from "motion/react-m"
 import { ShowcaseMeta, showcases } from "@/libs/showcasemeta";
 import { useMediaQuery } from "@mui/material";
 
@@ -21,7 +21,7 @@ export default function Showcase(props: {
   const pointerEvents = useTransform(scrollYProgress, [0, 0.6, 1], ["none", "none", "auto"])
 
   return (
-    <motion.div
+    <m.div
       className="pt-2 md:pt-8 text-zinc-700"
       ref={ref}
       style={{
@@ -31,7 +31,7 @@ export default function Showcase(props: {
       }}
     >
       <Grid />
-    </motion.div>
+    </m.div>
   );
 }
 

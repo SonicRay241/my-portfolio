@@ -3,7 +3,8 @@
 import { usePathContext } from "@/app/(versions)/(v2)/pathcontext";
 import GlassSurface from "./glasssurface";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { motion, useSpring } from "motion/react";
+import { useSpring } from "motion/react";
+import * as m from "motion/react-m"
 import { useRouter } from "next/navigation";
 import { MouseEvent } from "react";
 
@@ -26,7 +27,7 @@ export default function BackButton() {
 
   return (
     <div className="relative w-10 h-10 pointer-events-auto">
-      <motion.div
+      <m.div
         className="absolute top-0 left-0"
         initial={{
           translateY: -10,
@@ -61,8 +62,8 @@ export default function BackButton() {
         >
           <div className="w-full h-full rounded-full bg-black/60"></div>
         </GlassSurface>
-      </motion.div>
-      <motion.button
+      </m.div>
+      <m.button
         initial={{
           opacity: 0,
           translateY: -10,
@@ -108,7 +109,7 @@ export default function BackButton() {
         }}
       >
         <ArrowBackIosIcon fontSize="small" className="size-2 text-zinc-100 translate-x-1" />
-      </motion.button>
+      </m.button>
     </div>
   );
 }

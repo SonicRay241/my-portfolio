@@ -2,7 +2,6 @@
 
 import React, { useRef, useLayoutEffect, useState } from 'react';
 import {
-    motion,
     useScroll,
     useSpring,
     useTransform,
@@ -10,6 +9,7 @@ import {
     useVelocity,
     useAnimationFrame
 } from 'motion/react';
+import * as m from "motion/react-m"
 
 interface VelocityMapping {
     input: [number, number];
@@ -145,12 +145,12 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
 
         return (
             <div className={`${parallaxClassName} relative overflow-x-hidden`} style={parallaxStyle}>
-                <motion.div
+                <m.div
                     className={`${scrollerClassName} flex gap-2 whitespace-nowrap text-center text-4xl font-bold tracking-[-0.02em] drop-shadow md:text-[5rem] md:leading-[5rem]`}
                     style={{ x, ...scrollerStyle }}
                 >
                     {spans}
-                </motion.div>
+                </m.div>
             </div>
         );
     }
